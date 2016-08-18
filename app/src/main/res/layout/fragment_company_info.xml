@@ -1,0 +1,44 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.cjt.employment.ui.fragment.CompanyInfoFragment">
+
+    <RelativeLayout
+        android:background="@drawable/item_selector"
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="18dp">
+
+        <ImageView
+            android:id="@+id/iv_cover"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="18dp"
+            android:background="#999" />
+
+        <TextView
+            android:id="@+id/tv_company"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/iv_cover"
+            android:text="CompanyName" />
+
+        <TextView
+            android:id="@+id/tv_companyinfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_company"
+            android:layout_toRightOf="@id/iv_cover"
+            android:text="未融资 | 15-50人 | O2O" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_companyinfo"
+            android:layout_toRightOf="@id/iv_cover"
+            android:text="面试评价" />
+    </RelativeLayout>
+
+</LinearLayout>

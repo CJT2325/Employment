@@ -34,6 +34,8 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:background="@drawable/item_selector"
+        android:clickable="true"
         android:layout_width="match_parent"
         android:layout_height="56dp">
 
@@ -59,6 +61,8 @@
         android:background="#DDDDDD" />
 
     <RelativeLayout
+        android:background="@drawable/item_selector"
+        android:clickable="true"
         android:layout_width="match_parent"
         android:layout_height="56dp">
 
@@ -74,7 +78,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/iv_plus"
-            android:text="PLUS" />
+            android:text="企业版" />
     </RelativeLayout>
 
     <View
@@ -83,6 +87,8 @@
         android:background="#DDDDDD" />
 
     <RelativeLayout
+        android:background="@drawable/item_selector"
+        android:clickable="true"
         android:layout_width="match_parent"
         android:layout_height="56dp">
 
@@ -108,6 +114,8 @@
         android:background="#DDDDDD" />
 
     <RelativeLayout
+        android:background="@drawable/item_selector"
+        android:clickable="true"
         android:layout_width="match_parent"
         android:layout_height="56dp">
 
@@ -133,6 +141,9 @@
         android:background="#DDDDDD" />
 
     <RelativeLayout
+        android:id="@+id/layout_setting"
+        android:background="@drawable/item_selector"
+        android:clickable="true"
         android:layout_width="match_parent"
         android:layout_height="56dp">
 

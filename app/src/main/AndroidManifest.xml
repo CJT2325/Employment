@@ -39,6 +39,14 @@
         <activity
             android:name=".ui.activity.RecruitmentInfoActivity"
             android:label="@string/title_activity_recruitment_info"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.activity.SettingActivity"
+            android:label="@string/title_activity_setting"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.activity.CompanyActivity"
+            android:label="@string/title_activity_company"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

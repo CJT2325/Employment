@@ -43,7 +43,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Andriod"
-                    android:textColor="#000000" />
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -51,7 +52,8 @@
                     android:layout_marginLeft="18dp"
                     android:layout_toRightOf="@id/tv_position"
                     android:text="【5k-8k】"
-                    android:textColor="@color/colorAccent" />
+                    android:textColor="@color/colorAccent"
+                    android:textSize="20sp" />
             </RelativeLayout>
 
             <LinearLayout
@@ -60,33 +62,82 @@
                 android:layout_weight="4"
                 android:orientation="horizontal">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="广州" />
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="1-3年" />
+                    <ImageView
+                        android:layout_width="17dp"
+                        android:layout_height="17dp"
+                        android:layout_marginLeft="18dp"
+                        android:src="@drawable/ic_room_black_24dp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="大专" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="广州" />
+                </LinearLayout>
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="全职" />
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="17dp"
+                        android:layout_height="17dp"
+                        android:src="@drawable/ic_card_travel_black_24dp" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="1-3年" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="17dp"
+                        android:layout_height="17dp"
+                        android:src="@drawable/ic_school_black_24dp" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="大专" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="17dp"
+                        android:layout_height="17dp"
+                        android:src="@drawable/ic_access_time_black_24dp" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="全职" />
+                </LinearLayout>
+
             </LinearLayout>
 
             <TextView
@@ -105,6 +156,9 @@
                 android:background="#DDDDDD" />
 
             <RelativeLayout
+                android:id="@+id/layout_companyinfo"
+                android:background="@drawable/item_selector"
+                android:clickable="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="18dp">
@@ -185,6 +239,7 @@
                 android:layout_marginBottom="36dp"
                 android:layout_marginLeft="18dp"
                 android:layout_marginRight="18dp"
+                android:lineSpacingExtra="5dp"
                 android:text="1、计算机相关专业\n2、有Andriod开发经验者优先\n3、了解后台编程PHP" />
 
             <View
@@ -265,9 +320,9 @@
                 android:background="#DDDDDD" />
 
             <RelativeLayout
-                android:padding="18dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:padding="18dp">
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/iv_usercover"
@@ -275,22 +330,24 @@
                     android:layout_height="50dp"
                     android:layout_marginRight="18dp"
                     android:src="@drawable/tencentlogo" />
+
                 <TextView
+                    android:id="@+id/tv_username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
                     android:layout_toRightOf="@id/iv_usercover"
                     android:text="张小龙"
                     android:textColor="#000"
-                    android:textSize="18sp"
-                    android:layout_marginBottom="8dp"
-                    android:id="@+id/tv_username"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:textSize="18sp" />
+
                 <TextView
-                    android:layout_below="@id/tv_username"
-                    android:layout_toRightOf="@id/iv_usercover"
-                    android:text="创始人"
                     android:id="@+id/tv_userposition"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_username"
+                    android:layout_toRightOf="@id/iv_usercover"
+                    android:text="创始人" />
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>
