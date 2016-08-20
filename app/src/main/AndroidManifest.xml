@@ -47,6 +47,14 @@
         <activity
             android:name=".ui.activity.CompanyActivity"
             android:label="@string/title_activity_company"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.activity.EvaluateActivity"
+            android:label="@string/title_activity_evaluate"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.activity.EnterpriseActivity"
+            android:label="@string/title_activity_enterprise"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

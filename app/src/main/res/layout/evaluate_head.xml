@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_margin="18dp"
+        android:id="@+id/layout_evaluate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_evaluate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="【综合评分】" />
+
+        <RatingBar
+            android:layout_alignBottom="@id/tv_evaluate"
+            android:id="@+id/room_ratingbar"
+            android:layout_toRightOf="@id/tv_evaluate"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:rating="2.5"
+            android:layout_marginLeft="10dp" >
+        </RatingBar>
+        <TextView
+            android:layout_marginLeft="7dp"
+            android:id="@+id/tv_interview"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/tv_evaluate"
+            android:text="面试符合:3.5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/tv_interview"
+            android:id="@+id/tv_interviewer"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/tv_evaluate"
+            android:text="面试官:3.5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/tv_interviewer"
+            android:id="@+id/tv_company"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/tv_evaluate"
+            android:text="公司:3.5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <View
+        android:layout_below="@id/layout_evaluate"
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:background="#DDDDDD"/>
+</RelativeLayout>

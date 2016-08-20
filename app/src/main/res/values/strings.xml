@@ -11,4 +11,6 @@
     <string name="title_activity_recruitment_info">RecruitmentInfoActivity</string>
     <string name="title_activity_setting">SettingActivity</string>
     <string name="title_activity_company">CompanyActivity</string>
+    <string name="title_activity_evaluate">EvaluateActivity</string>
+    <string name="title_activity_enterprise">EnterpriseActivity</string>
 </resources>

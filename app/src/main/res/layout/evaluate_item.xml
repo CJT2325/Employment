@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="18dp">
+
+    <RelativeLayout
+        android:id="@+id/layout_evaluate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_cover"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/wangyilogo" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/iv_cover"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/iv_cover"
+            android:text="陈嘉桐"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_interview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_name"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@id/iv_cover"
+            android:text="已面试:Andriod" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="08月15日" />
+
+        <RatingBar
+            android:id="@+id/room_ratingbar"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/tv_interview"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/tv_evaluate"
+            android:numStars="5"
+            android:rating="2.5" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_marginBottom="18dp"
+        android:layout_marginTop="18dp"
+        android:layout_below="@id/layout_evaluate"
+        android:text="面试过程：这里都是评价呀这里都是评价呀这里都是评价呀这里都是评价呀这里都是评价呀这里都是评价呀这里都是评价呀这里都是评价呀这里都是评价呀"
+        android:lineSpacingExtra="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>
+
