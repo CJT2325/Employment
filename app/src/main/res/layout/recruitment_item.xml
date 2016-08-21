@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/item_selector"
+    android:clickable="true"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="10dp">
@@ -14,8 +16,7 @@
             android:layout_width="100dp"
             android:layout_height="70dp"
             android:layout_marginRight="8dp"
-            android:background="#555555"
-            android:scaleType="fitCenter" />
+            android:scaleType="centerInside" />
 
         <TextView
             android:id="@+id/tv_position"
@@ -56,7 +57,7 @@
             android:textColor="#999999" />
 
         <TextView
-            android:id="@+id/tv_distance"
+            android:id="@+id/tv_wage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"

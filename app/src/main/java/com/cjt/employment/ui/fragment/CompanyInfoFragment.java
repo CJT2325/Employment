@@ -11,7 +11,7 @@ import android.widget.RelativeLayout;
 
 import com.cjt.employment.R;
 import com.cjt.employment.ui.activity.EvaluateActivity;
-import com.cjt.employment.ui.presenter.CompanyInfoPresenter;
+import com.cjt.employment.presenter.CompanyInfoPresenter;
 
 
 public class CompanyInfoFragment extends BaseFragment<CompanyInfoFragment, CompanyInfoPresenter> implements View.OnClickListener {

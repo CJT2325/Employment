@@ -6,10 +6,13 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 
 import com.cjt.employment.R;
 
-public class EnterpriseActivity extends AppCompatActivity {
+public class EnterpriseActivity extends AppCompatActivity implements View.OnClickListener {
+    private Button btn_apply;
+    private Button btn_join;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +20,8 @@ public class EnterpriseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_enterprise);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        initView();
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -28,4 +32,20 @@ public class EnterpriseActivity extends AppCompatActivity {
         });
     }
 
+    private void initView() {
+        btn_apply = (Button) findViewById(R.id.btn_apply);
+        btn_join = (Button) findViewById(R.id.btn_join);
+        btn_apply.setOnClickListener(this);
+        btn_join.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_apply:
+                break;
+            case R.id.btn_join:
+                break;
+        }
+    }
 }

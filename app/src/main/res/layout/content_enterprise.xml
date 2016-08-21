@@ -11,5 +11,21 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.cjt.employment.ui.activity.EnterpriseActivity"
     tools:showIn="@layout/activity_enterprise">
+    <Button
+        android:id="@+id/btn_apply"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/click_selector"
+        android:text="申请企业版"
+        android:textColor="#FFF" />
 
+    <Button
+        android:id="@+id/btn_join"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_apply"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/click_selector"
+        android:text="加入已有企业"
+        android:textColor="#FFF" />
 </RelativeLayout>

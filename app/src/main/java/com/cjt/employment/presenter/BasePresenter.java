@@ -1,4 +1,4 @@
-package com.cjt.employment.ui.presenter;
+package com.cjt.employment.presenter;
 
 import android.util.Log;
 

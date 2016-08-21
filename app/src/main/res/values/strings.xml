@@ -13,4 +13,5 @@
     <string name="title_activity_company">CompanyActivity</string>
     <string name="title_activity_evaluate">EvaluateActivity</string>
     <string name="title_activity_enterprise">EnterpriseActivity</string>
+    <string name="title_activity_enterprise_home">EnterpriseHomeActivity</string>
 </resources>

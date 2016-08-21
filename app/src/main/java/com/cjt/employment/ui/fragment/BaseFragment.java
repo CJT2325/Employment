@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.cjt.employment.ui.presenter.BasePresenter;
+import com.cjt.employment.presenter.BasePresenter;
 
 /**
  * 作者: 陈嘉桐 on 2016/7/1
@@ -21,7 +21,6 @@ public abstract class BaseFragment<V,T extends BasePresenter<V>> extends Fragmen
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mPresenter = creatPresenter();
-        mPresenter.attachView((V) this);
         mPresenter.onViewCreate();
         return super.onCreateView(inflater, container, savedInstanceState);
     }

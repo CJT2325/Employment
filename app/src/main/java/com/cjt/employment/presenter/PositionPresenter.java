@@ -1,6 +1,5 @@
-package com.cjt.employment.ui.presenter;
+package com.cjt.employment.presenter;
 
-import com.cjt.employment.ui.fragment.CompanyInfoFragment;
 import com.cjt.employment.ui.fragment.PositionFragment;
 
 /**

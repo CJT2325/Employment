@@ -15,6 +15,7 @@ import com.cjt.employment.R;
 
 public class UserInfoActivity extends AppCompatActivity implements View.OnClickListener {
     RelativeLayout layout_setting;
+    RelativeLayout layout_enterprise;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,12 +33,13 @@ public class UserInfoActivity extends AppCompatActivity implements View.OnClickL
 //                        .setAction("Action", null).show();
 //            }
 //        });
-
     }
 
     private void initView() {
         layout_setting= (RelativeLayout) findViewById(R.id.layout_setting);
+        layout_enterprise= (RelativeLayout) findViewById(R.id.layout_enterprise);
         layout_setting.setOnClickListener(this);
+        layout_enterprise.setOnClickListener(this);
     }
 
     @Override
@@ -69,6 +71,11 @@ public class UserInfoActivity extends AppCompatActivity implements View.OnClickL
             case R.id.layout_setting:
                 Intent settingIntent=new Intent(this,SettingActivity.class);
                 startActivity(settingIntent);
+                break;
+            case R.id.layout_enterprise:
+//                Intent enterpriseIntent=new Intent(this,EnterpriseActivity.class);
+                Intent enterpriseIntent=new Intent(this,EnterpriseHomeActivity.class);
+                startActivity(enterpriseIntent);
                 break;
         }
     }

@@ -1,10 +1,7 @@
 package com.cjt.employment.ui.fragment;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -13,11 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.cjt.employment.R;
-import com.cjt.employment.adapter.MessageAdapter;
 import com.cjt.employment.adapter.PositionAdapter;
 import com.cjt.employment.common.DividerItemDecoration;
-import com.cjt.employment.ui.presenter.CompanyInfoPresenter;
-import com.cjt.employment.ui.presenter.PositionPresenter;
+import com.cjt.employment.presenter.PositionPresenter;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -6,9 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 
 import com.cjt.employment.R;
+import com.cjt.employment.bean.Recruit;
+import com.squareup.picasso.Picasso;
 import com.youth.banner.Banner;
 
 import java.util.List;
@@ -21,9 +24,12 @@ public class RecruitmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     private Context mContext;
     private OnItemClickListener listener;
 
-    private List<String> datas;
+    private List<Recruit.DataBean> datas;
 
-    public void updata(List<String> list) {
+
+    public void updataRecruit(List<Recruit.DataBean> data) {
+        this.datas.clear();
+        this.datas = data;
         notifyDataSetChanged();
     }
 
@@ -31,7 +37,7 @@ public class RecruitmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         public void onItemClick(View view, int position);
     }
 
-    public RecruitmentAdapter(List<String> datas, Context mContext, OnItemClickListener listener) {
+    public RecruitmentAdapter(List<Recruit.DataBean> datas, Context mContext, OnItemClickListener listener) {
         this.datas = datas;
         this.mContext = mContext;
         this.listener = listener;
@@ -48,10 +54,22 @@ public class RecruitmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-//        holder.tv_shopname.setText(datas.get(position).getStore().getName());
+        if (holder instanceof RecruitmentViewHolder){
+            Recruit.DataBean dataBean=datas.get(position-1);
+            Picasso.with(mContext).load(dataBean.getLogo()).into(((RecruitmentViewHolder) holder).iv_cover);
+            ((RecruitmentViewHolder) holder).tv_position.setText(dataBean.getPosition());
+            ((RecruitmentViewHolder) holder).tv_company.setText(dataBean.getCompany());
+            ((RecruitmentViewHolder) holder).tv_date.setText(dataBean.getReleasedate());
+            int wagestart=dataBean.getWagesstart()/1000;
+            int wageend=dataBean.getWagesend()/1000;
+            String wage=wagestart+"-"+wageend+"k";
+            ((RecruitmentViewHolder) holder).tv_wage.setText(wage);
+            ((RecruitmentViewHolder) holder).tv_recruitinfo.setText(dataBean.getWorkplace()+" "+dataBean.getWorkingyearstart()+"-"+dataBean.getWorkingyearend()+"年"+" "+dataBean.getEducation());
+            ((RecruitmentViewHolder) holder).tv_companyinfo.setText(dataBean.getFinancing()+" | "+dataBean.getEmployenumber()+"人 | "+dataBean.getPattern());
+        }else if (holder instanceof RecruitmentViewHolder){
+
+        }
 //        Picasso.with(mContext).load(ServerAPI.baseUrl+datas.get(position).getStore().getStoreImage().getShopFile().getUrl()).resize(100, 100).into(holder.iv_shopcover);
-//        holder.tv_startprice.setText("起送价￥"+datas.get(position).getStore().getStartFee());
-//        holder.tv_giveprice.setText("配送费￥"+datas.get(position).getStore().getPackingFee());
     }
 
     @Override
@@ -68,10 +86,24 @@ public class RecruitmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     class RecruitmentViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private RecruitmentAdapter.OnItemClickListener listener;
         ImageView iv_cover;
+        TextView tv_position;
+        TextView tv_company;
+        TextView tv_wage;
+        TextView tv_date;
+        TextView tv_recruitinfo;
+        TextView tv_companyinfo;
 
         public RecruitmentViewHolder(View itemView, RecruitmentAdapter.OnItemClickListener listener) {
             super(itemView);
+
             iv_cover = (ImageView) itemView.findViewById(R.id.iv_cover);
+            tv_position = (TextView) itemView.findViewById(R.id.tv_position);
+            tv_company = (TextView) itemView.findViewById(R.id.tv_company);
+            tv_wage = (TextView) itemView.findViewById(R.id.tv_wage);
+            tv_date = (TextView) itemView.findViewById(R.id.tv_date);
+            tv_recruitinfo = (TextView) itemView.findViewById(R.id.tv_recruitinfo);
+            tv_companyinfo = (TextView) itemView.findViewById(R.id.tv_companyinfo);
+
             itemView.setOnClickListener(this);
             this.listener = listener;
         }

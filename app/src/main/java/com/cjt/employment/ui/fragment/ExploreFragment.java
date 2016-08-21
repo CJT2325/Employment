@@ -1,25 +1,14 @@
 package com.cjt.employment.ui.fragment;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.cjt.employment.R;
-import com.cjt.employment.adapter.RecruitmentAdapter;
-import com.cjt.employment.common.DividerItemDecoration;
-import com.cjt.employment.ui.presenter.ExplorePresenter;
-import com.cjt.employment.ui.presenter.HomePresenter;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.cjt.employment.presenter.ExplorePresenter;
 
 public class ExploreFragment extends BaseFragment<HomeFragment, ExplorePresenter> {
 

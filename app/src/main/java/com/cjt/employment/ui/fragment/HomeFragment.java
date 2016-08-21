@@ -1,31 +1,31 @@
 package com.cjt.employment.ui.fragment;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.annotation.StringDef;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.cjt.employment.R;
 import com.cjt.employment.adapter.RecruitmentAdapter;
+import com.cjt.employment.bean.Recruit;
 import com.cjt.employment.common.DividerItemDecoration;
 import com.cjt.employment.ui.activity.RecruitmentInfoActivity;
-import com.cjt.employment.ui.presenter.HomePresenter;
+import com.cjt.employment.presenter.HomePresenter;
+import com.cjt.employment.ui.view.HomeView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeFragment extends BaseFragment<HomeFragment, HomePresenter> {
+public class HomeFragment extends BaseFragment<HomeFragment, HomePresenter> implements HomeView {
     private RecyclerView mRecyclerView;
-    private List<String> mDatas;
+    private ProgressBar mProgressBar;
+    private List<Recruit.DataBean> mDatas;
     private RecruitmentAdapter mRecruitmentAdapter;
 
     public static HomeFragment newInstance() {
@@ -37,12 +37,12 @@ public class HomeFragment extends BaseFragment<HomeFragment, HomePresenter> {
     }
 
     public HomeFragment() {
-
+        
     }
 
     @Override
     protected HomePresenter creatPresenter() {
-        return null;
+        return new HomePresenter(this);
     }
 
     @Override
@@ -53,28 +53,33 @@ public class HomeFragment extends BaseFragment<HomeFragment, HomePresenter> {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         initDatas();
+        initView(view);
+        getPresenter().getRecruit("get");
+        showProgressBar();
+//        this.mPresenter = creatPresenter();
+        return view;
+    }
+
+    private void initView(View view) {
+        mProgressBar= (ProgressBar) view.findViewById(R.id.progressbar);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.rv_recruitment);
         mRecruitmentAdapter = new RecruitmentAdapter(mDatas, getActivity(), new RecruitmentAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                Intent recruitmentInfoIntent =new Intent(getContext(), RecruitmentInfoActivity.class);
+                Intent recruitmentInfoIntent = new Intent(getContext(), RecruitmentInfoActivity.class);
                 startActivity(recruitmentInfoIntent);
             }
         });
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         mRecyclerView.setAdapter(mRecruitmentAdapter);
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL_LIST));
-//        this.mPresenter = creatPresenter();
-        return view;
     }
 
     private void initDatas() {
-        mDatas = new ArrayList<String>();
-        for (int i = 0; i < 7; i++) {
-            mDatas.add("Stirng " + i);
-        }
+        mDatas=new ArrayList<>();
     }
 
     @Override
@@ -86,4 +91,27 @@ public class HomeFragment extends BaseFragment<HomeFragment, HomePresenter> {
             Log.i("CJT", "presenter is null");
         }
     }
+
+
+    @Override
+    public void updateRecruit(List<Recruit.DataBean> data) {
+        mRecruitmentAdapter.updataRecruit(data);
+        hideProgressBar();
+    }
+
+    @Override
+    public void updateMoreRecruit(List<Recruit.DataBean> data) {
+
+    }
+
+    @Override
+    public void showProgressBar() {
+        mProgressBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideProgressBar() {
+        mProgressBar.setVisibility(View.GONE);
+    }
+
 }

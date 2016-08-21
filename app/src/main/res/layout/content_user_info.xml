@@ -61,6 +61,7 @@
         android:background="#DDDDDD" />
 
     <RelativeLayout
+        android:id="@+id/layout_enterprise"
         android:background="@drawable/item_selector"
         android:clickable="true"
         android:layout_width="match_parent"
