@@ -24,7 +24,7 @@ public class RecruitModelImp implements RecruitModel{
         private final static RecruitModel instance=new RecruitModelImp();
     }
     @Override
-    public Observable<Recruit> getRecruit() {
-        return mServerAPI.recruitServlet();
+    public Observable<Recruit> getRecruit(String action) {
+        return mServerAPI.recruitServlet(action);
     }
 }

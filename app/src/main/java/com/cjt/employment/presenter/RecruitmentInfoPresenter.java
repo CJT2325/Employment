@@ -3,9 +3,12 @@ package com.cjt.employment.presenter;
 import android.util.Log;
 
 import com.cjt.employment.bean.Recruit;
+import com.cjt.employment.bean.RecruitmentInfo;
 import com.cjt.employment.model.Imodel.RecruitModel;
+import com.cjt.employment.model.Imodel.RecruitmentInfoModel;
 import com.cjt.employment.model.RecruitModelImp;
-import com.cjt.employment.ui.fragment.HomeFragment;
+import com.cjt.employment.model.RecruitmentInfoModelImp;
+import com.cjt.employment.ui.activity.RecruitmentInfoActivity;
 import com.cjt.employment.ui.view.HomeView;
 
 import rx.android.schedulers.AndroidSchedulers;
@@ -13,28 +16,26 @@ import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
 /**
- * 作者: 陈嘉桐 on 2016/8/12
+ * 作者: 陈嘉桐 on 2016/8/22
  * 邮箱: 445263848@qq.com.
  */
-public class HomePresenter extends BasePresenter<HomeFragment> {
-    private RecruitModel mRecruitModel;
-    private HomeView mHomeView;
+public class RecruitmentInfoPresenter extends BasePresenter<RecruitmentInfoActivity> {
+    private RecruitmentInfoModel mRecruitmentInfoModel;
 
-    public HomePresenter(HomeView homeView) {
-        mRecruitModel = RecruitModelImp.getInstance();
-        this.mHomeView = homeView;
+    public RecruitmentInfoPresenter() {
+        mRecruitmentInfoModel = RecruitmentInfoModelImp.getInstance();
     }
 
-    public void getRecruit(String action) {
-        if (mRecruitModel != null) {
-            mRecruitModel.getRecruit(action)
+    public void getRecruitInfoById(String action, int id) {
+        if (mRecruitmentInfoModel != null) {
+            mRecruitmentInfoModel.getRecruitInfoById(action, id)
                     .subscribeOn(Schedulers.newThread())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new Action1<Recruit>() {
+                    .subscribe(new Action1<RecruitmentInfo>() {
                         @Override
-                        public void call(Recruit recruit) {
-                            Log.i("CJT", recruit.getData().size() + " ");
-                            mHomeView.updateRecruit(recruit.getData());
+                        public void call(RecruitmentInfo recruitmentInfo) {
+//                            Log.i("CJT", RecruitmentInfo.toString());
+                            getView().updateRecruitmentInfo(recruitmentInfo.getData());
 //                            mHomeView.updata(shopList.getVendors());
                         }
                     }, new Action1<Throwable>() {

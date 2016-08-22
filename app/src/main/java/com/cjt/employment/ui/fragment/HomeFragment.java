@@ -57,9 +57,8 @@ public class HomeFragment extends BaseFragment<HomeFragment, HomePresenter> impl
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         initDatas();
         initView(view);
-        getPresenter().getRecruit("get");
+        getPresenter().getRecruit("getRecruit");
         showProgressBar();
-//        this.mPresenter = creatPresenter();
         return view;
     }
 
@@ -69,8 +68,9 @@ public class HomeFragment extends BaseFragment<HomeFragment, HomePresenter> impl
         mRecruitmentAdapter = new RecruitmentAdapter(mDatas, getActivity(), new RecruitmentAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                Intent recruitmentInfoIntent = new Intent(getContext(), RecruitmentInfoActivity.class);
-                startActivity(recruitmentInfoIntent);
+//                Intent recruitmentInfoIntent = new Intent(getContext(), RecruitmentInfoActivity.class);
+//                startActivity(recruitmentInfoIntent);
+                mRecruitmentAdapter.startActivityByRecruitId(position);
             }
         });
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));

@@ -1,6 +1,7 @@
 package com.cjt.employment.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import com.cjt.employment.R;
 import com.cjt.employment.bean.Recruit;
+import com.cjt.employment.ui.activity.RecruitmentInfoActivity;
 import com.squareup.picasso.Picasso;
 import com.youth.banner.Banner;
 
@@ -31,6 +33,12 @@ public class RecruitmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         this.datas.clear();
         this.datas = data;
         notifyDataSetChanged();
+    }
+
+    public void startActivityByRecruitId(int position) {
+        Intent recruitmentInfoIntent = new Intent(mContext, RecruitmentInfoActivity.class);
+        recruitmentInfoIntent.putExtra("id", datas.get(position - 1).getId());
+        mContext.startActivity(recruitmentInfoIntent);
     }
 
     public interface OnItemClickListener {
@@ -54,19 +62,19 @@ public class RecruitmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        if (holder instanceof RecruitmentViewHolder){
-            Recruit.DataBean dataBean=datas.get(position-1);
+        if (holder instanceof RecruitmentViewHolder) {
+            Recruit.DataBean dataBean = datas.get(position - 1);
             Picasso.with(mContext).load(dataBean.getLogo()).into(((RecruitmentViewHolder) holder).iv_cover);
             ((RecruitmentViewHolder) holder).tv_position.setText(dataBean.getPosition());
             ((RecruitmentViewHolder) holder).tv_company.setText(dataBean.getCompany());
             ((RecruitmentViewHolder) holder).tv_date.setText(dataBean.getReleasedate());
-            int wagestart=dataBean.getWagesstart()/1000;
-            int wageend=dataBean.getWagesend()/1000;
-            String wage=wagestart+"-"+wageend+"k";
+            int wagestart = dataBean.getWagesstart() / 1000;
+            int wageend = dataBean.getWagesend() / 1000;
+            String wage = wagestart + "-" + wageend + "k";
             ((RecruitmentViewHolder) holder).tv_wage.setText(wage);
-            ((RecruitmentViewHolder) holder).tv_recruitinfo.setText(dataBean.getWorkplace()+" "+dataBean.getWorkingyearstart()+"-"+dataBean.getWorkingyearend()+"年"+" "+dataBean.getEducation());
-            ((RecruitmentViewHolder) holder).tv_companyinfo.setText(dataBean.getFinancing()+" | "+dataBean.getEmployenumber()+"人 | "+dataBean.getPattern());
-        }else if (holder instanceof RecruitmentViewHolder){
+            ((RecruitmentViewHolder) holder).tv_recruitinfo.setText(dataBean.getWorkplace() + " " + dataBean.getWorkingyearstart() + "-" + dataBean.getWorkingyearend() + "年" + " " + dataBean.getEducation());
+            ((RecruitmentViewHolder) holder).tv_companyinfo.setText(dataBean.getFinancing() + " | " + dataBean.getEmployenumber() + "人 | " + dataBean.getPattern());
+        } else if (holder instanceof RecruitmentViewHolder) {
 
         }
 //        Picasso.with(mContext).load(ServerAPI.baseUrl+datas.get(position).getStore().getStoreImage().getShopFile().getUrl()).resize(100, 100).into(holder.iv_shopcover);

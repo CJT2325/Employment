@@ -1,37 +1,34 @@
 package com.cjt.employment.bean;
 
-import java.util.List;
-
 /**
- * 作者: 陈嘉桐 on 2016/8/21
+ * 作者: 陈嘉桐 on 2016/8/22
  * 邮箱: 445263848@qq.com.
  */
-public class Recruit {
+public class RecruitmentInfo {
 
     /**
      * position : Android
      * logo : http://192.168.1.104:8080/image/qqmusiclogo.jpg
      * employenumber : 15-30
      * workplace : 广州
-     * releasedate : 8月22日
      * education : 本科
      * workingyearend : 2
-     * id : 1
      * workingyearstart : 1
      * financing : 未融资
      * pattern : O2O
      * wagesstart : 1000
      * company : 腾讯
      * wagesend : 2000
+     * founder : 陈嘉桐
      */
 
-    private List<DataBean> data;
+    private DataBean data;
 
-    public List<DataBean> getData() {
+    public DataBean getData() {
         return data;
     }
 
-    public void setData(List<DataBean> data) {
+    public void setData(DataBean data) {
         this.data = data;
     }
 
@@ -40,16 +37,15 @@ public class Recruit {
         private String logo;
         private String employenumber;
         private String workplace;
-        private String releasedate;
         private String education;
         private int workingyearend;
-        private int id;
         private int workingyearstart;
         private String financing;
         private String pattern;
         private int wagesstart;
         private String company;
         private int wagesend;
+        private String founder;
 
         public String getPosition() {
             return position;
@@ -83,14 +79,6 @@ public class Recruit {
             this.workplace = workplace;
         }
 
-        public String getReleasedate() {
-            return releasedate;
-        }
-
-        public void setReleasedate(String releasedate) {
-            this.releasedate = releasedate;
-        }
-
         public String getEducation() {
             return education;
         }
@@ -105,14 +93,6 @@ public class Recruit {
 
         public void setWorkingyearend(int workingyearend) {
             this.workingyearend = workingyearend;
-        }
-
-        public int getId() {
-            return id;
-        }
-
-        public void setId(int id) {
-            this.id = id;
         }
 
         public int getWorkingyearstart() {
@@ -161,6 +141,14 @@ public class Recruit {
 
         public void setWagesend(int wagesend) {
             this.wagesend = wagesend;
+        }
+
+        public String getFounder() {
+            return founder;
+        }
+
+        public void setFounder(String founder) {
+            this.founder = founder;
         }
     }
 }

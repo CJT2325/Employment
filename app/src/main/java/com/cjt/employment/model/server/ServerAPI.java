@@ -1,6 +1,7 @@
 package com.cjt.employment.model.server;
 
 import com.cjt.employment.bean.Recruit;
+import com.cjt.employment.bean.RecruitmentInfo;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -13,11 +14,13 @@ import rx.Observable;
  */
 public interface ServerAPI {
     //网站根目录
-//    String baseUrl = "http://192.168.1.104:8080/EmploymentService/";
-    String baseUrl = "http://www.materialstyle.cn/EmploymentService/";
+    String baseUrl = "http://192.168.1.104:8080/EmploymentService/";
+//    String baseUrl = "http://www.materialstyle.cn/EmploymentService/";
 
     //招聘信息
     @GET("servlet/RecruitServlet")
-    Observable<Recruit> recruitServlet();
+    Observable<Recruit> recruitServlet(@Query("action") String action);
 
+    @GET("servlet/RecruitServlet")
+    Observable<RecruitmentInfo> getRecruitInfoByID(@Query("action") String action, @Query("id") int id);
 }
