@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CompanyActivity extends AppCompatActivity {
+    private int companyId;
     private TabLayout tl_company;
     private ViewPager vp_info;
     private List<Fragment> list_fragment;
@@ -29,7 +30,9 @@ public class CompanyActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_company);
+        companyId = getIntent().getIntExtra("id", 0);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("公司详情");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         initView();
@@ -40,8 +43,8 @@ public class CompanyActivity extends AppCompatActivity {
         vp_info = (ViewPager) findViewById(R.id.vp_info);
         //初始化Fragment
         list_fragment = new ArrayList<Fragment>();
-        mCompanyInfoFragment = CompanyInfoFragment.newInstance();
-        mPositionFragment = PositionFragment.newInstance();
+        mCompanyInfoFragment = CompanyInfoFragment.newInstance(companyId);
+        mPositionFragment = PositionFragment.newInstance(companyId);
         list_fragment.add(mCompanyInfoFragment);
         list_fragment.add(mPositionFragment);
         //初始化标题

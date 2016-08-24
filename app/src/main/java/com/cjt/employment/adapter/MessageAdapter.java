@@ -51,7 +51,6 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 //        holder.tv_startprice.setText("起送价￥"+datas.get(position).getStore().getStartFee());
 //        holder.tv_giveprice.setText("配送费￥"+datas.get(position).getStore().getPackingFee());
         if (holder instanceof Message1ViewHolder){
-
         }else if (holder instanceof Message2ViewHolder){
 
         }

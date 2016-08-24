@@ -14,6 +14,7 @@ public class RecruitmentInfo {
      * education : 本科
      * workingyearend : 2
      * workingyearstart : 1
+     * companyid : 1
      * financing : 未融资
      * pattern : O2O
      * wagesstart : 1000
@@ -40,6 +41,7 @@ public class RecruitmentInfo {
         private String education;
         private int workingyearend;
         private int workingyearstart;
+        private int companyid;
         private String financing;
         private String pattern;
         private int wagesstart;
@@ -101,6 +103,14 @@ public class RecruitmentInfo {
 
         public void setWorkingyearstart(int workingyearstart) {
             this.workingyearstart = workingyearstart;
+        }
+
+        public int getCompanyid() {
+            return companyid;
+        }
+
+        public void setCompanyid(int companyid) {
+            this.companyid = companyid;
         }
 
         public String getFinancing() {

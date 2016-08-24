@@ -25,7 +25,7 @@ import org.w3c.dom.Text;
 public class RecruitmentInfoActivity extends BaseActivity<RecruitmentInfoActivity, RecruitmentInfoPresenter> implements View.OnClickListener, RecruitmentInfoView {
     private RelativeLayout layout_companyinfo;
     private int recruitId;
-
+    private int companyId;
     private TextView tv_position;
     private TextView tv_wage;
     private TextView tv_workspace;
@@ -45,6 +45,7 @@ public class RecruitmentInfoActivity extends BaseActivity<RecruitmentInfoActivit
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("职位详情");
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         initView();
         recruitId = getIntent().getIntExtra("id", 0);
         Log.i("CJT", recruitId + " ");
@@ -69,8 +70,8 @@ public class RecruitmentInfoActivity extends BaseActivity<RecruitmentInfoActivit
         tv_company = (TextView) findViewById(R.id.tv_company);
         tv_companyinfo = (TextView) findViewById(R.id.tv_companyinfo);
         tv_founder = (TextView) findViewById(R.id.tv_founder);
-        iv_cover= (ImageView) findViewById(R.id.iv_cover);
-        progressBar= (ProgressBar) findViewById(R.id.progressbar);
+        iv_cover = (ImageView) findViewById(R.id.iv_cover);
+        progressBar = (ProgressBar) findViewById(R.id.progressbar);
     }
 
     @Override
@@ -78,6 +79,7 @@ public class RecruitmentInfoActivity extends BaseActivity<RecruitmentInfoActivit
         switch (v.getId()) {
             case R.id.layout_companyinfo:
                 Intent companyIntent = new Intent(this, CompanyActivity.class);
+                companyIntent.putExtra("id", companyId);
                 startActivity(companyIntent);
                 break;
         }
@@ -85,7 +87,10 @@ public class RecruitmentInfoActivity extends BaseActivity<RecruitmentInfoActivit
 
     @Override
     public void updateRecruitmentInfo(RecruitmentInfo.DataBean dataBean) {
-        Log.i("CJT",dataBean.getPattern());
+        //公司ID
+        companyId = dataBean.getCompanyid();
+
+        Log.i("CJT", dataBean.getPattern());
         tv_position.setText(dataBean.getPosition());
         int wagestart = dataBean.getWagesstart() / 1000;
         int wageend = dataBean.getWagesend() / 1000;

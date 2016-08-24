@@ -1,5 +1,6 @@
 package com.cjt.employment.model.server;
 
+import com.cjt.employment.bean.CompanyInfo;
 import com.cjt.employment.bean.Recruit;
 import com.cjt.employment.bean.RecruitmentInfo;
 
@@ -21,6 +22,15 @@ public interface ServerAPI {
     @GET("servlet/RecruitServlet")
     Observable<Recruit> recruitServlet(@Query("action") String action);
 
+    //职位详情
     @GET("servlet/RecruitServlet")
     Observable<RecruitmentInfo> getRecruitInfoByID(@Query("action") String action, @Query("id") int id);
+
+    //公司详情
+    @GET("servlet/CompanyServlet")
+    Observable<CompanyInfo> getCompanyInfoByCompanyId(@Query("action") String action, @Query("id") int id);
+
+    //公司发布的职位
+    @GET("servlet/CompanyServlet")
+    Observable<Recruit> getRecruitByCompanyId(@Query("action") String action, @Query("id") int id);
 }
