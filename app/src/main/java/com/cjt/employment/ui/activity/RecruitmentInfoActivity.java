@@ -34,7 +34,9 @@ public class RecruitmentInfoActivity extends BaseActivity<RecruitmentInfoActivit
     private TextView tv_company;
     private TextView tv_companyinfo;
     private TextView tv_founder;
+    private TextView tv_workingtype;
     private ImageView iv_cover;
+
 
     private ProgressBar progressBar;
 
@@ -70,6 +72,7 @@ public class RecruitmentInfoActivity extends BaseActivity<RecruitmentInfoActivit
         tv_company = (TextView) findViewById(R.id.tv_company);
         tv_companyinfo = (TextView) findViewById(R.id.tv_companyinfo);
         tv_founder = (TextView) findViewById(R.id.tv_founder);
+        tv_workingtype= (TextView) findViewById(R.id.tv_workingtype);
         iv_cover = (ImageView) findViewById(R.id.iv_cover);
         progressBar = (ProgressBar) findViewById(R.id.progressbar);
     }
@@ -99,6 +102,7 @@ public class RecruitmentInfoActivity extends BaseActivity<RecruitmentInfoActivit
         tv_workspace.setText(dataBean.getWorkplace());
         tv_workyear.setText(dataBean.getWorkingyearstart() + "-" + dataBean.getWorkingyearend() + "年");
         tv_education.setText(dataBean.getEducation());
+        tv_workingtype.setText(dataBean.getWorkingtype());
         tv_company.setText(dataBean.getCompany());
         tv_companyinfo.setText(dataBean.getFinancing() + " | " + dataBean.getEmployenumber() + "人 | " + dataBean.getPattern());
         tv_founder.setText(dataBean.getFounder());

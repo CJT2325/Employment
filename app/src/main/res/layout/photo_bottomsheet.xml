@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:background="#FFF"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:id="@+id/bs_photograph"
+            android:gravity="center"
+            android:background="@drawable/item_selector"
+            android:clickable="true"
+            android:layout_width="match_parent"
+            android:layout_height="56dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="拍照" />
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:background="#DDDDDD" />
+        <RelativeLayout
+            android:id="@+id/bs_album"
+            android:gravity="center"
+            android:background="@drawable/item_selector"
+            android:clickable="true"
+            android:layout_width="match_parent"
+            android:layout_height="56dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="从手机相册选择" />
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:background="#DDDDDD" />
+        <RelativeLayout
+            android:id="@+id/bs_cancel"
+            android:gravity="center"
+            android:background="@drawable/item_selector"
+            android:clickable="true"
+            android:layout_width="match_parent"
+            android:layout_height="56dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="取消" />
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

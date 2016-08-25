@@ -7,19 +7,20 @@ package com.cjt.employment.bean;
 public class RecruitmentInfo {
 
     /**
-     * position : Android
+     * position : IOS
      * logo : http://192.168.1.104:8080/image/qqmusiclogo.jpg
      * employenumber : 15-30
      * workplace : 广州
-     * education : 本科
-     * workingyearend : 2
+     * education : 大专
+     * workingyearend : 3
      * workingyearstart : 1
      * companyid : 1
      * financing : 未融资
      * pattern : O2O
-     * wagesstart : 1000
+     * wagesstart : 2000
      * company : 腾讯
-     * wagesend : 2000
+     * wagesend : 3000
+     * workingtype : 实习
      * founder : 陈嘉桐
      */
 
@@ -47,6 +48,7 @@ public class RecruitmentInfo {
         private int wagesstart;
         private String company;
         private int wagesend;
+        private String workingtype;
         private String founder;
 
         public String getPosition() {
@@ -151,6 +153,14 @@ public class RecruitmentInfo {
 
         public void setWagesend(int wagesend) {
             this.wagesend = wagesend;
+        }
+
+        public String getWorkingtype() {
+            return workingtype;
+        }
+
+        public void setWorkingtype(String workingtype) {
+            this.workingtype = workingtype;
         }
 
         public String getFounder() {

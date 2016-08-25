@@ -10,6 +10,9 @@
     tools:showIn="@layout/activity_user_edit">
 
     <RelativeLayout
+        android:id="@+id/layout_usercover"
+        android:background="@drawable/item_selector"
+        android:clickable="true"
         android:layout_width="match_parent"
         android:padding="18dp"
         android:layout_height="wrap_content">
@@ -32,6 +35,8 @@
         android:background="#DDDDDD" />
 
     <RelativeLayout
+        android:background="@drawable/item_selector"
+        android:clickable="true"
         android:layout_width="match_parent"
         android:layout_height="56dp">
 
@@ -49,6 +54,8 @@
         android:background="#DDDDDD" />
 
     <RelativeLayout
+        android:background="@drawable/item_selector"
+        android:clickable="true"
         android:layout_width="match_parent"
         android:layout_height="56dp">
 
@@ -64,6 +71,8 @@
         android:layout_height="15dp"
         android:background="#DDDDDD" />
     <RelativeLayout
+        android:background="@drawable/item_selector"
+        android:clickable="true"
         android:layout_width="match_parent"
         android:layout_height="56dp">
 
