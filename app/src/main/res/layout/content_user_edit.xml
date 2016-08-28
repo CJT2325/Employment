@@ -50,6 +50,7 @@
             android:background="#DDDDDD" />
 
         <RelativeLayout
+            android:id="@+id/layout_name"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:background="@drawable/item_selector"

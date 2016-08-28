@@ -2,12 +2,15 @@ package com.cjt.employment.model.server;
 
 import com.cjt.employment.bean.AccountInfo;
 import com.cjt.employment.bean.CompanyInfo;
+import com.cjt.employment.bean.LoginResult;
 import com.cjt.employment.bean.Recruit;
 import com.cjt.employment.bean.RecruitmentInfo;
 import com.cjt.employment.bean.UpLoadImageResult;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
@@ -40,7 +43,7 @@ public interface ServerAPI {
     @GET("servlet/CompanyServlet")
     Observable<Recruit> getRecruitByCompanyId(@Query("action") String action, @Query("id") int id);
 
-    //公司发布的职位
+    //获取用户信息
     @GET("servlet/AccountServlet")
     Observable<AccountInfo> getAccountInfoById(@Query("action") String action, @Query("id") int id);
 
@@ -52,4 +55,13 @@ public interface ServerAPI {
             @Query("id") int id,
             @Part("file\"; filename=\"image.jpg") RequestBody imgs
     );
+
+    //更新用户姓名
+    @GET("servlet/AccountServlet")
+    Observable<UpLoadImageResult> updateName(@Query("action") String action, @Query("id") int id, @Query("name") String name);
+
+    //获取用户信息
+    @FormUrlEncoded
+    @POST("servlet/LoginServlet")
+    Observable<LoginResult> login(@Query("action") String action, @Field("phone") String id, @Field("password") String password);
 }

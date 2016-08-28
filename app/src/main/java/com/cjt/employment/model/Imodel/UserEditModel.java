@@ -16,5 +16,5 @@ public interface UserEditModel {
 //    public Observable<UpLoadImageResult> uploadImage(String action, int userId, String path);
     public Observable<UpLoadImageResult> uploadImage(String action, int id, File file);
     public Observable<AccountInfo> getAccountInfoById(String action, int id);
-
+    public Observable<UpLoadImageResult>  updateName(String action, int id, String name);
 }

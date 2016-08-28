@@ -24,13 +24,14 @@
         android:layout_height="0dp" />
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/textInput_layout_name"
+        android:id="@+id/textInput_layout_phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/iv_logo"
         android:textColorHint="@color/colorAccent">
 
         <EditText
+            android:text="18814117978"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="手机号"
@@ -41,10 +42,11 @@
         android:id="@+id/textInput_layout_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/textInput_layout_name"
+        android:layout_below="@id/textInput_layout_phone"
         android:textColorHint="@color/colorAccent">
 
         <EditText
+            android:text="123123"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="密码"
@@ -71,4 +73,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/btn_login"
         android:text="注册用户" />
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/progressbar"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </RelativeLayout>

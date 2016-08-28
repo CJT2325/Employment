@@ -27,6 +27,7 @@ import android.widget.TextView;
 import com.cjt.employment.R;
 import com.cjt.employment.bean.AccountInfo;
 import com.cjt.employment.common.ImageUtil;
+import com.cjt.employment.model.server.ServerAPI;
 import com.cjt.employment.presenter.UserEditPresenter;
 import com.cjt.employment.ui.view.UserEditView;
 import com.squareup.picasso.MemoryPolicy;
@@ -44,6 +45,7 @@ import java.io.InputStream;
 public class UserEditActivity extends BaseActivity<UserEditActivity, UserEditPresenter> implements View.OnClickListener, UserEditView {
     private static final int OPEN_CAMERA_CODE = 1;
     private static final int OPEN_ALBUM_CODE = 2;
+    private static final int OPEN_EDITNAME_CODE = 3;
     private CoordinatorLayout coordinatorLayout;
     private BottomSheetBehavior behavior;
 
@@ -53,6 +55,7 @@ public class UserEditActivity extends BaseActivity<UserEditActivity, UserEditPre
     private RelativeLayout bs_album;
     private RelativeLayout bs_cancel;
     private RelativeLayout layout_usercover;
+    private RelativeLayout layout_name;
     private ProgressBar progressbar;
     private RelativeLayout layout_;
 
@@ -85,6 +88,7 @@ public class UserEditActivity extends BaseActivity<UserEditActivity, UserEditPre
         bs_album = (RelativeLayout) photo_bottomsheet.findViewById(R.id.bs_album);
         bs_cancel = (RelativeLayout) photo_bottomsheet.findViewById(R.id.bs_cancel);
         layout_usercover = (RelativeLayout) findViewById(R.id.layout_usercover);
+        layout_name = (RelativeLayout) findViewById(R.id.layout_name);
         iv_cover = (ImageView) findViewById(R.id.iv_cover);
         tv_name = (TextView) findViewById(R.id.tv_name);
         progressbar = (ProgressBar) findViewById(R.id.progressbar);
@@ -93,8 +97,9 @@ public class UserEditActivity extends BaseActivity<UserEditActivity, UserEditPre
         bs_album.setOnClickListener(this);
         bs_cancel.setOnClickListener(this);
         layout_usercover.setOnClickListener(this);
+        layout_name.setOnClickListener(this);
     }
-    
+
 
     @Override
     public void onClick(View v) {
@@ -113,6 +118,11 @@ public class UserEditActivity extends BaseActivity<UserEditActivity, UserEditPre
                 break;
             case R.id.layout_usercover:
                 dialog.show();
+                break;
+            case R.id.layout_name:
+                Intent editNameIntent = new Intent(this, AccountNameEditActivity.class);
+                editNameIntent.putExtra("name", tv_name.getText().toString());
+                startActivityForResult(editNameIntent, OPEN_EDITNAME_CODE);
                 break;
         }
     }
@@ -162,6 +172,10 @@ public class UserEditActivity extends BaseActivity<UserEditActivity, UserEditPre
                 }
                 getPresenter().upLoadImage("upLoadAccountCover", 1, myCaptureFile);
             }
+            if (requestCode == OPEN_EDITNAME_CODE) {
+                tv_name.setText(data.getStringExtra("name"));
+                getPresenter().updateName("updateName", 1, data.getStringExtra("name"));
+            }
         }
     }
 
@@ -194,5 +208,10 @@ public class UserEditActivity extends BaseActivity<UserEditActivity, UserEditPre
     @Override
     public void hideProgressBar() {
         progressbar.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void updateNameSuccess() {
+        hideProgressBar();
     }
 }

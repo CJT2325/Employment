@@ -110,9 +110,9 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_seacher) {
             return true;
         }else if(id == R.id.action_user){
-//            Intent loginIntent=new Intent(this,LoginActivity.class);
-            Intent userInfoIntent=new Intent(this,UserInfoActivity.class);
-            startActivity(userInfoIntent);
+            Intent loginIntent=new Intent(this,LoginActivity.class);
+//            Intent userInfoIntent=new Intent(this,UserInfoActivity.class);
+            startActivity(loginIntent);
         }
 
 

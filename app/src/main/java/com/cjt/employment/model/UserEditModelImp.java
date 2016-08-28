@@ -47,4 +47,9 @@ public class UserEditModelImp implements UserEditModel {
     public Observable<AccountInfo> getAccountInfoById(String action, int id) {
         return mServerAPI.getAccountInfoById(action,id);
     }
+
+    @Override
+    public Observable<UpLoadImageResult> updateName(String action, int id, String name) {
+        return mServerAPI.updateName(action,id,name);
+    }
 }

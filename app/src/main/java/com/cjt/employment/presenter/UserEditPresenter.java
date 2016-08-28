@@ -73,4 +73,26 @@ public class UserEditPresenter extends BasePresenter<UserEditActivity> {
             Log.i("CJT", "model is null");
         }
     }
+
+    public void updateName(String action, int id, String name) {
+        if (mUserEditModel != null) {
+            getView().showProgressBar();
+            mUserEditModel.updateName(action,id, name)
+                    .subscribeOn(Schedulers.newThread())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Action1<UpLoadImageResult>() {
+                        @Override
+                        public void call(UpLoadImageResult upLoadImageResult) {
+                            getView().updateNameSuccess();
+                        }
+                    }, new Action1<Throwable>() {
+                        @Override
+                        public void call(Throwable throwable) {
+                            Log.i("RxJava", "又是在这里出现了问题呀----->" + throwable.toString());
+                        }
+                    });
+        } else {
+            Log.i("CJT", "model is null");
+        }
+    }
 }

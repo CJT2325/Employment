@@ -11,5 +11,9 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.cjt.employment.ui.activity.AccountNameEditActivity"
     tools:showIn="@layout/activity_account_name_edit">
-
+    <EditText
+        android:id="@+id/et_name"
+        android:maxLength="10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </RelativeLayout>

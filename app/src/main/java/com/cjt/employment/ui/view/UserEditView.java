@@ -12,4 +12,5 @@ public interface UserEditView {
     public void upLoadImageFail();
     public void showProgressBar();
     public void hideProgressBar();
+    public void updateNameSuccess();
 }
