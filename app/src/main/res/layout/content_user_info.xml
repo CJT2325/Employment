@@ -35,6 +35,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/layout_vitae"
         android:background="@drawable/item_selector"
         android:clickable="true"
         android:layout_width="match_parent"

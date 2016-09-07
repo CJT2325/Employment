@@ -4,12 +4,394 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#EEE"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.cjt.employment.ui.activity.VitaeActivity"
     tools:showIn="@layout/activity_vitae">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="添加头像" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFF"
+                android:padding="16dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/iv_cover"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/tencentlogo" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/iv_cover"
+                    android:layout_centerHorizontal="true"
+                    android:text="点击更换" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="16dp"
+                android:text="基本信息" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:background="#ffccc9"
+                    android:padding="16dp">
+                    <TextView
+                        android:id="@+id/tv_adduserinfo"
+                        android:layout_centerInParent="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="完善个人基本信息"
+                        android:textColor="@color/colorPrimary" />
+                    <ImageView
+                        android:layout_centerVertical="true"
+                        android:id="@+id/iv_adduserinfo"
+                        android:layout_width="20dp"
+                        android:layout_toLeftOf="@id/tv_adduserinfo"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_mode_edit_black_24dp"
+                        android:tint="@color/colorPrimary" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFF"
+                    android:padding="16dp"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="编辑"
+                        android:textColor="@color/colorPrimary" />
+
+                    <TextView
+                        android:id="@+id/tv_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:text="姓        名:" />
+
+                    <TextView
+                        android:id="@+id/tv_sex"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_name"
+                        android:layout_marginBottom="16dp"
+                        android:text="性        别:" />
+
+                    <TextView
+                        android:id="@+id/tv_education"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_sex"
+                        android:layout_marginBottom="16dp"
+                        android:text="最高学历:" />
+
+                    <TextView
+                        android:id="@+id/tv_worktime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_education"
+                        android:layout_marginBottom="16dp"
+                        android:text="工作年限:" />
+
+                    <TextView
+                        android:id="@+id/tv_brithday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_worktime"
+                        android:layout_marginBottom="16dp"
+                        android:text="出生年份:" />
+
+                    <TextView
+                        android:id="@+id/tv_city"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_brithday"
+                        android:layout_marginBottom="16dp"
+                        android:text="所在城市:" />
+
+                    <TextView
+                        android:id="@+id/tv_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_city"
+                        android:layout_marginBottom="16dp"
+                        android:text="联系电话:" />
+
+                    <TextView
+                        android:id="@+id/tv_email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_phone"
+                        android:text="联系邮箱:" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="16dp"
+                android:text="工作经历" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="#ffccc9"
+                    android:gravity="center"
+                    android:padding="16dp">
+                    <TextView
+                        android:id="@+id/tv_addwork"
+                        android:layout_centerInParent="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="添加工作经历"
+                        android:textColor="@color/colorPrimary" />
+                    <ImageView
+                        android:layout_centerVertical="true"
+                        android:id="@+id/iv_addwork"
+                        android:layout_width="20dp"
+                        android:layout_toLeftOf="@id/tv_addwork"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_mode_edit_black_24dp"
+                        android:tint="@color/colorPrimary" />
+                    <TextView
+                        android:layout_marginTop="3dp"
+                        android:layout_below="@id/tv_addwork"
+                        android:layout_centerInParent="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="请从最近一份工作说起"
+                        android:textColor="#888" />
+            </RelativeLayout>
+
+                <RelativeLayout
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFF"
+                    android:padding="16dp">
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="16dp"
+                android:text="教育经历" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:background="#ffccc9"
+                    android:gravity="center"
+                    android:padding="16dp">
+                    <TextView
+                        android:id="@+id/tv_addeducation"
+                        android:layout_centerInParent="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="添加教育经历"
+                        android:textColor="@color/colorPrimary" />
+                    <ImageView
+                        android:layout_centerVertical="true"
+                        android:id="@+id/iv_addeducation"
+                        android:layout_width="20dp"
+                        android:layout_toLeftOf="@id/tv_addeducation"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_mode_edit_black_24dp"
+                        android:tint="@color/colorPrimary" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFF"
+                    android:padding="16dp">
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="16dp"
+                android:text="期望工作" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:background="#ffccc9"
+                    android:gravity="center"
+                    android:padding="16dp">
+                    <TextView
+                        android:id="@+id/tv_hopejob"
+                        android:layout_centerInParent="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="谈谈你期望的工作"
+                        android:textColor="@color/colorPrimary" />
+                    <ImageView
+                        android:layout_centerVertical="true"
+                        android:id="@+id/iv_hopejob"
+                        android:layout_width="20dp"
+                        android:layout_toLeftOf="@id/tv_hopejob"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_mode_edit_black_24dp"
+                        android:tint="@color/colorPrimary" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFF"
+                    android:padding="16dp">
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="16dp"
+                android:text="项目经历" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="#ffccc9"
+                    android:gravity="center"
+                    android:padding="16dp">
+                    <TextView
+                        android:id="@+id/tv_addproject"
+                        android:layout_centerInParent="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="添加项目经历"
+                        android:textColor="@color/colorPrimary" />
+                    <ImageView
+                        android:layout_centerVertical="true"
+                        android:id="@+id/iv_addproject"
+                        android:layout_width="20dp"
+                        android:layout_toLeftOf="@id/tv_addproject"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_mode_edit_black_24dp"
+                        android:tint="@color/colorPrimary" />
+                    <TextView
+                        android:layout_marginTop="3dp"
+                        android:layout_below="@id/tv_addproject"
+                        android:layout_centerInParent="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="请从最近的项目经历说起"
+                        android:textColor="#888" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFF"
+                    android:padding="16dp">
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="16dp"
+                android:text="自我描述" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:background="#ffccc9"
+                    android:gravity="center"
+                    android:padding="16dp">
+                    <TextView
+                        android:id="@+id/tv_addmyself"
+                        android:layout_centerInParent="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="添加个人的自我描述"
+                        android:textColor="@color/colorPrimary" />
+                    <ImageView
+                        android:layout_centerVertical="true"
+                        android:id="@+id/iv_addmyself"
+                        android:layout_width="20dp"
+                        android:layout_toLeftOf="@id/tv_addmyself"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_mode_edit_black_24dp"
+                        android:tint="@color/colorPrimary" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFF"
+                    android:padding="16dp">
+                </RelativeLayout>
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
 </RelativeLayout>

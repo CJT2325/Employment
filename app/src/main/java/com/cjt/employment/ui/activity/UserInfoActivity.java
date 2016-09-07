@@ -25,6 +25,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class UserInfoActivity extends BaseActivity<UserInfoActivity, UserInfoPresenter> implements View.OnClickListener, UserInfoView {
     private RelativeLayout layout_setting;
     private RelativeLayout layout_enterprise;
+    private RelativeLayout layout_vitae;
     private CircleImageView iv_cover;
     private TextView tv_name;
 
@@ -47,8 +48,10 @@ public class UserInfoActivity extends BaseActivity<UserInfoActivity, UserInfoPre
     private void initView() {
         layout_setting = (RelativeLayout) findViewById(R.id.layout_setting);
         layout_enterprise = (RelativeLayout) findViewById(R.id.layout_enterprise);
+        layout_vitae = (RelativeLayout) findViewById(R.id.layout_vitae);
         layout_setting.setOnClickListener(this);
         layout_enterprise.setOnClickListener(this);
+        layout_vitae.setOnClickListener(this);
         iv_cover = (CircleImageView) findViewById(R.id.iv_cover);
         tv_name = (TextView) findViewById(R.id.tv_name);
         getPresenter().getUserCover("getUserInfo", Config.getValueByKey(this, Config.KEY_USERID));
@@ -88,6 +91,10 @@ public class UserInfoActivity extends BaseActivity<UserInfoActivity, UserInfoPre
 //                Intent enterpriseIntent=new Intent(this,EnterpriseActivity.class);
                 Intent enterpriseIntent = new Intent(this, EnterpriseHomeActivity.class);
                 startActivity(enterpriseIntent);
+                break;
+            case R.id.layout_vitae:
+                Intent vitaeIntent = new Intent(this, VitaeActivity.class);
+                startActivity(vitaeIntent);
                 break;
         }
     }
