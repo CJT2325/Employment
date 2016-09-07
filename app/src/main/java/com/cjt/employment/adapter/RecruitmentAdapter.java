@@ -132,7 +132,10 @@ public class RecruitmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             super(itemView);
             itemView.setOnClickListener(this);
             banner = (Banner) itemView.findViewById(R.id.banner);
-            String image[] = new String[]{"http://img1.tuicool.com/aE7JVjy.png!web", "http://img0.tuicool.com/jmqyyej.png!web", "http://img2.tuicool.com/nM7bA3Q.png!web"};
+            String image[] = new String[]{
+                    "http://navod.scse.com.cn/nn_cms/data/template/100000/200003/campus/music.jpg",
+                    "http://navod.scse.com.cn/nn_cms/data/template/100000/200003/campus/jinduguanggao.jpg"
+            };
             banner.setImages(image);
             banner.setDelayTime(5000);
             this.listener = listener;

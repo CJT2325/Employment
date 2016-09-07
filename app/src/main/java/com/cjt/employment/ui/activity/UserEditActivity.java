@@ -26,6 +26,7 @@ import android.widget.TextView;
 
 import com.cjt.employment.R;
 import com.cjt.employment.bean.AccountInfo;
+import com.cjt.employment.common.Config;
 import com.cjt.employment.common.ImageUtil;
 import com.cjt.employment.model.server.ServerAPI;
 import com.cjt.employment.presenter.UserEditPresenter;
@@ -170,7 +171,7 @@ public class UserEditActivity extends BaseActivity<UserEditActivity, UserEditPre
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                getPresenter().upLoadImage("upLoadAccountCover", 1, myCaptureFile);
+                getPresenter().upLoadImage("upLoadAccountCover", Integer.parseInt(Config.getValueByKey(this,Config.KEY_USERID)), myCaptureFile);
             }
             if (requestCode == OPEN_EDITNAME_CODE) {
                 tv_name.setText(data.getStringExtra("name"));
@@ -187,7 +188,7 @@ public class UserEditActivity extends BaseActivity<UserEditActivity, UserEditPre
 
     @Override
     public void updateAccountInfo(AccountInfo.DataBean dataBean) {
-        Picasso.with(this).load("http://192.168.1.104:8080/EmploymentService/image/accountCover/" + dataBean.getCover())
+        Picasso.with(this).load(ServerAPI.baseUrl+"image/accountCover/" + dataBean.getCover())
                 .memoryPolicy(MemoryPolicy.NO_CACHE)
                 .networkPolicy(NetworkPolicy.NO_CACHE)
                 .into(iv_cover);

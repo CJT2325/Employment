@@ -20,6 +20,7 @@ import rx.schedulers.Schedulers;
  */
 public class LoginPresenter extends BasePresenter<LoginActivity> {
     private LoginModel mLoginModel;
+
     public LoginPresenter() {
         mLoginModel = LoginModellImp.getInstance();
     }
@@ -33,8 +34,11 @@ public class LoginPresenter extends BasePresenter<LoginActivity> {
                     .subscribe(new Action1<LoginResult>() {
                         @Override
                         public void call(LoginResult loginResult) {
-//                            Log.i("CJT", upLoadImageResult.getResult());
-//                            getView().upLoadImageSuccess();
+                            if (loginResult.getResult().equals("success")) {
+                                getView().loginSuccess(loginResult);
+                            } else if (loginResult.getResult().equals("fail")) {
+                                getView().loginFail();
+                            }
                         }
                     }, new Action1<Throwable>() {
                         @Override

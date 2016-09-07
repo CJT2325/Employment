@@ -68,6 +68,10 @@
         <activity
             android:name=".ui.activity.AccountNameEditActivity"
             android:label="@string/title_activity_account_name_edit"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.activity.VitaeActivity"
+            android:label="@string/title_activity_vitae"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

@@ -24,7 +24,7 @@ import rx.Observable;
  */
 public interface ServerAPI {
     //网站根目录
-    String baseUrl = "http://192.168.1.104:8080/EmploymentService/";
+    String baseUrl = "http://172.16.101.37:8080/EmploymentService/";
 //    String baseUrl = "http://www.materialstyle.cn/EmploymentService/";
 
     //招聘信息
@@ -64,4 +64,8 @@ public interface ServerAPI {
     @FormUrlEncoded
     @POST("servlet/LoginServlet")
     Observable<LoginResult> login(@Query("action") String action, @Field("phone") String id, @Field("password") String password);
+
+    //获取用户头像
+    @GET("servlet/LoginServlet")
+    Observable<AccountInfo> getUserCover(@Query("action") String action, @Query("id") String id);
 }

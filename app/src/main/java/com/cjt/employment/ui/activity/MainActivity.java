@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.cjt.employment.R;
+import com.cjt.employment.common.Config;
 import com.cjt.employment.ui.fragment.ExploreFragment;
 import com.cjt.employment.ui.fragment.HomeFragment;
 import com.cjt.employment.ui.fragment.MessageFragment;
@@ -110,12 +111,14 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_seacher) {
             return true;
         }else if(id == R.id.action_user){
-            Intent loginIntent=new Intent(this,LoginActivity.class);
-//            Intent userInfoIntent=new Intent(this,UserInfoActivity.class);
-            startActivity(loginIntent);
+            Intent intent;
+            if (Config.getValueByKey(this,Config.KEY_TOKEN).equals("")) {
+                intent = new Intent(this, LoginActivity.class);
+            }else{
+                intent=new Intent(this,UserInfoActivity.class);
+            }
+            startActivity(intent);
         }
-
-
         return super.onOptionsItemSelected(item);
     }
 }

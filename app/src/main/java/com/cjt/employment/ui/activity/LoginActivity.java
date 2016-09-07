@@ -15,6 +15,8 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 
 import com.cjt.employment.R;
+import com.cjt.employment.bean.LoginResult;
+import com.cjt.employment.common.Config;
 import com.cjt.employment.presenter.LoginPresenter;
 import com.cjt.employment.ui.view.LoginView;
 
@@ -48,7 +50,7 @@ public class LoginActivity extends BaseActivity<LoginActivity, LoginPresenter> i
         btn_login.setOnClickListener(this);
         textInput_layout_phone = (TextInputLayout) findViewById(R.id.textInput_layout_phone);
         textInput_layout_password = (TextInputLayout) findViewById(R.id.textInput_layout_password);
-        progressBar= (ProgressBar) findViewById(R.id.progressbar);
+        progressBar = (ProgressBar) findViewById(R.id.progressbar);
     }
 
     @Override
@@ -93,13 +95,20 @@ public class LoginActivity extends BaseActivity<LoginActivity, LoginPresenter> i
     }
 
     @Override
-    public void loginSuccess() {
+    public void loginSuccess(LoginResult loginResult) {
         hideProgressBar();
+        Config.saveValueByKey(this, Config.KEY_TOKEN, loginResult.getToken());
+        Config.saveValueByKey(this, Config.KEY_USERID, String.valueOf(loginResult.getId()));
+        this.finish();
     }
 
     @Override
     public void loginFail() {
         hideProgressBar();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("登录失败")
+                .setPositiveButton("确定", null)
+                .show();
     }
 
     @Override
