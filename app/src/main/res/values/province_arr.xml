@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="province">
+        <item >广东</item>
+        <item >广西</item>
+        <item >北京</item>
+        <item >海南</item>
+        <item >湖南</item>
+    </string-array>
+</resources>

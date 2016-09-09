@@ -61,33 +61,37 @@
                 android:layout_height="wrap_content">
 
                 <RelativeLayout
+                    android:clickable="true"
+                    android:id="@+id/layout_user_unedit"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:background="#ffccc9"
                     android:padding="16dp">
+
                     <TextView
                         android:id="@+id/tv_adduserinfo"
-                        android:layout_centerInParent="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
                         android:text="完善个人基本信息"
                         android:textColor="@color/colorPrimary" />
+
                     <ImageView
-                        android:layout_centerVertical="true"
                         android:id="@+id/iv_adduserinfo"
                         android:layout_width="20dp"
-                        android:layout_toLeftOf="@id/tv_adduserinfo"
                         android:layout_height="20dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@id/tv_adduserinfo"
                         android:src="@drawable/ic_mode_edit_black_24dp"
                         android:tint="@color/colorPrimary" />
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/layout_user_edit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#FFF"
-                    android:padding="16dp"
-                    android:visibility="gone">
+                    android:padding="16dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -177,38 +181,40 @@
                     android:background="#ffccc9"
                     android:gravity="center"
                     android:padding="16dp">
+
                     <TextView
                         android:id="@+id/tv_addwork"
-                        android:layout_centerInParent="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
                         android:text="添加工作经历"
                         android:textColor="@color/colorPrimary" />
+
                     <ImageView
-                        android:layout_centerVertical="true"
                         android:id="@+id/iv_addwork"
                         android:layout_width="20dp"
-                        android:layout_toLeftOf="@id/tv_addwork"
                         android:layout_height="20dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@id/tv_addwork"
                         android:src="@drawable/ic_mode_edit_black_24dp"
                         android:tint="@color/colorPrimary" />
+
                     <TextView
-                        android:layout_marginTop="3dp"
-                        android:layout_below="@id/tv_addwork"
-                        android:layout_centerInParent="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_addwork"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="3dp"
                         android:text="请从最近一份工作说起"
                         android:textColor="#888" />
-            </RelativeLayout>
+                </RelativeLayout>
 
                 <RelativeLayout
-                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#FFF"
-                    android:padding="16dp">
-                </RelativeLayout>
+                    android:padding="16dp"
+                    android:visibility="gone"></RelativeLayout>
             </RelativeLayout>
 
             <TextView
@@ -228,30 +234,31 @@
                     android:background="#ffccc9"
                     android:gravity="center"
                     android:padding="16dp">
+
                     <TextView
                         android:id="@+id/tv_addeducation"
-                        android:layout_centerInParent="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
                         android:text="添加教育经历"
                         android:textColor="@color/colorPrimary" />
+
                     <ImageView
-                        android:layout_centerVertical="true"
                         android:id="@+id/iv_addeducation"
                         android:layout_width="20dp"
-                        android:layout_toLeftOf="@id/tv_addeducation"
                         android:layout_height="20dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@id/tv_addeducation"
                         android:src="@drawable/ic_mode_edit_black_24dp"
                         android:tint="@color/colorPrimary" />
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#FFF"
-                    android:padding="16dp">
-                </RelativeLayout>
+                    android:padding="16dp"
+                    android:visibility="gone"></RelativeLayout>
             </RelativeLayout>
 
             <TextView
@@ -271,30 +278,31 @@
                     android:background="#ffccc9"
                     android:gravity="center"
                     android:padding="16dp">
+
                     <TextView
                         android:id="@+id/tv_hopejob"
-                        android:layout_centerInParent="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
                         android:text="谈谈你期望的工作"
                         android:textColor="@color/colorPrimary" />
+
                     <ImageView
-                        android:layout_centerVertical="true"
                         android:id="@+id/iv_hopejob"
                         android:layout_width="20dp"
-                        android:layout_toLeftOf="@id/tv_hopejob"
                         android:layout_height="20dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@id/tv_hopejob"
                         android:src="@drawable/ic_mode_edit_black_24dp"
                         android:tint="@color/colorPrimary" />
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#FFF"
-                    android:padding="16dp">
-                </RelativeLayout>
+                    android:padding="16dp"
+                    android:visibility="gone"></RelativeLayout>
             </RelativeLayout>
 
             <TextView
@@ -314,38 +322,40 @@
                     android:background="#ffccc9"
                     android:gravity="center"
                     android:padding="16dp">
+
                     <TextView
                         android:id="@+id/tv_addproject"
-                        android:layout_centerInParent="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
                         android:text="添加项目经历"
                         android:textColor="@color/colorPrimary" />
+
                     <ImageView
-                        android:layout_centerVertical="true"
                         android:id="@+id/iv_addproject"
                         android:layout_width="20dp"
-                        android:layout_toLeftOf="@id/tv_addproject"
                         android:layout_height="20dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@id/tv_addproject"
                         android:src="@drawable/ic_mode_edit_black_24dp"
                         android:tint="@color/colorPrimary" />
+
                     <TextView
-                        android:layout_marginTop="3dp"
-                        android:layout_below="@id/tv_addproject"
-                        android:layout_centerInParent="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_addproject"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="3dp"
                         android:text="请从最近的项目经历说起"
                         android:textColor="#888" />
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#FFF"
-                    android:padding="16dp">
-                </RelativeLayout>
+                    android:padding="16dp"
+                    android:visibility="gone"></RelativeLayout>
             </RelativeLayout>
 
             <TextView
@@ -365,30 +375,31 @@
                     android:background="#ffccc9"
                     android:gravity="center"
                     android:padding="16dp">
+
                     <TextView
                         android:id="@+id/tv_addmyself"
-                        android:layout_centerInParent="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
                         android:text="添加个人的自我描述"
                         android:textColor="@color/colorPrimary" />
+
                     <ImageView
-                        android:layout_centerVertical="true"
                         android:id="@+id/iv_addmyself"
                         android:layout_width="20dp"
-                        android:layout_toLeftOf="@id/tv_addmyself"
                         android:layout_height="20dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@id/tv_addmyself"
                         android:src="@drawable/ic_mode_edit_black_24dp"
                         android:tint="@color/colorPrimary" />
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#FFF"
-                    android:padding="16dp">
-                </RelativeLayout>
+                    android:padding="16dp"
+                    android:visibility="gone"></RelativeLayout>
             </RelativeLayout>
 
 

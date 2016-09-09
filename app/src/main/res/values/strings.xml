@@ -16,4 +16,5 @@
     <string name="title_activity_enterprise_home">EnterpriseHomeActivity</string>
     <string name="title_activity_account_name_edit">AccountNameEditActivity</string>
     <string name="title_activity_vitae">VitaeActivity</string>
+    <string name="title_activity_vitage_user_edit">VitageUserEditActivity</string>
 </resources>

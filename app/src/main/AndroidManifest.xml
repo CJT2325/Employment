@@ -72,6 +72,10 @@
         <activity
             android:name=".ui.activity.VitaeActivity"
             android:label="@string/title_activity_vitae"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.activity.VitageUserEditActivity"
+            android:label="@string/title_activity_vitage_user_edit"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
