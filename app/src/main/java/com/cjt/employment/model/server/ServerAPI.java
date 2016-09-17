@@ -7,6 +7,7 @@ import com.cjt.employment.bean.Recruit;
 import com.cjt.employment.bean.RecruitmentInfo;
 import com.cjt.employment.bean.UpLoadImageResult;
 import com.cjt.employment.bean.UpdateResult;
+import com.cjt.employment.bean.VitageBean;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -83,5 +84,11 @@ public interface ServerAPI {
             @Query("phone") String phone,
             @Query("email") String email,
             @Query("city") String city
+    );
+    //获取简历基本信息
+    @GET("servlet/VitageServlet")
+    Observable<VitageBean> getVitageUser(
+            @Query("action") String action,
+            @Query("id") String id
     );
 }

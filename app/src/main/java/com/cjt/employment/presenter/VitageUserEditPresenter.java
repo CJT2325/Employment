@@ -31,13 +31,11 @@ public class VitageUserEditPresenter extends BasePresenter<VitageUserEditActivit
                     .subscribe(new Action1<UpdateResult>() {
                         @Override
                         public void call(UpdateResult updateResult) {
-//                            if (updateResult.getResult().equals("success")){
-                                Log.i("CJT",updateResult.getResult());
+                            if (updateResult.getResult().equals("success")){
                                 getView().updateSuccess();
-//                            }else {
-//                                Log.i("CJT","fail");
-//                                getView().updateFail();
-//                            }
+                            }else {
+                                getView().updateFail();
+                            }
                         }
                     }, new Action1<Throwable>() {
                         @Override

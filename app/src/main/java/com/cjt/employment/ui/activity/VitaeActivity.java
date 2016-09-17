@@ -12,9 +12,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.cjt.employment.R;
+import com.cjt.employment.bean.VitageBean;
+import com.cjt.employment.common.Config;
+import com.cjt.employment.model.Imodel.VitageModel;
 import com.cjt.employment.presenter.VitagePresenter;
+import com.cjt.employment.ui.view.VitageView;
 
-public class VitaeActivity extends BaseActivity<VitaeActivity, VitagePresenter> implements View.OnClickListener {
+public class VitaeActivity extends BaseActivity<VitaeActivity, VitagePresenter> implements View.OnClickListener,VitageView {
 
     private RelativeLayout layout_user_unedit;
     private RelativeLayout layout_user_edit;
@@ -38,6 +42,7 @@ public class VitaeActivity extends BaseActivity<VitaeActivity, VitagePresenter> 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         initView();
+        getPresenter().getVitageUser("getVitageUser", Config.getValueByKey(this,Config.KEY_USERID));
     }
 
     private void initView() {
@@ -90,5 +95,29 @@ public class VitaeActivity extends BaseActivity<VitaeActivity, VitagePresenter> 
             tv_email.setText("联系邮箱:  "+data.getStringExtra("email"));
             tv_city.setText("所在城市:  "+data.getStringExtra("city"));
         }
+    }
+
+    @Override
+    public void getVitageSuccess(VitageBean.DataBean data) {
+        layout_user_unedit.setVisibility(View.GONE);
+        layout_user_edit.setVisibility(View.VISIBLE);
+        tv_name.setText("姓        名:  "+data.getName());
+        tv_sex.setText("性        别:  "+data.getSex());
+        tv_brithday.setText("出生年份:  "+data.getBrithday());
+        tv_education.setText("最高学历:  "+data.getEducation());
+        tv_worktime.setText("工作年限:  "+data.getWorktime());
+        tv_phone.setText("联系电话:  "+data.getPhone());
+        tv_email.setText("联系邮箱:  "+data.getEmail());
+        tv_city.setText("所在城市:  "+data.getCity());
+    }
+
+    @Override
+    public void showProgressBar() {
+
+    }
+
+    @Override
+    public void hideProgressBar() {
+
     }
 }
