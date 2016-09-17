@@ -22,6 +22,7 @@
             android:paddingTop="@dimen/activity_vertical_margin">
 
             <EditText
+                android:id="@+id/et_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_mode_edit_red_24dp"
@@ -81,6 +82,7 @@
                 android:textColor="@color/colorAccent" />
 
             <EditText
+                android:id="@+id/et_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_mode_edit_red_24dp"
@@ -100,5 +102,10 @@
         </LinearLayout>
 
     </ScrollView>
-
+    <ProgressBar
+        android:id="@+id/progressbar"
+        android:visibility="gone"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </RelativeLayout>

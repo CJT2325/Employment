@@ -6,6 +6,7 @@ import com.cjt.employment.bean.LoginResult;
 import com.cjt.employment.bean.Recruit;
 import com.cjt.employment.bean.RecruitmentInfo;
 import com.cjt.employment.bean.UpLoadImageResult;
+import com.cjt.employment.bean.UpdateResult;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -68,4 +69,19 @@ public interface ServerAPI {
     //获取用户头像
     @GET("servlet/LoginServlet")
     Observable<AccountInfo> getUserCover(@Query("action") String action, @Query("id") String id);
+
+    //更新简历基本信息
+    @GET("servlet/VitageServlet")
+    Observable<UpdateResult> updateVitageUser(
+            @Query("action") String action,
+            @Query("id") String id,
+            @Query("name") String name,
+            @Query("sex") String sex,
+            @Query("brithday") String brithday,
+            @Query("education") String education,
+            @Query("worktime") String worktime,
+            @Query("phone") String phone,
+            @Query("email") String email,
+            @Query("city") String city
+    );
 }
