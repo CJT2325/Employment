@@ -61,11 +61,11 @@
                 android:layout_height="wrap_content">
 
                 <RelativeLayout
-                    android:clickable="true"
                     android:id="@+id/layout_user_unedit"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:background="#ffccc9"
+                    android:clickable="true"
                     android:padding="16dp">
 
                     <TextView
@@ -176,11 +176,13 @@
                 android:layout_height="wrap_content">
 
                 <RelativeLayout
+                    android:id="@+id/layout_worklist"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:background="#ffccc9"
                     android:gravity="center"
-                    android:padding="16dp">
+                    android:padding="16dp"
+                    android:visibility="gone">
 
                     <TextView
                         android:id="@+id/tv_addwork"
@@ -210,11 +212,18 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/layout_worklist_edit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#FFF"
-                    android:padding="16dp"
-                    android:visibility="gone"></RelativeLayout>
+                    android:padding="16dp">
+
+                    <com.cjt.employment.view.LinearLayoutForListView
+                        android:id="@+id/layout_worklistview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"/>
+                </RelativeLayout>
             </RelativeLayout>
 
             <TextView
