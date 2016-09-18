@@ -25,7 +25,7 @@ public class LinearLayoutForListView extends LinearLayout {
 			v.setOnClickListener(this.onClickListener);
 			if (i == count - 1) {
 				RelativeLayout ly = (RelativeLayout) v;
-				ly.removeViewAt(2);
+//				ly.removeViewAt(2);
 			}
 			addView(v, i);
 		}

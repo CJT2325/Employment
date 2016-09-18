@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="16dp">
+
+    <RelativeLayout
+        android:layout_marginRight="10dp"
+        android:id="@+id/layout_line"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/ic_fiber_manual_record_black_24dp"
+            android:tint="@color/colorPrimary" />
+    </RelativeLayout>
+
+
+    <TextView
+        android:layout_toRightOf="@id/layout_line"
+        android:id="@+id/tv_worktime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2016.09-2016.10" />
+
+    <TextView
+        android:layout_toRightOf="@id/layout_line"
+        android:id="@+id/tv_workname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_worktime"
+        android:layout_marginTop="10dp"
+        android:text="某某科技有限公司/Android" />
+
+    <TextView
+        android:layout_toRightOf="@id/layout_line"
+        android:id="@+id/tv_workcontent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_workname"
+        android:layout_marginTop="10dp"
+        android:text="工作内容: WorkContent"
+        android:textColor="#999" />
+
+</RelativeLayout>
