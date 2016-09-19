@@ -76,6 +76,18 @@
         <activity
             android:name=".ui.activity.VitageUserEditActivity"
             android:label="@string/title_activity_vitage_user_edit"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.activity.WorkExperienceActivity"
+            android:label="@string/title_activity_work_experience"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.activity.WorkExperienceEditActivity"
+            android:label="@string/title_activity_work_experience_edit"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.activity.HopeJobEditActivity"
+            android:label="@string/title_activity_hope_job_edit"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

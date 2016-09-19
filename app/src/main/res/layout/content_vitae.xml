@@ -220,18 +220,20 @@
                     android:paddingRight="16dp"
                     android:paddingTop="16dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:text="编辑"
-                        android:textColor="@color/colorPrimary" />
-
                     <com.cjt.employment.view.LinearLayoutForListView
                         android:id="@+id/layout_worklistview"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical" />
+
+                    <TextView
+                        android:clickable="true"
+                        android:id="@+id/tv_workexperience_edit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="编辑"
+                        android:textColor="@color/colorPrimary" />
                 </RelativeLayout>
             </RelativeLayout>
 
@@ -291,11 +293,14 @@
                 android:layout_height="wrap_content">
 
                 <RelativeLayout
+                    android:id="@+id/layout_hopejob_unedit"
+                    android:clickable="true"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:background="#ffccc9"
                     android:gravity="center"
-                    android:padding="16dp">
+                    android:padding="16dp"
+                    android:visibility="gone">
 
                     <TextView
                         android:id="@+id/tv_hopejob"
@@ -316,11 +321,41 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/layout_hopejob_edit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#FFF"
-                    android:padding="16dp"
-                    android:visibility="gone"></RelativeLayout>
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="编辑"
+                        android:textColor="@color/colorPrimary" />
+
+                    <TextView
+                        android:id="@+id/tv_position"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:text="Android" />
+
+                    <TextView
+                        android:id="@+id/tv_jobinfo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_position"
+                        android:layout_marginBottom="16dp"
+                        android:text="实习/广州/2k-5k" />
+
+                    <TextView
+                        android:id="@+id/tv_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_jobinfo"
+                        android:text="最高学历圣节福利圣诞节福利速度快" />
+                </RelativeLayout>
             </RelativeLayout>
 
             <TextView

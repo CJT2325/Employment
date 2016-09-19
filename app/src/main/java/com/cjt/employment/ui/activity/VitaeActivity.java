@@ -6,6 +6,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cjt.employment.R;
 import com.cjt.employment.adapter.AdapterForLinearLayout;
@@ -22,6 +23,7 @@ public class VitaeActivity extends BaseActivity<VitaeActivity, VitagePresenter> 
 
     private RelativeLayout layout_user_unedit;
     private RelativeLayout layout_user_edit;
+    private RelativeLayout layout_hopejob_unedit;
 
     private LinearLayoutForListView worklistview;
     private AdapterForLinearLayout worklistviewAdpater;
@@ -35,6 +37,8 @@ public class VitaeActivity extends BaseActivity<VitaeActivity, VitagePresenter> 
     private TextView tv_email;
     private TextView tv_city;
 
+    private TextView tv_workexperience_edit;
+
     public final static int requestCode = 2;
 
     @Override
@@ -42,7 +46,9 @@ public class VitaeActivity extends BaseActivity<VitaeActivity, VitagePresenter> 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vitae);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("在线简历");
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         initView();
         getPresenter().getVitageUser("getVitageUser", Config.getValueByKey(this, Config.KEY_USERID));
     }
@@ -57,15 +63,22 @@ public class VitaeActivity extends BaseActivity<VitaeActivity, VitagePresenter> 
         tv_email = (TextView) findViewById(R.id.tv_email);
         tv_city = (TextView) findViewById(R.id.tv_city);
 
+        //简历个人信息
         layout_user_unedit = (RelativeLayout) findViewById(R.id.layout_user_unedit);
         layout_user_edit = (RelativeLayout) findViewById(R.id.layout_user_edit);
         layout_user_unedit.setOnClickListener(this);
         layout_user_edit.setOnClickListener(this);
         layout_user_unedit.setVisibility(View.VISIBLE);
         layout_user_edit.setVisibility(View.GONE);
+        //希望的工作
+        layout_hopejob_unedit= (RelativeLayout) findViewById(R.id.layout_hopejob_unedit);
+        layout_hopejob_unedit.setOnClickListener(this);
 
         worklistview= (LinearLayoutForListView) findViewById(R.id.layout_worklistview);
         getData();
+
+        tv_workexperience_edit= (TextView) findViewById(R.id.tv_workexperience_edit);
+        tv_workexperience_edit.setOnClickListener(this);
     }
 
     private void getData() {
@@ -73,13 +86,13 @@ public class VitaeActivity extends BaseActivity<VitaeActivity, VitagePresenter> 
         ArrayList<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
         for (int i = 0; i < 3; i++) {
             HashMap<String, Object> win = new HashMap<String, Object>();
-            win.put("thread_number", "2016.09-2016.10");
-            win.put("thread_author", "某某科技有限公司/Android");
-            win.put("thread_time", "工作内容: 工作内容工作内容工作内容工作内容工作内容工作内容");
+            win.put("worktime", "2016.09-2016.10");
+            win.put("workname", "某某科技有限公司/Android");
+            win.put("workcontent", "工作内容: 工作内容工作内容工作内容工作内容工作内容工作内容");
             list.add(win);
         }
 
-        worklistviewAdpater = new AdapterForLinearLayout(this, list,R.layout.worklist_item, new String[] { "thread_number", "thread_author" ,"thread_time"},
+        worklistviewAdpater = new AdapterForLinearLayout(this, list,R.layout.worklist_item, new String[] { "worktime", "workname" ,"workcontent"},
                 new int[] { R.id.tv_worktime, R.id.tv_workname,R.id.tv_workcontent});
         worklistview.setAdapter(worklistviewAdpater);
 
@@ -98,6 +111,14 @@ public class VitaeActivity extends BaseActivity<VitaeActivity, VitagePresenter> 
                 startActivityForResult(editIntent, requestCode);
                 break;
             case R.id.layout_user_edit:
+                break;
+            case R.id.tv_workexperience_edit:
+                Intent workExperienceIntent=new Intent(this,WorkExperienceActivity.class);
+                startActivity(workExperienceIntent);
+                break;
+            case R.id.layout_hopejob_unedit:
+                Intent hopJobEditIntent=new Intent(this,HopeJobEditActivity.class);
+                startActivity(hopJobEditIntent);
                 break;
         }
     }
@@ -131,6 +152,7 @@ public class VitaeActivity extends BaseActivity<VitaeActivity, VitagePresenter> 
         tv_phone.setText("联系电话:  " + data.getPhone());
         tv_email.setText("联系邮箱:  " + data.getEmail());
         tv_city.setText("所在城市:  " + data.getCity());
+
     }
 
     @Override

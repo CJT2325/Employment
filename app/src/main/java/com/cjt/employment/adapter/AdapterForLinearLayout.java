@@ -52,6 +52,12 @@ public class AdapterForLinearLayout extends BaseAdapter {
 
 	}
 
+	public void update(List<? extends Map<String, ?>> data){
+		this.data.clear();
+		this.data=data;
+		notifyDataSetChanged();
+	}
+
 	/**
 	 * 绑定视图
 	 *
