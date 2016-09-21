@@ -11,14 +11,19 @@ import android.view.View;
 
 import com.cjt.employment.R;
 import com.cjt.employment.adapter.EducationAdapter;
+import com.cjt.employment.bean.Education;
+import com.cjt.employment.bean.WorkExperience;
+import com.cjt.employment.common.Config;
+import com.cjt.employment.presenter.EducationPresenter;
+import com.cjt.employment.ui.view.EducationView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class EducationActivity extends AppCompatActivity {
+public class EducationActivity extends BaseActivity<EducationActivity,EducationPresenter> implements EducationView {
     private RecyclerView recyclerview_education;
     private EducationAdapter mEducationAdapter;
-    private List<String> datas;
+    private List<Education.DataBean> datas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +38,19 @@ public class EducationActivity extends AppCompatActivity {
         initView();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        getPresenter().getEducationList("getEducationList", Config.getValueByKey(this,Config.KEY_USERID));
+    }
+
+    @Override
+    protected EducationPresenter creatPresenter() {
+        return new EducationPresenter();
+    }
+
     private void initData() {
         datas = new ArrayList<>();
-        datas.add("1123");
     }
 
     private void initView() {
@@ -43,5 +58,20 @@ public class EducationActivity extends AppCompatActivity {
         recyclerview_education.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         mEducationAdapter=new EducationAdapter(datas,this,null);
         recyclerview_education.setAdapter(mEducationAdapter);
+    }
+
+    @Override
+    public void getEducationSuccess(List<Education.DataBean> data) {
+        mEducationAdapter.updata(data);
+    }
+
+    @Override
+    public void showProgressBar() {
+
+    }
+
+    @Override
+    public void hideProgressBar() {
+
     }
 }

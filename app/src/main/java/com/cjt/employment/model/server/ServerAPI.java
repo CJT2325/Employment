@@ -2,6 +2,7 @@ package com.cjt.employment.model.server;
 
 import com.cjt.employment.bean.AccountInfo;
 import com.cjt.employment.bean.CompanyInfo;
+import com.cjt.employment.bean.Education;
 import com.cjt.employment.bean.LoginResult;
 import com.cjt.employment.bean.Recruit;
 import com.cjt.employment.bean.RecruitmentInfo;
@@ -111,4 +112,21 @@ public interface ServerAPI {
             @Query("action") String action,
             @Query("id") String id
     );
+    //添加教育经历
+    @GET("servlet/VitageServlet")
+    Observable<UpdateResult> addEducation(
+            @Query("action") String action,
+            @Query("id") String id,
+            @Query("schoolname") String schoolname,
+            @Query("major") String major,
+            @Query("graduationtime") String graduationtime,
+            @Query("education") String education
+    );
+    //获取教育经历
+    @GET("servlet/VitageServlet")
+    Observable<Education> getEducationList(
+            @Query("action") String action,
+            @Query("id") String id
+    );
+
 }
