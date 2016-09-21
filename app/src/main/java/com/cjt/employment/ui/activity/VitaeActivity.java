@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 import com.cjt.employment.R;
 import com.cjt.employment.adapter.AdapterForLinearLayout;
 import com.cjt.employment.bean.VitageBean;
+import com.cjt.employment.bean.WorkExperience;
 import com.cjt.employment.common.Config;
 import com.cjt.employment.presenter.VitagePresenter;
 import com.cjt.employment.ui.view.VitageView;
@@ -18,6 +20,7 @@ import com.cjt.employment.view.LinearLayoutForListView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class VitaeActivity extends BaseActivity<VitaeActivity, VitagePresenter> implements View.OnClickListener, VitageView {
 
@@ -26,7 +29,9 @@ public class VitaeActivity extends BaseActivity<VitaeActivity, VitagePresenter> 
     private RelativeLayout layout_hopejob_unedit;
 
     private LinearLayoutForListView worklistview;
+    private LinearLayoutForListView educationlistview;
     private AdapterForLinearLayout worklistviewAdpater;
+    private AdapterForLinearLayout educationlistviewAdpater;
 
     private TextView tv_name;
     private TextView tv_sex;
@@ -38,6 +43,7 @@ public class VitaeActivity extends BaseActivity<VitaeActivity, VitagePresenter> 
     private TextView tv_city;
 
     private TextView tv_workexperience_edit;
+    private TextView tv_education_edit;
 
     public final static int requestCode = 2;
 
@@ -50,7 +56,13 @@ public class VitaeActivity extends BaseActivity<VitaeActivity, VitagePresenter> 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         initView();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         getPresenter().getVitageUser("getVitageUser", Config.getValueByKey(this, Config.KEY_USERID));
+        getPresenter().getWorkExperienceList("getWorkExperienceList", Config.getValueByKey(this, Config.KEY_USERID));
     }
 
     private void initView() {
@@ -71,14 +83,18 @@ public class VitaeActivity extends BaseActivity<VitaeActivity, VitagePresenter> 
         layout_user_unedit.setVisibility(View.VISIBLE);
         layout_user_edit.setVisibility(View.GONE);
         //希望的工作
-        layout_hopejob_unedit= (RelativeLayout) findViewById(R.id.layout_hopejob_unedit);
+        layout_hopejob_unedit = (RelativeLayout) findViewById(R.id.layout_hopejob_unedit);
         layout_hopejob_unedit.setOnClickListener(this);
 
-        worklistview= (LinearLayoutForListView) findViewById(R.id.layout_worklistview);
+        worklistview = (LinearLayoutForListView) findViewById(R.id.layout_worklistview);
+        educationlistview = (LinearLayoutForListView) findViewById(R.id.layout_educationlistview);
         getData();
 
-        tv_workexperience_edit= (TextView) findViewById(R.id.tv_workexperience_edit);
+        //编辑按钮
+        tv_workexperience_edit = (TextView) findViewById(R.id.tv_workexperience_edit);
+        tv_education_edit = (TextView) findViewById(R.id.tv_education_edit);
         tv_workexperience_edit.setOnClickListener(this);
+        tv_education_edit.setOnClickListener(this);
     }
 
     private void getData() {
@@ -92,10 +108,13 @@ public class VitaeActivity extends BaseActivity<VitaeActivity, VitagePresenter> 
             list.add(win);
         }
 
-        worklistviewAdpater = new AdapterForLinearLayout(this, list,R.layout.worklist_item, new String[] { "worktime", "workname" ,"workcontent"},
-                new int[] { R.id.tv_worktime, R.id.tv_workname,R.id.tv_workcontent});
+        worklistviewAdpater = new AdapterForLinearLayout(this, list, R.layout.worklist_item, new String[]{"worktime", "workname", "workcontent"},
+                new int[]{R.id.tv_worktime, R.id.tv_workname, R.id.tv_workcontent});
         worklistview.setAdapter(worklistviewAdpater);
 
+        educationlistviewAdpater = new AdapterForLinearLayout(this, list, R.layout.worklist_item, new String[]{"worktime", "workname", "workcontent"},
+                new int[]{R.id.tv_worktime, R.id.tv_workname, R.id.tv_workcontent});
+        educationlistview.setAdapter(educationlistviewAdpater);
     }
 
     @Override
@@ -113,11 +132,15 @@ public class VitaeActivity extends BaseActivity<VitaeActivity, VitagePresenter> 
             case R.id.layout_user_edit:
                 break;
             case R.id.tv_workexperience_edit:
-                Intent workExperienceIntent=new Intent(this,WorkExperienceActivity.class);
+                Intent workExperienceIntent = new Intent(this, WorkExperienceActivity.class);
                 startActivity(workExperienceIntent);
                 break;
+            case R.id.tv_education_edit:
+                Intent educationIntent = new Intent(this, EducationActivity.class);
+                startActivity(educationIntent);
+                break;
             case R.id.layout_hopejob_unedit:
-                Intent hopJobEditIntent=new Intent(this,HopeJobEditActivity.class);
+                Intent hopJobEditIntent = new Intent(this, HopeJobEditActivity.class);
                 startActivity(hopJobEditIntent);
                 break;
         }
@@ -138,6 +161,24 @@ public class VitaeActivity extends BaseActivity<VitaeActivity, VitagePresenter> 
             tv_email.setText("联系邮箱:  " + data.getStringExtra("email"));
             tv_city.setText("所在城市:  " + data.getStringExtra("city"));
         }
+    }
+
+    @Override
+    public void getWorkExperienceSuccess(List<WorkExperience.DataBean> data) {
+        ArrayList<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
+        for (int i = 0; i < data.size(); i++) {
+            WorkExperience.DataBean dataBean = data.get(i);
+            HashMap<String, Object> win = new HashMap<String, Object>();
+            win.put("worktime", dataBean.getStarttime() + " - " + dataBean.getEndtime());
+            win.put("workname", dataBean.getCompanyname() + "/" + dataBean.getPosition());
+            win.put("workcontent", dataBean.getContent());
+            list.add(win);
+        }
+        worklistviewAdpater = new AdapterForLinearLayout(this, list, R.layout.worklist_item, new String[]{"worktime", "workname", "workcontent"},
+                new int[]{R.id.tv_worktime, R.id.tv_workname, R.id.tv_workcontent});
+        worklistview.removeAllViews();
+        worklistview.setAdapter(worklistviewAdpater);
+//        worklistviewAdpater.update(list);
     }
 
     @Override

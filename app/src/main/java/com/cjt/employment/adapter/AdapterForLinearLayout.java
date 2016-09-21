@@ -1,9 +1,12 @@
 package com.cjt.employment.adapter;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,12 +16,12 @@ import android.widget.TextView;
 public class AdapterForLinearLayout extends BaseAdapter {
 
 	private LayoutInflater mInflater;
-	private List<? extends Map<String, ?>> data;
+	private ArrayList<HashMap<String, Object>> data;
 	private int resource;
 	private String[] from;
 	private int[] to;
 
-	public AdapterForLinearLayout(Context context,List<? extends Map<String, ?>> data, int resouce, String[] from,int[] to) {
+	public AdapterForLinearLayout(Context context,ArrayList<HashMap<String, Object>> data, int resouce, String[] from,int[] to) {
 		this.data = data;
 		this.resource = resouce;
 		this.data = data;
@@ -48,14 +51,15 @@ public class AdapterForLinearLayout extends BaseAdapter {
 			bindView(v, item, from[i]);
 		}
 		convertView.setTag(position);
+		Log.i("CJT","++++++=====");
 		return convertView;
-
 	}
 
-	public void update(List<? extends Map<String, ?>> data){
+	public void update(ArrayList<HashMap<String, Object>> data){
 		this.data.clear();
-		this.data=data;
+		this.data.addAll(data);
 		notifyDataSetChanged();
+		Log.i("CJT",data.size()+" =====");
 	}
 
 	/**

@@ -20,4 +20,6 @@
     <string name="title_activity_work_experience">WorkExperienceActivity</string>
     <string name="title_activity_work_experience_edit">WorkExperienceEditActivity</string>
     <string name="title_activity_hope_job_edit">HopeJobEditActivity</string>
+    <string name="title_activity_education">EducationActivity</string>
+    <string name="title_activity_education_edit">EducationEditActivity</string>
 </resources>

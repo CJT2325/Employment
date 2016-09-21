@@ -15,6 +15,7 @@
         android:background="#DDDDDD" />
 
     <RelativeLayout
+        android:id="@+id/layout_changepwd"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:background="@drawable/item_selector"
@@ -34,6 +35,7 @@
         android:background="#DDDDDD" />
 
     <RelativeLayout
+        android:id="@+id/layout_clear"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:background="@drawable/item_selector"
@@ -44,7 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:text="清楚缓存" />
+            android:text="清除缓存" />
     </RelativeLayout>
 
     <View
@@ -54,6 +56,7 @@
         android:background="#DDDDDD" />
 
     <RelativeLayout
+        android:id="@+id/layout_about"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:background="@drawable/item_selector"
@@ -73,6 +76,7 @@
         android:background="#DDDDDD" />
 
     <RelativeLayout
+        android:id="@+id/layout_logout"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:background="@drawable/item_selector"

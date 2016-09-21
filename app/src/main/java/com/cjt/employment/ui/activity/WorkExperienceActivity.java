@@ -11,14 +11,18 @@ import android.view.View;
 
 import com.cjt.employment.R;
 import com.cjt.employment.adapter.WorkExperienceAdapter;
+import com.cjt.employment.bean.WorkExperience;
+import com.cjt.employment.common.Config;
+import com.cjt.employment.presenter.WorkExperiencePresenter;
+import com.cjt.employment.ui.view.WorkExperienceView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class WorkExperienceActivity extends AppCompatActivity {
+public class WorkExperienceActivity extends BaseActivity<WorkExperienceActivity, WorkExperiencePresenter> implements WorkExperienceView {
     private RecyclerView recyclerview_workexperience;
     private WorkExperienceAdapter mWorkExperienceAdapter;
-    private List<String> datas;
+    private List<WorkExperience.DataBean> datas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +37,19 @@ public class WorkExperienceActivity extends AppCompatActivity {
         initView();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        getPresenter().getWorkExperienceList("getWorkExperienceList", Config.getValueByKey(this, Config.KEY_USERID));
+    }
+
+    @Override
+    protected WorkExperiencePresenter creatPresenter() {
+        return new WorkExperiencePresenter();
+    }
+
     private void initData() {
         datas = new ArrayList<>();
-        for (int i = 0; i < 2; i++) {
-            datas.add("String " + i);
-        }
     }
 
     private void initView() {
@@ -45,5 +57,20 @@ public class WorkExperienceActivity extends AppCompatActivity {
         recyclerview_workexperience.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         mWorkExperienceAdapter = new WorkExperienceAdapter(datas, this, null);
         recyclerview_workexperience.setAdapter(mWorkExperienceAdapter);
+    }
+
+    @Override
+    public void getWorkExperienceSuccess(List<WorkExperience.DataBean> data) {
+        mWorkExperienceAdapter.updata(data);
+    }
+
+    @Override
+    public void showProgressBar() {
+
+    }
+
+    @Override
+    public void hideProgressBar() {
+
     }
 }

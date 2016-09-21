@@ -8,6 +8,7 @@ import com.cjt.employment.bean.RecruitmentInfo;
 import com.cjt.employment.bean.UpLoadImageResult;
 import com.cjt.employment.bean.UpdateResult;
 import com.cjt.employment.bean.VitageBean;
+import com.cjt.employment.bean.WorkExperience;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -85,9 +86,28 @@ public interface ServerAPI {
             @Query("email") String email,
             @Query("city") String city
     );
+
     //获取简历基本信息
     @GET("servlet/VitageServlet")
     Observable<VitageBean> getVitageUser(
+            @Query("action") String action,
+            @Query("id") String id
+    );
+
+    //添加工作经历
+    @GET("servlet/VitageServlet")
+    Observable<UpdateResult> addWorkExperience(
+            @Query("action") String action,
+            @Query("id") String id,
+            @Query("companyname") String companyname,
+            @Query("position") String position,
+            @Query("starttime") String starttime,
+            @Query("endtime") String endtime,
+            @Query("content") String content
+    );
+    //获取工作经历
+    @GET("servlet/VitageServlet")
+    Observable<WorkExperience> getWorkExperienceList(
             @Query("action") String action,
             @Query("id") String id
     );

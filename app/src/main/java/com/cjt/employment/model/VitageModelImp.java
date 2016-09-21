@@ -2,6 +2,7 @@ package com.cjt.employment.model;
 
 import com.cjt.employment.bean.UpdateResult;
 import com.cjt.employment.bean.VitageBean;
+import com.cjt.employment.bean.WorkExperience;
 import com.cjt.employment.model.Imodel.VitageModel;
 import com.cjt.employment.model.Imodel.VitageUserEditModel;
 import com.cjt.employment.model.server.ServerAPI;
@@ -31,5 +32,10 @@ public class VitageModelImp implements VitageModel{
     @Override
     public Observable<VitageBean> getVitageUser(String action, String id) {
         return mServerAPI.getVitageUser(action,id);
+    }
+
+    @Override
+    public Observable<WorkExperience> getWorkExperienceList(String action, String id) {
+        return mServerAPI.getWorkExperienceList(action,id);
     }
 }

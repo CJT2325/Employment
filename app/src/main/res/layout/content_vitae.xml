@@ -249,6 +249,8 @@
                 android:layout_height="wrap_content">
 
                 <RelativeLayout
+                    android:visibility="gone"
+                    android:id="@+id/layout_education_unedit"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:background="#ffccc9"
@@ -274,11 +276,29 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/layout_education_edit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#FFF"
-                    android:padding="16dp"
-                    android:visibility="gone"></RelativeLayout>
+                    android:paddingLeft="10dp"
+                    android:paddingRight="16dp"
+                    android:paddingTop="16dp">
+
+                    <com.cjt.employment.view.LinearLayoutForListView
+                        android:id="@+id/layout_educationlistview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" />
+
+                    <TextView
+                        android:clickable="true"
+                        android:id="@+id/tv_education_edit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="编辑"
+                        android:textColor="@color/colorPrimary" />
+                </RelativeLayout>
             </RelativeLayout>
 
             <TextView

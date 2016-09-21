@@ -88,6 +88,14 @@
         <activity
             android:name=".ui.activity.HopeJobEditActivity"
             android:label="@string/title_activity_hope_job_edit"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.activity.EducationActivity"
+            android:label="@string/title_activity_education"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.activity.EducationEditActivity"
+            android:label="@string/title_activity_education_edit"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

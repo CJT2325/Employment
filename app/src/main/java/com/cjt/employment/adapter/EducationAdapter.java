@@ -9,11 +9,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.cjt.employment.R;
-import com.cjt.employment.bean.CompanyInfo;
 import com.cjt.employment.bean.WorkExperience;
 import com.cjt.employment.ui.activity.WorkExperienceEditActivity;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -21,13 +18,13 @@ import java.util.List;
  * 作者: 陈嘉桐 on 2016/9/19
  * 邮箱: 445263848@qq.com.
  */
-public class WorkExperienceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class EducationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context mContext;
     private OnItemClickListener listener;
 
-    private List<WorkExperience.DataBean> datas;
+    private List<String> datas;
 
-    public void updata(List<WorkExperience.DataBean> list) {
+    public void updata(List<String> list) {
         this.datas.clear();
         this.datas = list;
         notifyDataSetChanged();
@@ -37,7 +34,7 @@ public class WorkExperienceAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         public void onItemClick(View view, int position);
     }
 
-    public WorkExperienceAdapter(List<WorkExperience.DataBean> datas, Context mContext, OnItemClickListener listener) {
+    public EducationAdapter(List<String> datas, Context mContext, OnItemClickListener listener) {
         this.datas = datas;
         this.mContext = mContext;
         this.listener = listener;
@@ -57,10 +54,10 @@ public class WorkExperienceAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof WorkExperienceViewHolder) {
-            WorkExperience.DataBean dataBean= datas.get(position);
-            ((WorkExperienceViewHolder) holder).tv_worktime.setText(dataBean.getStarttime()+" - "+dataBean.getEndtime());
-            ((WorkExperienceViewHolder) holder).tv_workname.setText(dataBean.getCompanyname()+"/"+dataBean.getPosition());
-            ((WorkExperienceViewHolder) holder).tv_workcontent.setText(dataBean.getContent());
+//            WorkExperience.DataBean dataBean= datas.get(position);
+//            ((WorkExperienceViewHolder) holder).tv_worktime.setText(dataBean.getStarttime()+" - "+dataBean.getEndtime());
+//            ((WorkExperienceViewHolder) holder).tv_workname.setText(dataBean.getCompanyname()+"/"+dataBean.getPosition());
+//            ((WorkExperienceViewHolder) holder).tv_workcontent.setText(dataBean.getContent());
         }
     }
 
@@ -75,13 +72,13 @@ public class WorkExperienceAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     }
 
     class WorkExperienceViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private WorkExperienceAdapter.OnItemClickListener listener;
+        private EducationAdapter.OnItemClickListener listener;
 
         TextView tv_worktime;
         TextView tv_workname;
         TextView tv_workcontent;
 
-        public WorkExperienceViewHolder(View itemView, WorkExperienceAdapter.OnItemClickListener listener) {
+        public WorkExperienceViewHolder(View itemView, EducationAdapter.OnItemClickListener listener) {
             super(itemView);
             tv_worktime = (TextView) itemView.findViewById(R.id.tv_worktime);
             tv_workname = (TextView) itemView.findViewById(R.id.tv_workname);

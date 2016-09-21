@@ -22,7 +22,7 @@
             android:paddingTop="@dimen/activity_vertical_margin">
 
             <EditText
-                android:id="@+id/et_name"
+                android:id="@+id/et_companyname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_mode_edit_red_24dp"
@@ -30,55 +30,71 @@
                 android:textColor="@color/colorAccent" />
 
             <EditText
-                android:id="@+id/et_sex"
-                android:editable="false"
-                android:clickable="true"
+                android:id="@+id/et_position"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:clickable="true"
                 android:drawableLeft="@drawable/ic_mode_edit_red_24dp"
                 android:hint="你的职位"
                 android:textColor="@color/colorAccent" />
 
 
             <EditText
-                android:id="@+id/et_education"
-                android:editable="false"
-                android:clickable="true"
+                android:id="@+id/et_starttime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
+                android:clickable="true"
                 android:drawableLeft="@drawable/ic_mode_edit_red_24dp"
                 android:hint="入职时间"
+                android:text="2015"
                 android:textColor="@color/colorAccent" />
 
             <EditText
-                android:id="@+id/et_worktime"
-                android:editable="false"
-                android:clickable="true"
+                android:id="@+id/et_endtime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:clickable="true"
                 android:drawableLeft="@drawable/ic_mode_edit_red_24dp"
                 android:hint="离职时间"
+                android:text="2016"
                 android:textColor="@color/colorAccent" />
 
             <EditText
-                android:id="@+id/et_phone"
-                android:inputType="number"
-                android:maxLength="11"
-                style="null"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
+                android:background="@null"
                 android:drawableLeft="@drawable/ic_mode_edit_red_24dp"
+                android:focusable="false"
                 android:hint="工作内容"
+                android:inputType="number"
+                android:maxLength="11"
                 android:textColor="@color/colorAccent" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp"
+                android:background="#DDD">
+
+                <EditText
+                    android:id="@+id/et_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:gravity="top"
+                    android:minHeight="100dp"
+                    android:padding="8dp"
+                    android:textColor="@color/colorAccent" />
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/tv_addworkexperience"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="@drawable/click_selector"
                 android:layout_marginTop="16dp"
+                android:background="@drawable/click_selector"
                 android:gravity="center"
                 android:text="删除此工作经历"
                 android:textColor="#FFF" />
@@ -86,11 +102,12 @@
         </LinearLayout>
 
     </ScrollView>
+
     <ProgressBar
         android:id="@+id/progressbar"
-        android:visibility="gone"
-        android:layout_centerInParent="true"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
 </RelativeLayout>
 

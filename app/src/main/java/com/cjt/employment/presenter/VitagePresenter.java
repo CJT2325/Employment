@@ -5,6 +5,7 @@ import android.util.Log;
 import com.cjt.employment.bean.LoginResult;
 import com.cjt.employment.bean.UpdateResult;
 import com.cjt.employment.bean.VitageBean;
+import com.cjt.employment.bean.WorkExperience;
 import com.cjt.employment.model.Imodel.LoginModel;
 import com.cjt.employment.model.Imodel.VitageModel;
 import com.cjt.employment.model.LoginModellImp;
@@ -38,6 +39,27 @@ public class VitagePresenter extends BasePresenter<VitaeActivity>{
                             if (vitageBean.getResult().equals("success")){
                                 getView().getVitageSuccess(vitageBean.getData());
                             }
+                        }
+                    }, new Action1<Throwable>() {
+                        @Override
+                        public void call(Throwable throwable) {
+                            Log.i("RxJava", "又是在这里出现了问题呀----->" + throwable.toString());
+                        }
+                    });
+        } else {
+            Log.i("CJT", "model is null");
+        }
+    }
+    public void getWorkExperienceList(String action, String id) {
+        if (mVitageModel != null) {
+//            getView().showProgressBar();
+            mVitageModel.getWorkExperienceList(action, id)
+                    .subscribeOn(Schedulers.newThread())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Action1<WorkExperience>() {
+                        @Override
+                        public void call(WorkExperience workExperience) {
+                            getView().getWorkExperienceSuccess(workExperience.getData());
                         }
                     }, new Action1<Throwable>() {
                         @Override
