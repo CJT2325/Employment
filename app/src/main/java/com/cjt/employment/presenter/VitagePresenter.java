@@ -2,6 +2,8 @@ package com.cjt.employment.presenter;
 
 import android.util.Log;
 
+import com.cjt.employment.bean.Education;
+import com.cjt.employment.bean.HopeJob;
 import com.cjt.employment.bean.LoginResult;
 import com.cjt.employment.bean.UpdateResult;
 import com.cjt.employment.bean.VitageBean;
@@ -60,6 +62,51 @@ public class VitagePresenter extends BasePresenter<VitaeActivity>{
                         @Override
                         public void call(WorkExperience workExperience) {
                             getView().getWorkExperienceSuccess(workExperience.getData());
+                        }
+                    }, new Action1<Throwable>() {
+                        @Override
+                        public void call(Throwable throwable) {
+                            Log.i("RxJava", "又是在这里出现了问题呀----->" + throwable.toString());
+                        }
+                    });
+        } else {
+            Log.i("CJT", "model is null");
+        }
+    }
+
+    public void getEducationList(String action, String id) {
+        if (mVitageModel != null) {
+//            getView().showProgressBar();
+            mVitageModel.getEducationList(action, id)
+                    .subscribeOn(Schedulers.newThread())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Action1<Education>() {
+                        @Override
+                        public void call(Education education) {
+                            getView().getEducationSuccess(education.getData());
+                        }
+                    }, new Action1<Throwable>() {
+                        @Override
+                        public void call(Throwable throwable) {
+                            Log.i("RxJava", "又是在这里出现了问题呀----->" + throwable.toString());
+                        }
+                    });
+        } else {
+            Log.i("CJT", "model is null");
+        }
+    }
+    public void getHopeJob(String action, String id) {
+        if (mVitageModel != null) {
+//            getView().showProgressBar();
+            mVitageModel.getHopeJob(action, id)
+                    .subscribeOn(Schedulers.newThread())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Action1<HopeJob>() {
+                        @Override
+                        public void call(HopeJob hopeJob) {
+                            if (hopeJob.getResult().equals("success")) {
+                                getView().getHopeJobSuccess(hopeJob.getData());
+                            }
                         }
                     }, new Action1<Throwable>() {
                         @Override

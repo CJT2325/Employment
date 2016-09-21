@@ -1,5 +1,7 @@
 package com.cjt.employment.ui.view;
 
+import com.cjt.employment.bean.Education;
+import com.cjt.employment.bean.HopeJob;
 import com.cjt.employment.bean.VitageBean;
 import com.cjt.employment.bean.WorkExperience;
 
@@ -12,6 +14,8 @@ import java.util.List;
 public interface VitageView {
     public void getWorkExperienceSuccess(List<WorkExperience.DataBean> data);
     public void getVitageSuccess(VitageBean.DataBean data);
+    public void getEducationSuccess(List<Education.DataBean> data);
+    public void getHopeJobSuccess(HopeJob.DataBean data);
     public void showProgressBar();
     public void hideProgressBar();
 }

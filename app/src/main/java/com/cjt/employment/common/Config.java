@@ -26,4 +26,12 @@ public class Config {
         SharedPreferences mySharedPreferences = context.getSharedPreferences(APP, Activity.MODE_PRIVATE);
         return mySharedPreferences.getString(key, "");
     }
+
+    public static void clearAll(Context context) {
+        SharedPreferences mySharedPreferences = context.getSharedPreferences(APP, Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = mySharedPreferences.edit();
+        editor.remove(KEY_USERID);
+        editor.remove(KEY_TOKEN);
+        editor.commit();
+    }
 }

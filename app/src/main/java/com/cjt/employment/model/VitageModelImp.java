@@ -1,5 +1,7 @@
 package com.cjt.employment.model;
 
+import com.cjt.employment.bean.Education;
+import com.cjt.employment.bean.HopeJob;
 import com.cjt.employment.bean.UpdateResult;
 import com.cjt.employment.bean.VitageBean;
 import com.cjt.employment.bean.WorkExperience;
@@ -35,7 +37,17 @@ public class VitageModelImp implements VitageModel{
     }
 
     @Override
+    public Observable<HopeJob> getHopeJob(String action, String id) {
+        return mServerAPI.getHopeJob(action,id);
+    }
+
+    @Override
     public Observable<WorkExperience> getWorkExperienceList(String action, String id) {
         return mServerAPI.getWorkExperienceList(action,id);
+    }
+
+    @Override
+    public Observable<Education> getEducationList(String action, String id) {
+        return mServerAPI.getEducationList(action,id);
     }
 }

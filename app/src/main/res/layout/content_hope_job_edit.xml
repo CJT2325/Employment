@@ -22,7 +22,7 @@
             android:paddingTop="@dimen/activity_vertical_margin">
 
             <EditText
-                android:id="@+id/et_name"
+                android:id="@+id/et_hopeposition"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_mode_edit_red_24dp"
@@ -30,7 +30,7 @@
                 android:textColor="@color/colorAccent" />
 
             <EditText
-                android:id="@+id/et_sex"
+                android:id="@+id/et_jobtype"
                 android:editable="false"
                 android:clickable="true"
                 android:layout_width="match_parent"
@@ -41,7 +41,7 @@
 
 
             <EditText
-                android:id="@+id/et_education"
+                android:id="@+id/et_city"
                 android:editable="false"
                 android:clickable="true"
                 android:layout_width="match_parent"
@@ -52,7 +52,7 @@
                 android:textColor="@color/colorAccent" />
 
             <EditText
-                android:id="@+id/et_worktime"
+                android:id="@+id/et_money"
                 android:editable="false"
                 android:clickable="true"
                 android:layout_width="match_parent"
@@ -65,14 +65,29 @@
                 android:id="@+id/et_phone"
                 android:inputType="number"
                 android:maxLength="11"
-                style="null"
+                android:background="@null"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:drawableLeft="@drawable/ic_mode_edit_red_24dp"
                 android:hint="补充说明"
                 android:textColor="@color/colorAccent" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp"
+                android:background="#DDD">
 
+                <EditText
+                    android:id="@+id/et_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:gravity="top"
+                    android:minHeight="100dp"
+                    android:padding="8dp"
+                    android:textColor="@color/colorAccent" />
+            </RelativeLayout>
         </LinearLayout>
 
     </ScrollView>

@@ -348,6 +348,7 @@
                     android:padding="16dp">
 
                     <TextView
+                        android:id="@+id/tv_hopejob_edit"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
@@ -355,17 +356,17 @@
                         android:textColor="@color/colorPrimary" />
 
                     <TextView
-                        android:id="@+id/tv_position"
+                        android:id="@+id/tv_hopeposition"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
                         android:text="Android" />
 
                     <TextView
-                        android:id="@+id/tv_jobinfo"
+                        android:id="@+id/tv_jobtype"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/tv_position"
+                        android:layout_below="@id/tv_hopeposition"
                         android:layout_marginBottom="16dp"
                         android:text="实习/广州/2k-5k" />
 
@@ -373,7 +374,7 @@
                         android:id="@+id/tv_content"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/tv_jobinfo"
+                        android:layout_below="@id/tv_jobtype"
                         android:text="最高学历圣节福利圣诞节福利速度快" />
                 </RelativeLayout>
             </RelativeLayout>

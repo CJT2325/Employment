@@ -3,6 +3,7 @@ package com.cjt.employment.model.server;
 import com.cjt.employment.bean.AccountInfo;
 import com.cjt.employment.bean.CompanyInfo;
 import com.cjt.employment.bean.Education;
+import com.cjt.employment.bean.HopeJob;
 import com.cjt.employment.bean.LoginResult;
 import com.cjt.employment.bean.Recruit;
 import com.cjt.employment.bean.RecruitmentInfo;
@@ -127,6 +128,24 @@ public interface ServerAPI {
     Observable<Education> getEducationList(
             @Query("action") String action,
             @Query("id") String id
+    );
+    //获取期望工作
+    @GET("servlet/VitageServlet")
+    Observable<HopeJob> getHopeJob(
+            @Query("action") String action,
+            @Query("id") String id
+    );
+
+    //更新期望工作
+    @GET("servlet/VitageServlet")
+    Observable<UpdateResult> updateHopeJob(
+            @Query("action") String action,
+            @Query("id") String id,
+            @Query("hopeposition") String hopeposition,
+            @Query("jobtype") String jobtype,
+            @Query("city") String city,
+            @Query("money") String money,
+            @Query("content") String content
     );
 
 }

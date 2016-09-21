@@ -1,15 +1,20 @@
 package com.cjt.employment.ui.activity;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.RelativeLayout;
 
 import com.cjt.employment.R;
+import com.cjt.employment.common.Config;
 import com.cjt.employment.presenter.SettingPresenter;
+import com.cjt.employment.ui.view.LoginView;
 import com.cjt.employment.ui.view.SettingView;
 
 public class SettingActivity extends BaseActivity<SettingActivity,SettingPresenter> implements View.OnClickListener, SettingView {
@@ -55,6 +60,17 @@ public class SettingActivity extends BaseActivity<SettingActivity,SettingPresent
             case R.id.layout_about:
                 break;
             case R.id.layout_logout:
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage("确认注销？")
+                        .setPositiveButton("取消",null)
+                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Config.clearAll(SettingActivity.this);
+                                Intent loginIntent=new Intent(SettingActivity.this, LoginActivity.class);
+                                SettingActivity.this.startActivity(loginIntent);
+                            }
+                        }).show();
                 break;
         }
     }
