@@ -22,4 +22,6 @@
     <string name="title_activity_hope_job_edit">HopeJobEditActivity</string>
     <string name="title_activity_education">EducationActivity</string>
     <string name="title_activity_education_edit">EducationEditActivity</string>
+    <string name="title_activity_project">ProjectActivity</string>
+    <string name="title_activity_project_edit">ProjectEditActivity</string>
 </resources>

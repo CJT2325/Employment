@@ -5,6 +5,7 @@ import com.cjt.employment.bean.CompanyInfo;
 import com.cjt.employment.bean.Education;
 import com.cjt.employment.bean.HopeJob;
 import com.cjt.employment.bean.LoginResult;
+import com.cjt.employment.bean.Project;
 import com.cjt.employment.bean.Recruit;
 import com.cjt.employment.bean.RecruitmentInfo;
 import com.cjt.employment.bean.UpLoadImageResult;
@@ -110,6 +111,12 @@ public interface ServerAPI {
     //获取工作经历
     @GET("servlet/VitageServlet")
     Observable<WorkExperience> getWorkExperienceList(
+            @Query("action") String action,
+            @Query("id") String id
+    );
+    //获取项目经历
+    @GET("servlet/VitageServlet")
+    Observable<Project> getProjectList(
             @Query("action") String action,
             @Query("id") String id
     );

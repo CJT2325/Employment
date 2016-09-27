@@ -96,6 +96,14 @@
         <activity
             android:name=".ui.activity.EducationEditActivity"
             android:label="@string/title_activity_education_edit"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.activity.ProjectActivity"
+            android:label="@string/title_activity_project"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.activity.ProjectEditActivity"
+            android:label="@string/title_activity_project_edit"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

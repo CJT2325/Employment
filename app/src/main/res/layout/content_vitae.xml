@@ -425,58 +425,30 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/layout_project_edit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#FFF"
-                    android:padding="16dp"
-                    android:visibility="gone"></RelativeLayout>
-            </RelativeLayout>
+                    android:paddingLeft="10dp"
+                    android:paddingRight="16dp"
+                    android:paddingTop="16dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:layout_marginTop="16dp"
-                android:text="自我描述" />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:background="#ffccc9"
-                    android:gravity="center"
-                    android:padding="16dp">
+                    <com.cjt.employment.view.LinearLayoutForListView
+                        android:id="@+id/layout_projectlistview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" />
 
                     <TextView
-                        android:id="@+id/tv_addmyself"
+                        android:clickable="true"
+                        android:id="@+id/tv_project_edit"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:text="添加个人的自我描述"
+                        android:layout_alignParentRight="true"
+                        android:text="编辑"
                         android:textColor="@color/colorPrimary" />
-
-                    <ImageView
-                        android:id="@+id/iv_addmyself"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_centerVertical="true"
-                        android:layout_toLeftOf="@id/tv_addmyself"
-                        android:src="@drawable/ic_mode_edit_black_24dp"
-                        android:tint="@color/colorPrimary" />
                 </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#FFF"
-                    android:padding="16dp"
-                    android:visibility="gone"></RelativeLayout>
             </RelativeLayout>
-
-
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

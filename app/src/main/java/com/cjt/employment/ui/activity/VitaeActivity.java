@@ -32,8 +32,10 @@ public class VitaeActivity extends BaseActivity<VitaeActivity, VitagePresenter> 
 
     private LinearLayoutForListView worklistview;
     private LinearLayoutForListView educationlistview;
+    private LinearLayoutForListView projectlistview;
     private AdapterForLinearLayout worklistviewAdpater;
     private AdapterForLinearLayout educationlistviewAdpater;
+    private AdapterForLinearLayout projectlistviewAdpater;
 
     //基本信息
     private TextView tv_name;
@@ -53,6 +55,7 @@ public class VitaeActivity extends BaseActivity<VitaeActivity, VitagePresenter> 
     private TextView tv_workexperience_edit;
     private TextView tv_education_edit;
     private TextView tv_hopejob_edit;
+    private TextView tv_project_edit;
 
     public final static int requestCode = 2;
 
@@ -72,8 +75,8 @@ public class VitaeActivity extends BaseActivity<VitaeActivity, VitagePresenter> 
         super.onStart();
         getPresenter().getVitageUser("getVitageUser", Config.getValueByKey(this, Config.KEY_USERID));
         getPresenter().getWorkExperienceList("getWorkExperienceList", Config.getValueByKey(this, Config.KEY_USERID));
-        getPresenter().getEducationList("getEducationList",Config.getValueByKey(this,Config.KEY_USERID));
-        getPresenter().getHopeJob("getHopeJob",Config.getValueByKey(this,Config.KEY_USERID));
+        getPresenter().getEducationList("getEducationList", Config.getValueByKey(this, Config.KEY_USERID));
+        getPresenter().getHopeJob("getHopeJob", Config.getValueByKey(this, Config.KEY_USERID));
     }
 
     private void initView() {
@@ -103,15 +106,18 @@ public class VitaeActivity extends BaseActivity<VitaeActivity, VitagePresenter> 
 
         worklistview = (LinearLayoutForListView) findViewById(R.id.layout_worklistview);
         educationlistview = (LinearLayoutForListView) findViewById(R.id.layout_educationlistview);
+        projectlistview = (LinearLayoutForListView) findViewById(R.id.layout_projectlistview);
         getData();
 
         //编辑按钮
         tv_workexperience_edit = (TextView) findViewById(R.id.tv_workexperience_edit);
         tv_education_edit = (TextView) findViewById(R.id.tv_education_edit);
         tv_hopejob_edit = (TextView) findViewById(R.id.tv_hopejob_edit);
+        tv_project_edit = (TextView) findViewById(R.id.tv_project_edit);
         tv_workexperience_edit.setOnClickListener(this);
         tv_education_edit.setOnClickListener(this);
         tv_hopejob_edit.setOnClickListener(this);
+        tv_project_edit.setOnClickListener(this);
     }
 
     private void getData() {
@@ -125,6 +131,16 @@ public class VitaeActivity extends BaseActivity<VitaeActivity, VitagePresenter> 
             list.add(win);
         }
 
+        ArrayList<HashMap<String, Object>> list2 = new ArrayList<HashMap<String, Object>>();
+        for (int i = 0; i < 3; i++) {
+            HashMap<String, Object> win = new HashMap<String, Object>();
+            win.put("projecttime", "  2016.09-2016.10");
+            win.put("projectname", "【项目名称】 美团外卖");
+            win.put("projectreponsibility", "【项目职责】 WorkContent");
+            win.put("projectcontent", "  项目描述: WorkContent");
+            list2.add(win);
+        }
+
         worklistviewAdpater = new AdapterForLinearLayout(this, list, R.layout.worklist_item, new String[]{"worktime", "workname", "workcontent"},
                 new int[]{R.id.tv_worktime, R.id.tv_workname, R.id.tv_workcontent});
         worklistview.setAdapter(worklistviewAdpater);
@@ -132,6 +148,10 @@ public class VitaeActivity extends BaseActivity<VitaeActivity, VitagePresenter> 
         educationlistviewAdpater = new AdapterForLinearLayout(this, list, R.layout.worklist_item, new String[]{"worktime", "workname", "workcontent"},
                 new int[]{R.id.tv_worktime, R.id.tv_workname, R.id.tv_workcontent});
         educationlistview.setAdapter(educationlistviewAdpater);
+
+        projectlistviewAdpater = new AdapterForLinearLayout(this, list2, R.layout.projectlist_item, new String[]{"projecttime", "projectname", "projectreponsibility","projectcontent"},
+                new int[]{R.id.tv_projecttime, R.id.tv_projectname, R.id.tv_projectreponsibility, R.id.tv_projectcontent});
+        projectlistview.setAdapter(projectlistviewAdpater);
     }
 
     @Override
@@ -159,6 +179,10 @@ public class VitaeActivity extends BaseActivity<VitaeActivity, VitagePresenter> 
             case R.id.tv_hopejob_edit:
                 Intent hopejobIntent = new Intent(this, HopeJobEditActivity.class);
                 startActivity(hopejobIntent);
+                break;
+            case R.id.tv_project_edit:
+                Intent projectIntent = new Intent(this, ProjectActivity.class);
+                startActivity(projectIntent);
                 break;
             case R.id.layout_hopejob_unedit:
                 Intent hopJobEditIntent = new Intent(this, HopeJobEditActivity.class);
@@ -208,9 +232,9 @@ public class VitaeActivity extends BaseActivity<VitaeActivity, VitagePresenter> 
         for (int i = 0; i < data.size(); i++) {
             Education.DataBean dataBean = data.get(i);
             HashMap<String, Object> win = new HashMap<String, Object>();
-            win.put("worktime", dataBean.getGraduationtime()+"年毕业");
+            win.put("worktime", dataBean.getGraduationtime() + "年毕业");
             win.put("workname", dataBean.getSchool());
-            win.put("workcontent", dataBean.getEducation()+" - "+dataBean.getMajor());
+            win.put("workcontent", dataBean.getEducation() + " - " + dataBean.getMajor());
             list.add(win);
         }
         educationlistviewAdpater = new AdapterForLinearLayout(this, list, R.layout.worklist_item, new String[]{"worktime", "workname", "workcontent"},
@@ -222,7 +246,7 @@ public class VitaeActivity extends BaseActivity<VitaeActivity, VitagePresenter> 
     @Override
     public void getHopeJobSuccess(HopeJob.DataBean data) {
         tv_hopeposition.setText(data.getHopeposition());
-        tv_jobtype.setText(data.getJobtype()+"/"+data.getCity()+"/"+data.getMoney());
+        tv_jobtype.setText(data.getJobtype() + "/" + data.getCity() + "/" + data.getMoney());
         tv_content.setText(data.getContent());
     }
 
@@ -240,7 +264,6 @@ public class VitaeActivity extends BaseActivity<VitaeActivity, VitagePresenter> 
         tv_city.setText("所在城市:  " + data.getCity());
 
     }
-
 
 
     @Override
