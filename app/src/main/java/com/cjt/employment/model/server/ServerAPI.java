@@ -154,5 +154,15 @@ public interface ServerAPI {
             @Query("money") String money,
             @Query("content") String content
     );
-
+    //添加项目经历
+    @GET("servlet/VitageServlet")
+    Observable<UpdateResult> addProject(
+            @Query("action") String action,
+            @Query("id") String id,
+            @Query("projectname") String projectname,
+            @Query("responsibility") String responsibility,
+            @Query("starttime") String starttime,
+            @Query("endtime") String endtime,
+            @Query("content") String content
+    );
 }

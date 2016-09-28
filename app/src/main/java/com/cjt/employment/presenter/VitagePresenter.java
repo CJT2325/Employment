@@ -5,6 +5,7 @@ import android.util.Log;
 import com.cjt.employment.bean.Education;
 import com.cjt.employment.bean.HopeJob;
 import com.cjt.employment.bean.LoginResult;
+import com.cjt.employment.bean.Project;
 import com.cjt.employment.bean.UpdateResult;
 import com.cjt.employment.bean.VitageBean;
 import com.cjt.employment.bean.WorkExperience;
@@ -118,4 +119,28 @@ public class VitagePresenter extends BasePresenter<VitaeActivity>{
             Log.i("CJT", "model is null");
         }
     }
+
+    public void getProjectList(String action, String id) {
+        if (mVitageModel != null) {
+//            getView().showProgressBar();
+            mVitageModel.getProjectList(action, id)
+                    .subscribeOn(Schedulers.newThread())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Action1<Project>() {
+                        @Override
+                        public void call(Project project) {
+                            Log.i("CJT",project.getData().size()+" ");
+                            getView().getProjectSuccess(project.getData());
+                        }
+                    }, new Action1<Throwable>() {
+                        @Override
+                        public void call(Throwable throwable) {
+                            Log.i("RxJava", "又是在这里出现了问题呀----->" + throwable.toString());
+                        }
+                    });
+        } else {
+            Log.i("CJT", "model is null");
+        }
+    }
+
 }

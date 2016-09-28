@@ -22,7 +22,7 @@
             android:paddingTop="@dimen/activity_vertical_margin">
 
             <EditText
-                android:id="@+id/et_companyname"
+                android:id="@+id/et_projectname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_mode_edit_red_24dp"
@@ -30,7 +30,7 @@
                 android:textColor="@color/colorAccent" />
 
             <EditText
-                android:id="@+id/et_position"
+                android:id="@+id/et_responsibility"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="true"

@@ -13,6 +13,7 @@ import com.cjt.employment.R;
 import com.cjt.employment.adapter.AdapterForLinearLayout;
 import com.cjt.employment.bean.Education;
 import com.cjt.employment.bean.HopeJob;
+import com.cjt.employment.bean.Project;
 import com.cjt.employment.bean.VitageBean;
 import com.cjt.employment.bean.WorkExperience;
 import com.cjt.employment.common.Config;
@@ -77,6 +78,7 @@ public class VitaeActivity extends BaseActivity<VitaeActivity, VitagePresenter> 
         getPresenter().getWorkExperienceList("getWorkExperienceList", Config.getValueByKey(this, Config.KEY_USERID));
         getPresenter().getEducationList("getEducationList", Config.getValueByKey(this, Config.KEY_USERID));
         getPresenter().getHopeJob("getHopeJob", Config.getValueByKey(this, Config.KEY_USERID));
+        getPresenter().getProjectList("getProjectList", Config.getValueByKey(this,Config.KEY_USERID));
     }
 
     private void initView() {
@@ -248,6 +250,24 @@ public class VitaeActivity extends BaseActivity<VitaeActivity, VitagePresenter> 
         tv_hopeposition.setText(data.getHopeposition());
         tv_jobtype.setText(data.getJobtype() + "/" + data.getCity() + "/" + data.getMoney());
         tv_content.setText(data.getContent());
+    }
+
+    @Override
+    public void getProjectSuccess(List<Project.DataBean> data) {
+        ArrayList<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
+        for (int i = 0; i < data.size(); i++) {
+            Project.DataBean dataBean=data.get(i);
+            HashMap<String, Object> win = new HashMap<String, Object>();
+            win.put("projecttime", "  "+dataBean.getStarttime()+" - "+dataBean.getEndtime());
+            win.put("projectname", "【项目名称】 "+dataBean.getName());
+            win.put("projectreponsibility", "【项目职责】 "+dataBean.getResponsibility());
+            win.put("projectcontent", "  项目描述: "+dataBean.getContent());
+            list.add(win);
+        }
+        projectlistviewAdpater = new AdapterForLinearLayout(this, list, R.layout.projectlist_item, new String[]{"projecttime", "projectname", "projectreponsibility","projectcontent"},
+                new int[]{R.id.tv_projecttime, R.id.tv_projectname, R.id.tv_projectreponsibility, R.id.tv_projectcontent});
+        projectlistview.removeAllViews();
+        projectlistview.setAdapter(projectlistviewAdpater);
     }
 
     @Override
