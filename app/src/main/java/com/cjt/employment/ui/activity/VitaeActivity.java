@@ -2,7 +2,9 @@ package com.cjt.employment.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.BottomSheetDialog;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -25,11 +27,20 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class VitaeActivity extends BaseActivity<VitaeActivity, VitagePresenter> implements View.OnClickListener, VitageView {
 
     private RelativeLayout layout_user_unedit;
     private RelativeLayout layout_user_edit;
     private RelativeLayout layout_hopejob_unedit;
+
+    private CircleImageView iv_cover;
+    private RelativeLayout photo_bottomsheet;
+    private BottomSheetDialog dialog;
+    private RelativeLayout bs_photograph;
+    private RelativeLayout bs_album;
+    private RelativeLayout bs_cancel;
 
     private LinearLayoutForListView worklistview;
     private LinearLayoutForListView educationlistview;
@@ -82,6 +93,13 @@ public class VitaeActivity extends BaseActivity<VitaeActivity, VitagePresenter> 
     }
 
     private void initView() {
+        //更换头像
+        photo_bottomsheet = (RelativeLayout) LayoutInflater.from(this).inflate(R.layout.photo_bottomsheet, null);
+        dialog = new BottomSheetDialog(this);
+        dialog.setContentView(photo_bottomsheet);
+        iv_cover= (CircleImageView) findViewById(R.id.iv_cover);
+        iv_cover.setOnClickListener(this);
+
         tv_name = (TextView) findViewById(R.id.tv_name);
         tv_sex = (TextView) findViewById(R.id.tv_sex);
         tv_brithday = (TextView) findViewById(R.id.tv_brithday);
@@ -164,6 +182,9 @@ public class VitaeActivity extends BaseActivity<VitaeActivity, VitagePresenter> 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.iv_cover:
+                dialog.show();
+                break;
             case R.id.layout_user_unedit:
                 Intent editIntent = new Intent(this, VitageUserEditActivity.class);
                 startActivityForResult(editIntent, requestCode);

@@ -12,10 +12,13 @@ import android.widget.TextView;
 
 import com.cjt.employment.R;
 import com.cjt.employment.bean.Recruit;
+import com.cjt.employment.common.GlideImageLoader;
 import com.cjt.employment.ui.activity.RecruitmentInfoActivity;
 import com.squareup.picasso.Picasso;
 import com.youth.banner.Banner;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -136,7 +139,8 @@ public class RecruitmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                     "http://navod.scse.com.cn/nn_cms/data/template/100000/200003/campus/music.jpg",
                     "http://navod.scse.com.cn/nn_cms/data/template/100000/200003/campus/jinduguanggao.jpg"
             };
-            banner.setImages(image);
+//            banner.setImages(image);
+            banner.setImages(Arrays.asList(image)).setImageLoader(new GlideImageLoader()).start();
             banner.setDelayTime(5000);
             this.listener = listener;
         }

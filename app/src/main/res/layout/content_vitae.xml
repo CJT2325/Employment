@@ -39,7 +39,8 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_centerHorizontal="true"
-                    android:src="@drawable/tencentlogo" />
+                    android:tint="@color/colorPrimary"
+                    android:src="@drawable/ic_person_black_24dp1" />
 
                 <TextView
                     android:layout_width="wrap_content"

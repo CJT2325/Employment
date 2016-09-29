@@ -104,6 +104,10 @@
         <activity
             android:name=".ui.activity.ProjectEditActivity"
             android:label="@string/title_activity_project_edit"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.activity.CollectionActivity"
+            android:label="@string/title_activity_collection"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

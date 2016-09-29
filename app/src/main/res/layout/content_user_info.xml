@@ -20,7 +20,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/tencentlogo" />
+            android:src="@drawable/ic_person_black_24dp" />
 
         <TextView
             android:id="@+id/tv_name"
@@ -90,6 +90,7 @@
         android:background="#DDDDDD" />
 
     <RelativeLayout
+        android:id="@+id/layout_collection"
         android:background="@drawable/item_selector"
         android:clickable="true"
         android:layout_width="match_parent"

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="20dp"
+    android:background="#FFF">
+
+    <RelativeLayout
+        android:id="@+id/layout_recruitment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/item_selector"
+        android:clickable="true">
+
+        <ImageView
+            android:id="@+id/iv_cover"
+            android:layout_width="100dp"
+            android:layout_height="70dp"
+            android:layout_marginRight="8dp"
+            android:scaleType="centerInside" />
+
+        <TextView
+            android:id="@+id/tv_position"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/iv_cover"
+            android:text="Android开发实习生"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/tv_company"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_position"
+            android:layout_marginTop="3dp"
+            android:layout_toRightOf="@id/iv_cover"
+            android:text="公司名称"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/tv_recruitinfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_company"
+            android:layout_marginTop="3dp"
+            android:layout_toRightOf="@id/iv_cover"
+            android:text="广州 1-3年 本科"
+            android:textColor="#999999" />
+
+        <TextView
+            android:id="@+id/tv_companyinfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_recruitinfo"
+            android:layout_marginTop="3dp"
+            android:layout_toRightOf="@id/iv_cover"
+            android:text="未融资 | 15-50人 | O2O"
+            android:textColor="#999999" />
+
+        <TextView
+            android:id="@+id/tv_wage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:text="2-3K"
+            android:textColor="@color/colorAccent" />
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/tv_recruitinfo"
+            android:layout_alignParentRight="true"
+            android:text="08月08日"
+            android:textColor="#999999" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/layout_recruitment">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#AAA" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="取消关注" />
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:background="#AAA" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="发送简历"
+                android:textColor="@color/colorPrimary" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

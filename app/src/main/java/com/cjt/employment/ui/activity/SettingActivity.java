@@ -67,7 +67,7 @@ public class SettingActivity extends BaseActivity<SettingActivity,SettingPresent
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Config.clearAll(SettingActivity.this);
-                                Intent loginIntent=new Intent(SettingActivity.this, LoginActivity.class);
+                                Intent loginIntent=new Intent(SettingActivity.this, LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                 SettingActivity.this.startActivity(loginIntent);
                             }
                         }).show();

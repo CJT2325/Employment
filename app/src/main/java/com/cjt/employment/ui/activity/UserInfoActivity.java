@@ -26,6 +26,7 @@ public class UserInfoActivity extends BaseActivity<UserInfoActivity, UserInfoPre
     private RelativeLayout layout_setting;
     private RelativeLayout layout_enterprise;
     private RelativeLayout layout_vitae;
+    private RelativeLayout layout_collection;
     private CircleImageView iv_cover;
     private TextView tv_name;
 
@@ -49,9 +50,11 @@ public class UserInfoActivity extends BaseActivity<UserInfoActivity, UserInfoPre
         layout_setting = (RelativeLayout) findViewById(R.id.layout_setting);
         layout_enterprise = (RelativeLayout) findViewById(R.id.layout_enterprise);
         layout_vitae = (RelativeLayout) findViewById(R.id.layout_vitae);
+        layout_collection = (RelativeLayout) findViewById(R.id.layout_collection);
         layout_setting.setOnClickListener(this);
         layout_enterprise.setOnClickListener(this);
         layout_vitae.setOnClickListener(this);
+        layout_collection.setOnClickListener(this);
         iv_cover = (CircleImageView) findViewById(R.id.iv_cover);
         tv_name = (TextView) findViewById(R.id.tv_name);
         getPresenter().getUserCover("getUserInfo", Config.getValueByKey(this, Config.KEY_USERID));
@@ -95,6 +98,10 @@ public class UserInfoActivity extends BaseActivity<UserInfoActivity, UserInfoPre
             case R.id.layout_vitae:
                 Intent vitaeIntent = new Intent(this, VitaeActivity.class);
                 startActivity(vitaeIntent);
+                break;
+            case R.id.layout_collection:
+                Intent collectionIntent = new Intent(this, CollectionActivity.class);
+                startActivity(collectionIntent);
                 break;
         }
     }
