@@ -26,9 +26,12 @@
             </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
-
     <include layout="@layout/content_main" />
-
+    <br.com.mauker.materialsearchview.MaterialSearchView
+        android:id="@+id/search_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        style="@style/MaterialSearchViewStyle"/>
     <!--<android.support.design.widget.FloatingActionButton-->
         <!--android:id="@+id/fab"-->
         <!--android:layout_width="wrap_content"-->

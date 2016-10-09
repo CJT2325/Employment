@@ -25,4 +25,5 @@
     <string name="title_activity_project">ProjectActivity</string>
     <string name="title_activity_project_edit">ProjectEditActivity</string>
     <string name="title_activity_collection">CollectionActivity</string>
+    <string name="title_activity_search">SearchActivity</string>
 </resources>

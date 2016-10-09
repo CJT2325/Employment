@@ -1,5 +1,6 @@
 package com.cjt.employment.ui.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -12,6 +13,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
+import android.widget.Toast;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
@@ -21,8 +24,11 @@ import com.cjt.employment.ui.fragment.ExploreFragment;
 import com.cjt.employment.ui.fragment.HomeFragment;
 import com.cjt.employment.ui.fragment.MessageFragment;
 
+import br.com.mauker.materialsearchview.MaterialSearchView;
+
 public class MainActivity extends AppCompatActivity {
     private BottomNavigationBar bottomNavigationBar;
+    private MaterialSearchView searchView;
 
     private HomeFragment homeFragment;
     private MessageFragment messageFragment;
@@ -38,8 +44,69 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         fm=getSupportFragmentManager();
         initBottomNavigationBar();
+        initSearchView();
         setDefaultFragment();
     }
+
+    private void initSearchView() {
+        searchView= (MaterialSearchView) findViewById(R.id.search_view);
+
+        searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                //这里发起查询
+                Log.i("CJT","query    "+query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                Log.i("CJT","newText     "+newText);
+                return false;
+            }
+        });
+
+        searchView.setSearchViewListener(new MaterialSearchView.SearchViewListener() {
+            @Override
+            public void onSearchViewOpened() {
+                // Do something once the view is open.
+            }
+
+            @Override
+            public void onSearchViewClosed() {
+                // Do something once the view is closed.
+            }
+        });
+
+        searchView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // Do something when the suggestion list is clicked.
+                String suggestion = searchView.getSuggestionAtPosition(position);
+
+                searchView.setQuery(suggestion, false);
+            }
+        });
+
+
+        final Context context = this;
+        searchView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(context, "Long clicked position: " + i, Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
+
+        searchView.setOnVoiceClickedListener(new MaterialSearchView.OnVoiceClickedListener() {
+            @Override
+            public void onVoiceClicked() {
+                Toast.makeText(context, "Voice clicked!", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
     //初始化BottomNavigationBar
     private void initBottomNavigationBar() {
         bottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
@@ -109,6 +176,9 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_seacher) {
+//            Intent searchIntent=new Intent(this,SearchActivity.class);
+//            startActivity(searchIntent);
+            searchView.openSearch();
             return true;
         }else if(id == R.id.action_user){
             Intent intent;

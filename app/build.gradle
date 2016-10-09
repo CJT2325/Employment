@@ -23,7 +23,7 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.4.0'
-    compile 'com.android.support:design:23.4.0'
+    compile 'com.android.support:design:24.2.1'
     compile 'com.ashokvarma.android:bottom-navigation-bar:1.2.2'
     compile 'com.android.support:support-v4:23.4.0'
     compile 'com.android.support:recyclerview-v7:23.4.0'
@@ -37,4 +37,5 @@ dependencies {
     compile 'io.reactivex:rxandroid:1.1.0'
     compile 'io.reactivex:rxjava:1.1.1'
     compile 'com.bigkoo:pickerview:2.1.1'
+    compile 'br.com.mauker.materialsearchview:materialsearchview:1.1.3'
 }

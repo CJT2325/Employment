@@ -8,10 +8,4 @@
         android:icon="@drawable/ic_search_black_24dp"
         android:title="@string/action_settings"
         app:showAsAction="always" />
-    <item
-        android:id="@+id/action_user"
-        android:orderInCategory="100"
-        android:icon="@drawable/ic_person_black_24dp"
-        android:title="@string/action_settings"
-        app:showAsAction="always" />
 </menu>
