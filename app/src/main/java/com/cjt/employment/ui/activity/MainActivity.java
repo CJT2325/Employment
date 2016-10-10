@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private ExploreFragment exploreFragment;
 
     private FragmentManager fm;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,26 +43,29 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
-        fm=getSupportFragmentManager();
+        fm = getSupportFragmentManager();
         initBottomNavigationBar();
         initSearchView();
         setDefaultFragment();
     }
 
     private void initSearchView() {
-        searchView= (MaterialSearchView) findViewById(R.id.search_view);
+        searchView = (MaterialSearchView) findViewById(R.id.search_view);
 
         searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 //这里发起查询
-                Log.i("CJT","query    "+query);
+                Intent searchIntent = new Intent(MainActivity.this, SearchActivity.class);
+                searchIntent.putExtra("query",query);
+                startActivity(searchIntent);
+                Log.i("CJT", "query    " + query);
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                Log.i("CJT","newText     "+newText);
+                Log.i("CJT", "newText     " + newText);
                 return false;
             }
         });
@@ -118,25 +122,25 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationBar.setTabSelectedListener(new BottomNavigationBar.OnTabSelectedListener() {
             @Override
             public void onTabSelected(int position) {
-                FragmentTransaction transaction=fm.beginTransaction();
+                FragmentTransaction transaction = fm.beginTransaction();
                 switch (position) {
                     case 0:
-                        if (homeFragment==null){
-                            homeFragment=HomeFragment.newInstance();
+                        if (homeFragment == null) {
+                            homeFragment = HomeFragment.newInstance();
                         }
-                        transaction.replace(R.id.layout_frame,homeFragment);
+                        transaction.replace(R.id.layout_frame, homeFragment);
                         break;
                     case 1:
-                        if (messageFragment==null){
-                            messageFragment=MessageFragment.newInstance();
+                        if (messageFragment == null) {
+                            messageFragment = MessageFragment.newInstance();
                         }
-                        transaction.replace(R.id.layout_frame,messageFragment);
+                        transaction.replace(R.id.layout_frame, messageFragment);
                         break;
                     case 2:
-                        if (exploreFragment==null){
-                            exploreFragment=ExploreFragment.newInstance();
+                        if (exploreFragment == null) {
+                            exploreFragment = ExploreFragment.newInstance();
                         }
-                        transaction.replace(R.id.layout_frame,exploreFragment);
+                        transaction.replace(R.id.layout_frame, exploreFragment);
                         break;
                 }
                 transaction.commit();
@@ -153,6 +157,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     //设置默认Fragment
     private void setDefaultFragment() {
         FragmentTransaction transaction = fm.beginTransaction();
@@ -176,16 +181,15 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_seacher) {
-//            Intent searchIntent=new Intent(this,SearchActivity.class);
-//            startActivity(searchIntent);
+
             searchView.openSearch();
             return true;
-        }else if(id == R.id.action_user){
+        } else if (id == R.id.action_user) {
             Intent intent;
-            if (Config.getValueByKey(this,Config.KEY_TOKEN).equals("")) {
+            if (Config.getValueByKey(this, Config.KEY_TOKEN).equals("")) {
                 intent = new Intent(this, LoginActivity.class);
-            }else{
-                intent=new Intent(this,UserInfoActivity.class);
+            } else {
+                intent = new Intent(this, UserInfoActivity.class);
             }
             startActivity(intent);
         }

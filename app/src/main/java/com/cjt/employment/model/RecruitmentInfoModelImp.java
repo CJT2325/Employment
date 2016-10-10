@@ -2,6 +2,7 @@ package com.cjt.employment.model;
 
 import com.cjt.employment.bean.Recruit;
 import com.cjt.employment.bean.RecruitmentInfo;
+import com.cjt.employment.bean.UpdateResult;
 import com.cjt.employment.model.Imodel.RecruitModel;
 import com.cjt.employment.model.Imodel.RecruitmentInfoModel;
 import com.cjt.employment.model.server.ServerAPI;
@@ -32,5 +33,10 @@ public class RecruitmentInfoModelImp implements RecruitmentInfoModel {
     @Override
     public Observable<RecruitmentInfo> getRecruitInfoById(String action, int id) {
         return mServerAPI.getRecruitInfoByID(action, id);
+    }
+
+    @Override
+    public Observable<UpdateResult> pushVitage(String action, String id, int recruitId, int companyId) {
+        return mServerAPI.pushVitage(action, id, recruitId, companyId);
     }
 }

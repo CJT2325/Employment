@@ -165,4 +165,18 @@ public interface ServerAPI {
             @Query("endtime") String endtime,
             @Query("content") String content
     );
+    //查询工作职位
+    @GET("servlet/RecruitServlet")
+    Observable<Recruit> searchRecruitment(
+            @Query("action") String action,
+            @Query("query") String query
+    );
+    //发送简历
+    @GET("servlet/RecruitServlet")
+    Observable<UpdateResult> pushVitage(
+            @Query("action") String action,
+            @Query("id") String id,
+            @Query("recruitId") int recruitId,
+            @Query("companyId") int companyId
+    );
 }

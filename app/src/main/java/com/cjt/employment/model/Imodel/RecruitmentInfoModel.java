@@ -2,6 +2,7 @@ package com.cjt.employment.model.Imodel;
 
 import com.cjt.employment.bean.Recruit;
 import com.cjt.employment.bean.RecruitmentInfo;
+import com.cjt.employment.bean.UpdateResult;
 
 import rx.Observable;
 
@@ -11,4 +12,5 @@ import rx.Observable;
  */
 public interface RecruitmentInfoModel {
     public Observable<RecruitmentInfo> getRecruitInfoById(String action, int id);
+    public Observable<UpdateResult> pushVitage(String action, String id, int recruitId, int companyId);
 }

@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.cjt.employment.bean.Recruit;
 import com.cjt.employment.bean.RecruitmentInfo;
+import com.cjt.employment.bean.UpdateResult;
 import com.cjt.employment.model.Imodel.RecruitModel;
 import com.cjt.employment.model.Imodel.RecruitmentInfoModel;
 import com.cjt.employment.model.RecruitModelImp;
@@ -28,6 +29,7 @@ public class RecruitmentInfoPresenter extends BasePresenter<RecruitmentInfoActiv
 
     public void getRecruitInfoById(String action, int id) {
         if (mRecruitmentInfoModel != null) {
+            getView().showProgressBar();
             mRecruitmentInfoModel.getRecruitInfoById(action, id)
                     .subscribeOn(Schedulers.newThread())
                     .observeOn(AndroidSchedulers.mainThread())
@@ -36,7 +38,30 @@ public class RecruitmentInfoPresenter extends BasePresenter<RecruitmentInfoActiv
                         public void call(RecruitmentInfo recruitmentInfo) {
 //                            Log.i("CJT", RecruitmentInfo.toString());
                             getView().updateRecruitmentInfo(recruitmentInfo.getData());
+                            getView().hideProgressBar();
 //                            mHomeView.updata(shopList.getVendors());
+                        }
+                    }, new Action1<Throwable>() {
+                        @Override
+                        public void call(Throwable throwable) {
+                            Log.i("RxJava", "又是在这里出现了问题呀----->" + throwable.toString());
+                        }
+                    });
+        } else {
+            Log.i("CJT", "model is null");
+        }
+    }
+
+    public void pushVitage(String action, String id, int recruitId, int companyId) {
+        if (mRecruitmentInfoModel != null) {
+            getView().showProgressBar();
+            mRecruitmentInfoModel.pushVitage(action, id, recruitId, companyId)
+                    .subscribeOn(Schedulers.newThread())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Action1<UpdateResult>() {
+                        @Override
+                        public void call(UpdateResult updateResult) {
+                            getView().hideProgressBar();
                         }
                     }, new Action1<Throwable>() {
                         @Override
