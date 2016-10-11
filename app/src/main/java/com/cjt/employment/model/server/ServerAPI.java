@@ -3,6 +3,7 @@ package com.cjt.employment.model.server;
 import com.cjt.employment.bean.AccountInfo;
 import com.cjt.employment.bean.CompanyInfo;
 import com.cjt.employment.bean.Education;
+import com.cjt.employment.bean.EnterprisePosition;
 import com.cjt.employment.bean.HopeJob;
 import com.cjt.employment.bean.LoginResult;
 import com.cjt.employment.bean.Project;
@@ -170,6 +171,13 @@ public interface ServerAPI {
     Observable<Recruit> searchRecruitment(
             @Query("action") String action,
             @Query("query") String query
+    );
+
+    //根据用户ID获取他管理公司的职位
+    @GET("servlet/RecruitServlet")
+    Observable<EnterprisePosition> getPositionByCompanyId(
+            @Query("action") String action,
+            @Query("id") String id
     );
     //发送简历
     @GET("servlet/RecruitServlet")
