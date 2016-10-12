@@ -60,9 +60,9 @@ public class EnterpriseHomeActivity extends AppCompatActivity {
                         getSupportActionBar().setTitle("职位管理");
                         break;
                     case 1:
-                        if (enterpriseVitageFragment==null){
+//                        if (enterpriseVitageFragment==null){
                             enterpriseVitageFragment= EnterpriseVitageFragment.newInstance();
-                        }
+//                        }
                         transaction.replace(R.id.layout_frame,enterpriseVitageFragment);
                         getSupportActionBar().setTitle("简历管理");
                         break;

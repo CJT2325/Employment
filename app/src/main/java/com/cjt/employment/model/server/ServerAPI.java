@@ -11,6 +11,7 @@ import com.cjt.employment.bean.Recruit;
 import com.cjt.employment.bean.RecruitmentInfo;
 import com.cjt.employment.bean.UpLoadImageResult;
 import com.cjt.employment.bean.UpdateResult;
+import com.cjt.employment.bean.UserVitage;
 import com.cjt.employment.bean.VitageBean;
 import com.cjt.employment.bean.WorkExperience;
 
@@ -186,5 +187,11 @@ public interface ServerAPI {
             @Query("id") String id,
             @Query("recruitId") int recruitId,
             @Query("companyId") int companyId
+    );
+    //发送简历
+    @GET("servlet/RecruitServlet")
+    Observable<UserVitage> getUserVitage(
+            @Query("action") String action,
+            @Query("id") String id
     );
 }

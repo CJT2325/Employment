@@ -14,7 +14,7 @@
         app:tabTextColor="#d1d1d1" />
     <View
         android:background="@color/colorPrimary"
-        android:layout_below="@id/tl_company"
+        android:layout_below="@id/tl_vitage"
         android:id="@+id/view_space"
         android:layout_width="match_parent"
         android:layout_height="3dp"/>

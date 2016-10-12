@@ -20,8 +20,10 @@ public class CompanyActivity extends AppCompatActivity {
     private int companyId;
     private TabLayout tl_company;
     private ViewPager vp_info;
+
     private List<Fragment> list_fragment;
     private List<String> list_title;
+
     private FragmentPagerAdapter mFragmentPagerAdapter;
     private CompanyInfoFragment mCompanyInfoFragment;
     private PositionFragment mPositionFragment;

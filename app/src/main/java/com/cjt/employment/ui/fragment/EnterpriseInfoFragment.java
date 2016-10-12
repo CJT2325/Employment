@@ -22,11 +22,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EnterpriseInfoFragment extends BaseFragment<EnterpriseInfoFragment, EnterpriseInfoPresenter> implements HomeView {
-    private RecyclerView mRecyclerView;
-    private ProgressBar mProgressBar;
-    private List<Recruit.DataBean> mDatas;
-    private RecruitmentAdapter mRecruitmentAdapter;
-
     public static EnterpriseInfoFragment newInstance() {
         EnterpriseInfoFragment fragment = new EnterpriseInfoFragment();
         Bundle args = new Bundle();
@@ -53,32 +48,15 @@ public class EnterpriseInfoFragment extends BaseFragment<EnterpriseInfoFragment,
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
-        initDatas();
+        View view = inflater.inflate(R.layout.fragment_enterprise_info, container, false);
         initView(view);
 //        getPresenter().getPositionByCompanyId("getPositionByCompanyId",);
-        showProgressBar();
+
         return view;
     }
 
     private void initView(View view) {
-        mProgressBar = (ProgressBar) view.findViewById(R.id.progressbar);
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.rv_recruitment);
-        mRecruitmentAdapter = new RecruitmentAdapter(mDatas, getActivity(), new RecruitmentAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-//                Intent recruitmentInfoIntent = new Intent(getContext(), RecruitmentInfoActivity.class);
-//                startActivity(recruitmentInfoIntent);
-                mRecruitmentAdapter.startActivityByRecruitId(position);
-            }
-        });
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-        mRecyclerView.setAdapter(mRecruitmentAdapter);
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL_LIST));
-    }
 
-    private void initDatas() {
-        mDatas = new ArrayList<>();
     }
 
     @Override
@@ -94,7 +72,6 @@ public class EnterpriseInfoFragment extends BaseFragment<EnterpriseInfoFragment,
 
     @Override
     public void updateRecruit(List<Recruit.DataBean> data) {
-        mRecruitmentAdapter.updataRecruit(data);
         hideProgressBar();
     }
 
@@ -105,12 +82,12 @@ public class EnterpriseInfoFragment extends BaseFragment<EnterpriseInfoFragment,
 
     @Override
     public void showProgressBar() {
-        mProgressBar.setVisibility(View.VISIBLE);
+
     }
 
     @Override
     public void hideProgressBar() {
-        mProgressBar.setVisibility(View.GONE);
+
     }
 
 }

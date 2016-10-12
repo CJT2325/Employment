@@ -7,6 +7,7 @@ import com.cjt.employment.model.Imodel.RecruitModel;
 import com.cjt.employment.model.RecruitModelImp;
 import com.cjt.employment.ui.fragment.EnterprisePositionFragment;
 import com.cjt.employment.ui.fragment.EnterpriseVitageFragment;
+import com.cjt.employment.ui.view.EnterpriseVitageView;
 import com.cjt.employment.ui.view.HomeView;
 
 import rx.android.schedulers.AndroidSchedulers;
@@ -19,11 +20,11 @@ import rx.schedulers.Schedulers;
  */
 public class EnterpriseVitagePresenter extends BasePresenter<EnterpriseVitageFragment> {
     private RecruitModel mRecruitModel;
-    private HomeView mHomeView;
+    private EnterpriseVitageView enterpriseVitageView;
 
-    public EnterpriseVitagePresenter(HomeView homeView) {
+    public EnterpriseVitagePresenter(EnterpriseVitageView enterpriseVitageView) {
         mRecruitModel = RecruitModelImp.getInstance();
-        this.mHomeView = homeView;
+        this.enterpriseVitageView = enterpriseVitageView;
     }
 
     public void getPositionByCompanyId(String action, String companyid) {
@@ -34,9 +35,6 @@ public class EnterpriseVitagePresenter extends BasePresenter<EnterpriseVitageFra
                     .subscribe(new Action1<Recruit>() {
                         @Override
                         public void call(Recruit recruit) {
-                            Log.i("CJT", recruit.getData().size() + " ");
-                            mHomeView.updateRecruit(recruit.getData());
-//                            mHomeView.updata(shopList.getVendors());
                         }
                     }, new Action1<Throwable>() {
                         @Override
