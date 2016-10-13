@@ -29,7 +29,7 @@ public class AllVitageModelImp implements AllVitageModel {
     }
 
     @Override
-    public Observable<UserVitage> getUserVitage(String action, String id) {
-        return mServerAPI.getUserVitage(action,id);
+    public Observable<UserVitage> getUserVitage(String action, String id,String state) {
+        return mServerAPI.getUserVitage(action,id,state);
     }
 }

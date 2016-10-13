@@ -125,22 +125,31 @@ public class MainActivity extends AppCompatActivity {
                 FragmentTransaction transaction = fm.beginTransaction();
                 switch (position) {
                     case 0:
-                        if (homeFragment == null) {
-                            homeFragment = HomeFragment.newInstance();
-                        }
-                        transaction.replace(R.id.layout_frame, homeFragment);
+//                        if (homeFragment == null) {
+//                            homeFragment = HomeFragment.newInstance();
+//                        }
+//                        transaction.replace(R.id.layout_frame, homeFragment);
+                        transaction.hide(messageFragment);
+                        transaction.hide(exploreFragment);
+                        transaction.show(homeFragment);
                         break;
                     case 1:
-                        if (messageFragment == null) {
-                            messageFragment = MessageFragment.newInstance();
-                        }
-                        transaction.replace(R.id.layout_frame, messageFragment);
+//                        if (messageFragment == null) {
+//                            messageFragment = MessageFragment.newInstance();
+//                        }
+//                        transaction.replace(R.id.layout_frame, messageFragment);
+                        transaction.hide(homeFragment);
+                        transaction.hide(exploreFragment);
+                        transaction.show(messageFragment);
                         break;
                     case 2:
-                        if (exploreFragment == null) {
-                            exploreFragment = ExploreFragment.newInstance();
-                        }
-                        transaction.replace(R.id.layout_frame, exploreFragment);
+//                        if (exploreFragment == null) {
+//                            exploreFragment = ExploreFragment.newInstance();
+//                        }
+//                        transaction.replace(R.id.layout_frame, exploreFragment);
+                        transaction.hide(homeFragment);
+                        transaction.hide(messageFragment);
+                        transaction.show(exploreFragment);
                         break;
                 }
                 transaction.commit();
@@ -162,7 +171,14 @@ public class MainActivity extends AppCompatActivity {
     private void setDefaultFragment() {
         FragmentTransaction transaction = fm.beginTransaction();
         homeFragment = HomeFragment.newInstance();
-        transaction.replace(R.id.layout_frame, homeFragment);
+        messageFragment = MessageFragment.newInstance();
+        exploreFragment = ExploreFragment.newInstance();
+        transaction.add(R.id.layout_frame, homeFragment);
+        transaction.add(R.id.layout_frame, messageFragment);
+        transaction.add(R.id.layout_frame, exploreFragment);
+        transaction.hide(messageFragment);
+        transaction.hide(exploreFragment);
+        transaction.show(homeFragment);
         transaction.commit();
     }
 

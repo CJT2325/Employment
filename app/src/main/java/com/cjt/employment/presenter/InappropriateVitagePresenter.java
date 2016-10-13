@@ -2,29 +2,25 @@ package com.cjt.employment.presenter;
 
 import android.util.Log;
 
-import com.cjt.employment.bean.Recruit;
 import com.cjt.employment.bean.UserVitage;
 import com.cjt.employment.model.AllVitageModelImp;
 import com.cjt.employment.model.Imodel.AllVitageModel;
-import com.cjt.employment.model.Imodel.RecruitModel;
-import com.cjt.employment.model.RecruitModelImp;
-import com.cjt.employment.ui.fragment.AllVitageFragment;
+import com.cjt.employment.ui.fragment.InappropriateVitageFragment;
 import com.cjt.employment.ui.view.AllVitageView;
-import com.cjt.employment.ui.view.HomeView;
 
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
 /**
- * 作者: 陈嘉桐 on 2016/10/13
+ * 作者: 陈嘉桐 on 2016/10/14
  * 邮箱: 445263848@qq.com.
  */
-public class AllVitagePresenter extends BasePresenter<AllVitageFragment> {
+public class InappropriateVitagePresenter extends BasePresenter<InappropriateVitageFragment>{
     private AllVitageModel mAllVitageModel;
     private AllVitageView mAllVitageView;
 
-    public AllVitagePresenter(AllVitageView allVitageView) {
+    public InappropriateVitagePresenter(AllVitageView allVitageView) {
         mAllVitageModel = AllVitageModelImp.getInstance();
         this.mAllVitageView = allVitageView;
     }

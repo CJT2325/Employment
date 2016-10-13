@@ -10,5 +10,5 @@ import rx.Observable;
  * 邮箱: 445263848@qq.com.
  */
 public interface AllVitageModel {
-    public Observable<UserVitage> getUserVitage(String action, String id);
+    public Observable<UserVitage> getUserVitage(String action, String id, String state);
 }

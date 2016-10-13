@@ -136,7 +136,7 @@ public class RecruitmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             banner = (Banner) itemView.findViewById(R.id.banner);
             String image[] = new String[]{
                     "http://navod.scse.com.cn/nn_cms/data/template/100000/200003/campus/music.jpg",
-                    "http://navod.scse.com.cn/nn_cms/data/template/100000/200003/campus/wulian.jpg"
+                    "http://navod.scse.com.cn/nn_cms/data/template/100000/200003/campus/nadiertianzhaoxin.jpg"
             };
 //            banner.setImages(image);
             banner.setImages(Arrays.asList(image)).setImageLoader(new GlideImageLoader()).start();

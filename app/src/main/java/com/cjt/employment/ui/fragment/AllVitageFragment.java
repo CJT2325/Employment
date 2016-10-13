@@ -84,15 +84,29 @@ public class AllVitageFragment extends BaseFragment<AllVitageFragment, AllVitage
     private void initDatas() {
         mDatas = new ArrayList<UserVitage.DataBean>();
     }
+
     @Override
     public void onStart() {
         super.onStart();
+        Log.i("CJT","AllUserVitage Start");
         if (getPresenter() != null) {
-            getPresenter().getRecruit("getAllUserVitage", Config.getValueByKey(getContext(),Config.KEY_USERID));
+            getPresenter().getRecruit("getAllUserVitage", Config.getValueByKey(getContext(),Config.KEY_USERID),"-1");
             Log.i("CJT","getAllUserVitage");
         } else {
             Log.i("CJT", "AllVitagePresenter is null");
         }
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        Log.i("CJT","AllUserVitage Stop");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.i("CJT","AllUserVitage onDestroy");
     }
 
     @Override

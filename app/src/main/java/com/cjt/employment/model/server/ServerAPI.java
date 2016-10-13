@@ -192,6 +192,8 @@ public interface ServerAPI {
     @GET("servlet/RecruitServlet")
     Observable<UserVitage> getUserVitage(
             @Query("action") String action,
-            @Query("id") String id
+            @Query("id") String id,
+            @Query("state") String state
+
     );
 }

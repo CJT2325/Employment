@@ -77,12 +77,17 @@ public class EnterpriseVitageFragment extends BaseFragment<EnterpriseVitageFragm
     private void initView(View view) {
         tl_vitage = (TabLayout) view.findViewById(R.id.tl_vitage);
         vp_info = (ViewPager) view.findViewById(R.id.vp_info);
+    }
 
+
+    @Override
+    public void onStart() {
+        Log.i("CJT","################## EnterpriseVitageFragment Start! ##################");
         //初始化Fragment
         list_fragment = new ArrayList<Fragment>();
         allVitageFragment = AllVitageFragment.newInstance();
         untreatedVitageFragment = UntreatedVitageFragment.newInstance();
-        interviewVitageFragment = InterviewVitageFragment.newInstance().newInstance();
+        interviewVitageFragment = InterviewVitageFragment.newInstance();
         inappropriateVitageFragment = InappropriateVitageFragment.newInstance();
 
         list_fragment.add(allVitageFragment);
@@ -104,12 +109,12 @@ public class EnterpriseVitageFragment extends BaseFragment<EnterpriseVitageFragm
         mFragmentPagerAdapter = new CompanyTabAdapter(getActivity().getSupportFragmentManager(), list_fragment, list_title);
         vp_info.setAdapter(mFragmentPagerAdapter);
         tl_vitage.setupWithViewPager(vp_info);
+        super.onStart();
     }
 
-
     @Override
-    public void onStart() {
-        super.onStart();
-
+    public void onDestroy() {
+        super.onDestroy();
+        Log.i("CJT","################## EnterpriseVitageFragment Destroy! ##################");
     }
 }

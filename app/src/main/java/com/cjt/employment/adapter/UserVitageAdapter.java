@@ -11,7 +11,9 @@ import android.widget.TextView;
 import com.cjt.employment.R;
 import com.cjt.employment.bean.Recruit;
 import com.cjt.employment.bean.UserVitage;
+import com.cjt.employment.model.server.ServerAPI;
 import com.cjt.employment.ui.activity.RecruitmentInfoActivity;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -55,7 +57,24 @@ public class UserVitageAdapter extends RecyclerView.Adapter<UserVitageAdapter.Po
 
     @Override
     public void onBindViewHolder(UserVitageAdapter.PositionViewHolder holder, int position) {
-
+        UserVitage.DataBean dataBean=datas.get(position);
+        Picasso.with(mContext).load(ServerAPI.baseUrl+"image/accountCover/"+dataBean.getCover()).into(holder.iv_cover);
+        holder.tv_username.setText(dataBean.getUsername());
+        holder.time.setText(dataBean.getTime());
+        holder.tv_position.setText(dataBean.getRecruit());
+        switch (dataBean.getState()){
+            case 0:
+            case 1:
+                holder.tv_type.setText("【未处理】");
+                break;
+            case 2:
+                holder.tv_type.setText("【待面试】");
+                break;
+            case 3:
+                holder.tv_type.setText("【不合适】");
+                break;
+            default:
+        }
     }
 
     @Override
@@ -74,6 +93,7 @@ public class UserVitageAdapter extends RecyclerView.Adapter<UserVitageAdapter.Po
         TextView tv_username;
         TextView tv_position;
         TextView time;
+        TextView tv_type;
 
 
         public PositionViewHolder(View itemView, UserVitageAdapter.OnItemClickListener listener) {
@@ -82,6 +102,7 @@ public class UserVitageAdapter extends RecyclerView.Adapter<UserVitageAdapter.Po
             tv_username = (TextView) itemView.findViewById(R.id.tv_username);
             tv_position = (TextView) itemView.findViewById(R.id.tv_position);
             time = (TextView) itemView.findViewById(R.id.time);
+            tv_type = (TextView) itemView.findViewById(R.id.tv_type);
             itemView.setOnClickListener(this);
             this.listener = listener;
         }

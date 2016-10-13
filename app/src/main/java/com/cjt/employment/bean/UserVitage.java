@@ -8,11 +8,14 @@ import java.util.List;
  */
 public class UserVitage {
 
+
     /**
-     * id : 1
-     * time : 10-11
+     * id : 3
+     * time : 10月14日
      * recruit : Android
      * username : 陈嘉桐
+     * cover : accountcover18814117978_1image.jpg
+     * state : 0
      */
 
     private List<DataBean> data;
@@ -30,6 +33,8 @@ public class UserVitage {
         private String time;
         private String recruit;
         private String username;
+        private String cover;
+        private int state;
 
         public int getId() {
             return id;
@@ -61,6 +66,22 @@ public class UserVitage {
 
         public void setUsername(String username) {
             this.username = username;
+        }
+
+        public String getCover() {
+            return cover;
+        }
+
+        public void setCover(String cover) {
+            this.cover = cover;
+        }
+
+        public int getState() {
+            return state;
+        }
+
+        public void setState(int state) {
+            this.state = state;
         }
     }
 }

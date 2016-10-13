@@ -28,6 +28,7 @@ public class EnterpriseHomeActivity extends AppCompatActivity {
     private EnterpriseInfoFragment enterpriseInfoFragment;
 
     private FragmentManager fm;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +41,7 @@ public class EnterpriseHomeActivity extends AppCompatActivity {
         initBottomNavigationBar();
         setDefaultFragment();
     }
+
     private void initBottomNavigationBar() {
         bottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
         bottomNavigationBar
@@ -50,27 +52,36 @@ public class EnterpriseHomeActivity extends AppCompatActivity {
         bottomNavigationBar.setTabSelectedListener(new BottomNavigationBar.OnTabSelectedListener() {
             @Override
             public void onTabSelected(int position) {
-                FragmentTransaction transaction=fm.beginTransaction();
+                FragmentTransaction transaction = fm.beginTransaction();
                 switch (position) {
                     case 0:
-                        if (enterprisePositionFragment==null){
-                            enterprisePositionFragment= EnterprisePositionFragment.newInstance();
-                        }
-                        transaction.replace(R.id.layout_frame,enterprisePositionFragment);
+//                        if (enterprisePositionFragment == null) {
+//                            enterprisePositionFragment = EnterprisePositionFragment.newInstance();
+//                        }
+//                        transaction.replace(R.id.layout_frame, enterprisePositionFragment);
+                        transaction.hide(enterpriseVitageFragment);
+                        transaction.hide(enterpriseInfoFragment);
+                        transaction.show(enterprisePositionFragment);
                         getSupportActionBar().setTitle("职位管理");
                         break;
                     case 1:
-//                        if (enterpriseVitageFragment==null){
-                            enterpriseVitageFragment= EnterpriseVitageFragment.newInstance();
+//                        if (enterpriseVitageFragment == null) {
+//                            enterpriseVitageFragment = EnterpriseVitageFragment.newInstance();
 //                        }
-                        transaction.replace(R.id.layout_frame,enterpriseVitageFragment);
+//                        transaction.replace(R.id.layout_frame, enterpriseVitageFragment);
+                        transaction.hide(enterprisePositionFragment);
+                        transaction.hide(enterpriseInfoFragment);
+                        transaction.show(enterpriseVitageFragment);
                         getSupportActionBar().setTitle("简历管理");
                         break;
                     case 2:
-                        if (enterpriseInfoFragment==null){
-                            enterpriseInfoFragment= EnterpriseInfoFragment.newInstance();
-                        }
-                        transaction.replace(R.id.layout_frame,enterpriseInfoFragment);
+//                        if (enterpriseInfoFragment == null) {
+//                            enterpriseInfoFragment = EnterpriseInfoFragment.newInstance();
+//                        }
+//                        transaction.replace(R.id.layout_frame, enterpriseInfoFragment);
+                        transaction.hide(enterprisePositionFragment);
+                        transaction.hide(enterpriseVitageFragment);
+                        transaction.show(enterpriseInfoFragment);
                         getSupportActionBar().setTitle("公司信息");
                         break;
                 }
@@ -88,11 +99,18 @@ public class EnterpriseHomeActivity extends AppCompatActivity {
             }
         });
     }
+
     //设置默认Fragment
     private void setDefaultFragment() {
         FragmentTransaction transaction = fm.beginTransaction();
         enterprisePositionFragment = EnterprisePositionFragment.newInstance();
-        transaction.replace(R.id.layout_frame, enterprisePositionFragment);
+        enterpriseVitageFragment = EnterpriseVitageFragment.newInstance();
+        enterpriseInfoFragment = EnterpriseInfoFragment.newInstance();
+        transaction.add(R.id.layout_frame, enterprisePositionFragment);
+        transaction.add(R.id.layout_frame, enterpriseVitageFragment);
+        transaction.add(R.id.layout_frame, enterpriseInfoFragment);
+        transaction.hide(enterpriseVitageFragment);
+        transaction.hide(enterpriseInfoFragment);
         transaction.commit();
     }
 }
