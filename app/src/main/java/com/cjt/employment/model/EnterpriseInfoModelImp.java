@@ -2,11 +2,17 @@ package com.cjt.employment.model;
 
 import com.cjt.employment.bean.CompanyInfo;
 import com.cjt.employment.bean.EnterprisePosition;
+import com.cjt.employment.bean.UpLoadImageResult;
+import com.cjt.employment.bean.UpdateResult;
 import com.cjt.employment.model.Imodel.EnterpriseInfoModel;
 import com.cjt.employment.model.Imodel.EnterprisePositionModel;
 import com.cjt.employment.model.server.ServerAPI;
 import com.cjt.employment.model.server.ServerAPIModel;
 
+import java.io.File;
+
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 import rx.Observable;
 
 /**
@@ -32,5 +38,20 @@ public class EnterpriseInfoModelImp implements EnterpriseInfoModel{
     @Override
     public Observable<CompanyInfo> getEnterpriseInfo(String action, String id) {
         return mServerAPI.getEnterpriseInfo(action,id);
+    }
+
+    @Override
+    public Observable<UpLoadImageResult> uploadImage(String action, int id, File file) {
+        RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+        return mServerAPI.upload(action, id, requestBody);
+    }
+
+    @Override
+    public Observable<UpdateResult> updateCompanyNameById(String action, String name, String id) {
+        return mServerAPI.updateCompanyNameById(action,name,id);
+    }
+    @Override
+    public Observable<UpdateResult> updateCompanyConditionById(String action, String financing, String pattern, String startnumber, String endnumber, String id) {
+        return mServerAPI.updateCompanyConditionById(action,financing,pattern,startnumber,endnumber,id);
     }
 }

@@ -10,4 +10,5 @@ public interface EnterpriseInfoView {
     public void getCompanyInfoSuccess(CompanyInfo.DataBean data);
     public void showProgressBar();
     public void hideProgressBar();
+    public void updateCompanyNameSuccess(String name);
 }

@@ -110,18 +110,21 @@ public interface ServerAPI {
             @Query("endtime") String endtime,
             @Query("content") String content
     );
+
     //获取工作经历
     @GET("servlet/VitageServlet")
     Observable<WorkExperience> getWorkExperienceList(
             @Query("action") String action,
             @Query("id") String id
     );
+
     //获取项目经历
     @GET("servlet/VitageServlet")
     Observable<Project> getProjectList(
             @Query("action") String action,
             @Query("id") String id
     );
+
     //添加教育经历
     @GET("servlet/VitageServlet")
     Observable<UpdateResult> addEducation(
@@ -132,12 +135,14 @@ public interface ServerAPI {
             @Query("graduationtime") String graduationtime,
             @Query("education") String education
     );
+
     //获取教育经历
     @GET("servlet/VitageServlet")
     Observable<Education> getEducationList(
             @Query("action") String action,
             @Query("id") String id
     );
+
     //获取期望工作
     @GET("servlet/VitageServlet")
     Observable<HopeJob> getHopeJob(
@@ -156,6 +161,7 @@ public interface ServerAPI {
             @Query("money") String money,
             @Query("content") String content
     );
+
     //添加项目经历
     @GET("servlet/VitageServlet")
     Observable<UpdateResult> addProject(
@@ -167,6 +173,7 @@ public interface ServerAPI {
             @Query("endtime") String endtime,
             @Query("content") String content
     );
+
     //查询工作职位
     @GET("servlet/RecruitServlet")
     Observable<Recruit> searchRecruitment(
@@ -180,6 +187,7 @@ public interface ServerAPI {
             @Query("action") String action,
             @Query("id") String id
     );
+
     //发送简历
     @GET("servlet/RecruitServlet")
     Observable<UpdateResult> pushVitage(
@@ -188,6 +196,7 @@ public interface ServerAPI {
             @Query("recruitId") int recruitId,
             @Query("companyId") int companyId
     );
+
     //发送简历
     @GET("servlet/RecruitServlet")
     Observable<UserVitage> getUserVitage(
@@ -196,10 +205,29 @@ public interface ServerAPI {
             @Query("state") String state
 
     );
+
     //获取企业信息
     @GET("servlet/CompanyServlet")
     Observable<CompanyInfo> getEnterpriseInfo(
             @Query("action") String action,
+            @Query("id") String id
+    );
+
+    //更新企业名称
+    @GET("servlet/CompanyServlet")
+    Observable<UpdateResult> updateCompanyNameById(
+            @Query("action") String action,
+            @Query("name") String name,
+            @Query("id") String id
+    );
+    //更新企业情况
+    @GET("servlet/CompanyServlet")
+    Observable<UpdateResult> updateCompanyConditionById(
+            @Query("action") String action,
+            @Query("financing") String financing,
+            @Query("pattern") String pattern,
+            @Query("startnumber") String startnumber,
+            @Query("endnumber") String endnumber,
             @Query("id") String id
     );
 }

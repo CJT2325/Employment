@@ -72,7 +72,7 @@ public class UserEditActivity extends BaseActivity<UserEditActivity, UserEditPre
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         initView();
-        getPresenter().getAccountInfoById("getAccountInfo", 1);
+        getPresenter().getAccountInfoById("getAccountInfo", Integer.parseInt(Config.getValueByKey(this,Config.KEY_USERID)));
     }
 
     @Override
@@ -153,7 +153,7 @@ public class UserEditActivity extends BaseActivity<UserEditActivity, UserEditPre
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                getPresenter().upLoadImage("upLoadAccountCover", 1, myCaptureFile);
+                getPresenter().upLoadImage("upLoadAccountCover", Integer.parseInt(Config.getValueByKey(this,Config.KEY_USERID)), myCaptureFile);
             }
             if (requestCode == OPEN_ALBUM_CODE) {
                 Uri uri = data.getData();
@@ -175,7 +175,7 @@ public class UserEditActivity extends BaseActivity<UserEditActivity, UserEditPre
             }
             if (requestCode == OPEN_EDITNAME_CODE) {
                 tv_name.setText(data.getStringExtra("name"));
-                getPresenter().updateName("updateName", 1, data.getStringExtra("name"));
+                getPresenter().updateName("updateName", Integer.parseInt(Config.getValueByKey(this,Config.KEY_USERID)), data.getStringExtra("name"));
             }
         }
     }
