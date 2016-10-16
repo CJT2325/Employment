@@ -2,11 +2,15 @@ package com.cjt.employment.presenter;
 
 import android.util.Log;
 
+import com.cjt.employment.bean.CompanyInfo;
 import com.cjt.employment.bean.Recruit;
+import com.cjt.employment.model.EnterpriseInfoModelImp;
+import com.cjt.employment.model.Imodel.EnterpriseInfoModel;
 import com.cjt.employment.model.Imodel.RecruitModel;
 import com.cjt.employment.model.RecruitModelImp;
 import com.cjt.employment.ui.fragment.EnterpriseInfoFragment;
 import com.cjt.employment.ui.fragment.EnterpriseVitageFragment;
+import com.cjt.employment.ui.view.EnterpriseInfoView;
 import com.cjt.employment.ui.view.HomeView;
 
 import rx.android.schedulers.AndroidSchedulers;
@@ -18,25 +22,25 @@ import rx.schedulers.Schedulers;
  * 邮箱: 445263848@qq.com.
  */
 public class EnterpriseInfoPresenter extends BasePresenter<EnterpriseInfoFragment> {
-    private RecruitModel mRecruitModel;
-    private HomeView mHomeView;
+    private EnterpriseInfoModel mEnterpriseInfoModel;
+    private EnterpriseInfoView mEnterpriseInfoView;
 
-    public EnterpriseInfoPresenter(HomeView homeView) {
-        mRecruitModel = RecruitModelImp.getInstance();
-        this.mHomeView = homeView;
+    public EnterpriseInfoPresenter(EnterpriseInfoView enterpriseInfoView) {
+        mEnterpriseInfoModel = EnterpriseInfoModelImp.getInstance();
+        this.mEnterpriseInfoView = enterpriseInfoView;
     }
 
-    public void getPositionByCompanyId(String action, String companyid) {
-        if (mRecruitModel != null) {
-            mRecruitModel.getRecruit(action)
+    public void getPositionByCompanyId(String action, String id) {
+        if (mEnterpriseInfoModel != null) {
+            mEnterpriseInfoView.showProgressBar();
+            mEnterpriseInfoModel.getEnterpriseInfo(action,id)
                     .subscribeOn(Schedulers.newThread())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new Action1<Recruit>() {
+                    .subscribe(new Action1<CompanyInfo>() {
                         @Override
-                        public void call(Recruit recruit) {
-                            Log.i("CJT", recruit.getData().size() + " ");
-                            mHomeView.updateRecruit(recruit.getData());
-//                            mHomeView.updata(shopList.getVendors());
+                        public void call(CompanyInfo companyInfo) {
+                            mEnterpriseInfoView.getCompanyInfoSuccess(companyInfo.getData());
+                            mEnterpriseInfoView.hideProgressBar();
                         }
                     }, new Action1<Throwable>() {
                         @Override

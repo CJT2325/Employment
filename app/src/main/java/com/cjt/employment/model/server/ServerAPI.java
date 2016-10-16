@@ -32,7 +32,7 @@ import rx.Observable;
  */
 public interface ServerAPI {
     //网站根目录
-    String baseUrl = "http://172.16.101.37:8080/EmploymentService/";
+    String baseUrl = "http://172.16.101.64:8080/EmploymentService/";
 //    String baseUrl = "http://www.materialstyle.cn/EmploymentService/";
 
     //招聘信息
@@ -195,5 +195,11 @@ public interface ServerAPI {
             @Query("id") String id,
             @Query("state") String state
 
+    );
+    //获取企业信息
+    @GET("servlet/CompanyServlet")
+    Observable<CompanyInfo> getEnterpriseInfo(
+            @Query("action") String action,
+            @Query("id") String id
     );
 }

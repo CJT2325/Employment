@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.cjt.employment.R;
 import com.cjt.employment.bean.CompanyInfo;
+import com.cjt.employment.model.server.ServerAPI;
 import com.cjt.employment.ui.activity.EvaluateActivity;
 import com.cjt.employment.presenter.CompanyInfoPresenter;
 import com.cjt.employment.ui.view.CompanyInfoView;
@@ -93,7 +94,7 @@ public class CompanyInfoFragment extends BaseFragment<CompanyInfoFragment, Compa
     @Override
     public void updateCompanyInfo(CompanyInfo.DataBean dataBean) {
         Log.i("CJT",dataBean.getCompany());
-        Picasso.with(getContext()).load(dataBean.getLogo()).into(iv_cover);
+        Picasso.with(getContext()).load(ServerAPI.baseUrl+"image/companyCover/"+dataBean.getLogo()).into(iv_cover);
         tv_company.setText(dataBean.getCompany());
         tv_companyinfo.setText(dataBean.getFinancing() + " | " + dataBean.getEmployenumber() + "人 | " + dataBean.getPattern());
         tv_founder.setText(dataBean.getFounder());

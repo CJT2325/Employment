@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.cjt.employment.R;
 import com.cjt.employment.bean.Recruit;
 import com.cjt.employment.common.GlideImageLoader;
+import com.cjt.employment.model.server.ServerAPI;
 import com.cjt.employment.ui.activity.RecruitmentInfoActivity;
 import com.squareup.picasso.Picasso;
 import com.youth.banner.Banner;
@@ -66,7 +67,7 @@ public class RecruitmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof RecruitmentViewHolder) {
             Recruit.DataBean dataBean = datas.get(position - 1);
-            Picasso.with(mContext).load(dataBean.getLogo()).into(((RecruitmentViewHolder) holder).iv_cover);
+            Picasso.with(mContext).load(ServerAPI.baseUrl+"image/companyCover/"+dataBean.getLogo()).into(((RecruitmentViewHolder) holder).iv_cover);
             ((RecruitmentViewHolder) holder).tv_position.setText(dataBean.getPosition());
             ((RecruitmentViewHolder) holder).tv_company.setText(dataBean.getCompany());
             ((RecruitmentViewHolder) holder).tv_date.setText(dataBean.getReleasedate());

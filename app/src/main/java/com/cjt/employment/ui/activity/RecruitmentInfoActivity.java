@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.cjt.employment.R;
 import com.cjt.employment.bean.RecruitmentInfo;
 import com.cjt.employment.common.Config;
+import com.cjt.employment.model.server.ServerAPI;
 import com.cjt.employment.presenter.BasePresenter;
 import com.cjt.employment.presenter.RecruitmentInfoPresenter;
 import com.cjt.employment.ui.view.RecruitmentInfoView;
@@ -124,7 +125,7 @@ public class RecruitmentInfoActivity extends BaseActivity<RecruitmentInfoActivit
         tv_company.setText(dataBean.getCompany());
         tv_companyinfo.setText(dataBean.getFinancing() + " | " + dataBean.getEmployenumber() + "人 | " + dataBean.getPattern());
         tv_founder.setText(dataBean.getFounder());
-        Picasso.with(this).load(dataBean.getLogo()).into(iv_cover);
+        Picasso.with(this).load(ServerAPI.baseUrl+"image/companyCover/"+dataBean.getLogo()).into(iv_cover);
         hideProgressBar();
     }
 
