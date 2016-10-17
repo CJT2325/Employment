@@ -127,6 +127,10 @@
         <activity
             android:name=".ui.activity.EditCompanyConditionActivity"
             android:label="@string/title_activity_edit_company_condition"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.activity.EditControduceActivity"
+            android:label="@string/title_activity_edit_controduce"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

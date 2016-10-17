@@ -1,6 +1,7 @@
 package com.cjt.employment.model.server;
 
 import com.cjt.employment.bean.AccountInfo;
+import com.cjt.employment.bean.CompanyDescpt;
 import com.cjt.employment.bean.CompanyInfo;
 import com.cjt.employment.bean.Education;
 import com.cjt.employment.bean.EnterprisePosition;
@@ -229,5 +230,19 @@ public interface ServerAPI {
             @Query("startnumber") String startnumber,
             @Query("endnumber") String endnumber,
             @Query("id") String id
+    );
+    //获取企业介绍
+    @GET("servlet/CompanyServlet")
+    Observable<CompanyDescpt> getCompanyControduceById(
+            @Query("action") String action,
+            @Query("id") String id
+    );
+    //获取企业介绍
+    @GET("servlet/CompanyServlet")
+    Observable<UpdateResult> updateCompanyControduceById(
+            @Query("action") String action,
+            @Query("id") String id,
+            @Query("content") String content
+
     );
 }

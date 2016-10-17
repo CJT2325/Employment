@@ -1,5 +1,6 @@
 package com.cjt.employment.model;
 
+import com.cjt.employment.bean.CompanyDescpt;
 import com.cjt.employment.bean.CompanyInfo;
 import com.cjt.employment.bean.EnterprisePosition;
 import com.cjt.employment.bean.UpLoadImageResult;
@@ -53,5 +54,15 @@ public class EnterpriseInfoModelImp implements EnterpriseInfoModel{
     @Override
     public Observable<UpdateResult> updateCompanyConditionById(String action, String financing, String pattern, String startnumber, String endnumber, String id) {
         return mServerAPI.updateCompanyConditionById(action,financing,pattern,startnumber,endnumber,id);
+    }
+
+    @Override
+    public Observable<CompanyDescpt> getCompanyControduceById(String action, String id) {
+        return mServerAPI.getCompanyControduceById(action,id);
+    }
+
+    @Override
+    public Observable<UpdateResult> updateCompanyControduceById(String action, String id, String content) {
+        return mServerAPI.updateCompanyControduceById(action,id,content);
     }
 }

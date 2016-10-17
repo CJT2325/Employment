@@ -1,5 +1,6 @@
 package com.cjt.employment.model.Imodel;
 
+import com.cjt.employment.bean.CompanyDescpt;
 import com.cjt.employment.bean.CompanyInfo;
 import com.cjt.employment.bean.EnterprisePosition;
 import com.cjt.employment.bean.UpLoadImageResult;
@@ -18,4 +19,6 @@ public interface EnterpriseInfoModel {
     public Observable<UpLoadImageResult> uploadImage(String action, int id, File file);
     public Observable<UpdateResult> updateCompanyNameById(String action, String name, String id);
     public Observable<UpdateResult> updateCompanyConditionById(String action, String financing, String pattern, String startnumber, String endnumber, String id);
+    public Observable<CompanyDescpt>  getCompanyControduceById(String action, String id);
+    public Observable<UpdateResult>  updateCompanyControduceById(String action, String id,String content);
 }

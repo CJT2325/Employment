@@ -25,6 +25,7 @@ import com.cjt.employment.model.server.ServerAPI;
 import com.cjt.employment.presenter.EnterpriseInfoPresenter;
 import com.cjt.employment.ui.activity.EditCompanyConditionActivity;
 import com.cjt.employment.ui.activity.EditCompanyNameActivity;
+import com.cjt.employment.ui.activity.EditControduceActivity;
 import com.cjt.employment.ui.view.EnterpriseInfoView;
 import com.squareup.picasso.Picasso;
 
@@ -41,6 +42,7 @@ public class EnterpriseInfoFragment extends BaseFragment<EnterpriseInfoFragment,
     private static final int OPEN_ALBUM_CODE = 2;
     private static final int OPEN_EDITNAME_CODE = 3;
     private static final int OPEN_EDITCONDITION_CODE = 4;
+    private static final int OPEN_EDITCONTRODUCE_CODE = 5;
 
     private RelativeLayout layout_cover;
     private RelativeLayout layout_name;
@@ -152,6 +154,8 @@ public class EnterpriseInfoFragment extends BaseFragment<EnterpriseInfoFragment,
             case R.id.layout_product:
                 break;
             case R.id.layout_controduce:
+                Intent editControduceIntent=new Intent(getContext(), EditControduceActivity.class);
+                startActivityForResult(editControduceIntent,OPEN_EDITCONTRODUCE_CODE);
                 break;
             case R.id.bs_photograph:
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
