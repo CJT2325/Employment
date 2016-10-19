@@ -1,7 +1,10 @@
 package com.cjt.employment.ui.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -19,17 +22,20 @@ import com.cjt.employment.common.Config;
 import com.cjt.employment.common.DividerItemDecoration;
 import com.cjt.employment.presenter.EnterprisePositionPresenter;
 import com.cjt.employment.presenter.HomePresenter;
+import com.cjt.employment.ui.activity.EditCompanyPositionActivity;
 import com.cjt.employment.ui.view.EnterprisePositionView;
 import com.cjt.employment.ui.view.HomeView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class EnterprisePositionFragment extends BaseFragment<EnterprisePositionFragment, EnterprisePositionPresenter> implements EnterprisePositionView {
+public class EnterprisePositionFragment extends BaseFragment<EnterprisePositionFragment, EnterprisePositionPresenter> implements EnterprisePositionView, View.OnClickListener {
     private RecyclerView mRecyclerView;
     private ProgressBar mProgressBar;
     private List<EnterprisePosition.DataBean> mDatas;
     private EnterprisePositionAdapter mEnterprisePositionAdapter;
+
+    private FloatingActionButton fab;
 
     public static EnterprisePositionFragment newInstance() {
         EnterprisePositionFragment fragment = new EnterprisePositionFragment();
@@ -40,7 +46,7 @@ public class EnterprisePositionFragment extends BaseFragment<EnterprisePositionF
     }
 
     public EnterprisePositionFragment() {
-        
+
     }
 
     @Override
@@ -60,12 +66,12 @@ public class EnterprisePositionFragment extends BaseFragment<EnterprisePositionF
         View view = inflater.inflate(R.layout.fragment_enterprise_position, container, false);
         initDatas();
         initView(view);
-        getPresenter().getPositionByCompanyId("getPositionByCompanyId", Config.getValueByKey(getContext(),Config.KEY_USERID));
+        getPresenter().getPositionByCompanyId("getPositionByCompanyId", Config.getValueByKey(getContext(), Config.KEY_USERID));
         return view;
     }
 
     private void initView(View view) {
-        mProgressBar= (ProgressBar) view.findViewById(R.id.progressbar);
+        mProgressBar = (ProgressBar) view.findViewById(R.id.progressbar);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerview_positon);
         mEnterprisePositionAdapter = new EnterprisePositionAdapter(mDatas, getActivity(), new EnterprisePositionAdapter.OnItemClickListener() {
             @Override
@@ -76,10 +82,13 @@ public class EnterprisePositionFragment extends BaseFragment<EnterprisePositionF
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         mRecyclerView.setAdapter(mEnterprisePositionAdapter);
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL_LIST));
+
+        fab = (FloatingActionButton) view.findViewById(R.id.fab);
+        fab.setOnClickListener(this);
     }
 
     private void initDatas() {
-        mDatas=new ArrayList<>();
+        mDatas = new ArrayList<>();
     }
 
     @Override
@@ -112,4 +121,13 @@ public class EnterprisePositionFragment extends BaseFragment<EnterprisePositionF
         mProgressBar.setVisibility(View.GONE);
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.fab:
+                Intent editCompanyPositionIntent = new Intent(getContext(), EditCompanyPositionActivity.class);
+                startActivity(editCompanyPositionIntent);
+                break;
+        }
+    }
 }

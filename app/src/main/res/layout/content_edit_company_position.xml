@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.cjt.employment.ui.activity.EditCompanyPositionActivity"
+    tools:showIn="@layout/activity_edit_company_position">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin">
+
+            <EditText
+                android:id="@+id/et_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_mode_edit_red_24dp"
+                android:hint="职位名称"
+                android:textColor="@color/colorAccent" />
+
+            <EditText
+                android:id="@+id/et_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:drawableLeft="@drawable/ic_mode_edit_red_24dp"
+                android:editable="false"
+                android:hint="工作类型"
+                android:textColor="@color/colorAccent" />
+
+            <EditText
+                android:id="@+id/et_education"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:drawableLeft="@drawable/ic_mode_edit_red_24dp"
+                android:editable="false"
+                android:hint="学历"
+                android:textColor="@color/colorAccent" />
+
+            <EditText
+                android:id="@+id/et_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:drawableLeft="@drawable/ic_mode_edit_red_24dp"
+                android:inputType="number"
+                android:hint="招聘人数"
+                android:textColor="@color/colorAccent" />
+
+
+            <RelativeLayout
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:id="@+id/tv_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="薪资（元）" />
+
+                <EditText
+                    android:id="@+id/et_startnumber"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/tv_number"
+                    android:gravity="center_horizontal"
+                    android:inputType="number"
+                    android:maxLength="5" />
+
+                <TextView
+                    android:id="@+id/tv_about"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/et_startnumber"
+                    android:text="至" />
+
+                <EditText
+                    android:id="@+id/et_endnumber"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/tv_about"
+                    android:gravity="center_horizontal"
+                    android:inputType="number"
+                    android:maxLength="5" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:id="@+id/tv_worktime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="经验（年）" />
+
+                <EditText
+                    android:id="@+id/et_startworktime"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/tv_worktime"
+                    android:gravity="center_horizontal"
+                    android:inputType="number"
+                    android:maxLength="5" />
+
+                <TextView
+                    android:id="@+id/tv_to"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/et_startworktime"
+                    android:text="至" />
+
+                <EditText
+                    android:id="@+id/et_endworktime"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/tv_to"
+                    android:gravity="center_horizontal"
+                    android:inputType="number"
+                    android:maxLength="5" />
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/et_city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:clickable="true"
+                android:drawableRight="@drawable/ic_keyboard_arrow_right_black_24dp"
+                android:editable="false"
+                android:hint="工作城市"
+                android:textColor="@color/colorAccent" />
+
+            <EditText
+                android:id="@+id/et_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_mode_edit_red_24dp"
+                android:hint="详细地址"
+                android:textColor="@color/colorAccent" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@null"
+                android:drawableLeft="@drawable/ic_mode_edit_red_24dp"
+                android:focusable="false"
+                android:hint="职位描述"
+                android:inputType="number"
+                android:maxLength="11"
+                android:textColor="@color/colorAccent" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp"
+                android:background="#DDD">
+
+                <EditText
+                    android:id="@+id/et_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:gravity="top"
+                    android:minHeight="150dp"
+                    android:padding="8dp"
+                    android:textColor="@color/colorAccent" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+</RelativeLayout>
