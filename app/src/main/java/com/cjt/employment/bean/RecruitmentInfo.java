@@ -7,20 +7,24 @@ package com.cjt.employment.bean;
 public class RecruitmentInfo {
 
     /**
-     * position : IOS
-     * logo : http://192.168.1.104:8080/image/qqmusiclogo.jpg
-     * employenumber : 15-30
+     * position : JavaEE
+     * logo : accountcover1image.jpg
+     * employenumber : 250-300
      * workplace : 广州
-     * education : 大专
-     * workingyearend : 3
+     * education : 本科
+     * workingyearend : 2
+     * content : 1.都好好的觉得就地解决
+     2.觉得经典款封口费开车卡卡
      * workingyearstart : 1
      * companyid : 1
-     * financing : 未融资
-     * pattern : O2O
+     * financing : 天使融资三轮
+     * pattern : P2P
+     * address : 广州天河
      * wagesstart : 2000
-     * company : 腾讯
+     * foundercover : accountcover18814117978_1image.jpg
+     * company : 广州大学华软软件学院
      * wagesend : 3000
-     * workingtype : 实习
+     * workingtype : 全职
      * founder : 陈嘉桐
      */
 
@@ -41,11 +45,14 @@ public class RecruitmentInfo {
         private String workplace;
         private String education;
         private int workingyearend;
+        private String content;
         private int workingyearstart;
         private int companyid;
         private String financing;
         private String pattern;
+        private String address;
         private int wagesstart;
+        private String foundercover;
         private String company;
         private int wagesend;
         private String workingtype;
@@ -99,6 +106,14 @@ public class RecruitmentInfo {
             this.workingyearend = workingyearend;
         }
 
+        public String getContent() {
+            return content;
+        }
+
+        public void setContent(String content) {
+            this.content = content;
+        }
+
         public int getWorkingyearstart() {
             return workingyearstart;
         }
@@ -131,12 +146,28 @@ public class RecruitmentInfo {
             this.pattern = pattern;
         }
 
+        public String getAddress() {
+            return address;
+        }
+
+        public void setAddress(String address) {
+            this.address = address;
+        }
+
         public int getWagesstart() {
             return wagesstart;
         }
 
         public void setWagesstart(int wagesstart) {
             this.wagesstart = wagesstart;
+        }
+
+        public String getFoundercover() {
+            return foundercover;
+        }
+
+        public void setFoundercover(String foundercover) {
+            this.foundercover = foundercover;
         }
 
         public String getCompany() {

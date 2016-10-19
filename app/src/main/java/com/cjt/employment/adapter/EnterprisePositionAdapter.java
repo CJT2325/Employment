@@ -14,6 +14,7 @@ import com.cjt.employment.bean.EnterprisePosition;
 import com.cjt.employment.bean.Recruit;
 import com.cjt.employment.common.GlideImageLoader;
 import com.cjt.employment.model.server.ServerAPI;
+import com.cjt.employment.ui.activity.EditCompanyPositionActivity;
 import com.cjt.employment.ui.activity.RecruitmentInfoActivity;
 import com.squareup.picasso.Picasso;
 import com.youth.banner.Banner;
@@ -39,9 +40,9 @@ public class EnterprisePositionAdapter extends RecyclerView.Adapter<RecyclerView
     }
 
     public void startActivityByRecruitId(int position) {
-        Intent recruitmentInfoIntent = new Intent(mContext, RecruitmentInfoActivity.class);
-        recruitmentInfoIntent.putExtra("id", datas.get(position).getId());
-        mContext.startActivity(recruitmentInfoIntent);
+        Intent editCompanyPositionIntent = new Intent(mContext, EditCompanyPositionActivity.class);
+        editCompanyPositionIntent.putExtra("id", datas.get(position).getId());
+        mContext.startActivity(editCompanyPositionIntent);
     }
 
     public interface OnItemClickListener {

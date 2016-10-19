@@ -74,6 +74,7 @@
                     android:text="薪资（元）" />
 
                 <EditText
+                    android:text="0"
                     android:id="@+id/et_startnumber"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
@@ -91,6 +92,7 @@
                     android:text="至" />
 
                 <EditText
+                    android:text="0"
                     android:id="@+id/et_endnumber"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
@@ -113,6 +115,7 @@
                     android:text="经验（年）" />
 
                 <EditText
+                    android:text="0"
                     android:id="@+id/et_startworktime"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
@@ -130,6 +133,7 @@
                     android:text="至" />
 
                 <EditText
+                    android:text="0"
                     android:id="@+id/et_endworktime"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"

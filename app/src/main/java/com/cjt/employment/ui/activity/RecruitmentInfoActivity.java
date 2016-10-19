@@ -27,6 +27,8 @@ import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class RecruitmentInfoActivity extends BaseActivity<RecruitmentInfoActivity, RecruitmentInfoPresenter> implements View.OnClickListener, RecruitmentInfoView {
     private RelativeLayout layout_companyinfo;
     private int recruitId;
@@ -42,6 +44,9 @@ public class RecruitmentInfoActivity extends BaseActivity<RecruitmentInfoActivit
     private TextView tv_workingtype;
     private ImageView iv_cover;
 
+    private TextView tv_content;
+    private TextView tv_address;
+    private CircleImageView iv_usercover;
 
     private ProgressBar progressBar;
     private Button btn_send;
@@ -83,6 +88,10 @@ public class RecruitmentInfoActivity extends BaseActivity<RecruitmentInfoActivit
         progressBar = (ProgressBar) findViewById(R.id.progressbar);
         btn_send = (Button) findViewById(R.id.btn_send);
         btn_send.setOnClickListener(this);
+
+        tv_content = (TextView) findViewById(R.id.tv_content);
+        tv_address = (TextView) findViewById(R.id.tv_address);
+        iv_usercover= (CircleImageView) findViewById(R.id.iv_usercover);
     }
 
     @Override
@@ -125,7 +134,11 @@ public class RecruitmentInfoActivity extends BaseActivity<RecruitmentInfoActivit
         tv_company.setText(dataBean.getCompany());
         tv_companyinfo.setText(dataBean.getFinancing() + " | " + dataBean.getEmployenumber() + "人 | " + dataBean.getPattern());
         tv_founder.setText(dataBean.getFounder());
-        Picasso.with(this).load(ServerAPI.baseUrl+"image/companyCover/"+dataBean.getLogo()).into(iv_cover);
+        Picasso.with(this).load(ServerAPI.baseUrl + "image/companyCover/" + dataBean.getLogo()).into(iv_cover);
+
+        tv_address.setText(dataBean.getAddress());
+        tv_content.setText(dataBean.getContent());
+        Picasso.with(this).load(ServerAPI.baseUrl + "image/accountCover/" + dataBean.getFoundercover()).into(iv_usercover);
         hideProgressBar();
     }
 

@@ -13,7 +13,7 @@ import rx.Observable;
  * 作者: 陈嘉桐 on 2016/9/21
  * 邮箱: 445263848@qq.com.
  */
-public class EducationEditModelImp implements EducationEditModel{
+public class EducationEditModelImp implements EducationEditModel {
     private ServerAPI mServerAPI;
 
     private EducationEditModelImp() {
@@ -31,6 +31,6 @@ public class EducationEditModelImp implements EducationEditModel{
 
     @Override
     public Observable<UpdateResult> addEducation(String action, String id, String schoolname, String major, String graduationtime, String education) {
-        return mServerAPI.addEducation(action,id,schoolname,major,graduationtime,education);
+        return mServerAPI.addEducation(action, id, schoolname, major, graduationtime, education);
     }
 }

@@ -3,6 +3,7 @@ package com.cjt.employment.model.server;
 import com.cjt.employment.bean.AccountInfo;
 import com.cjt.employment.bean.CompanyDescpt;
 import com.cjt.employment.bean.CompanyInfo;
+import com.cjt.employment.bean.CompanyPosition;
 import com.cjt.employment.bean.Education;
 import com.cjt.employment.bean.EnterprisePosition;
 import com.cjt.employment.bean.HopeJob;
@@ -221,6 +222,7 @@ public interface ServerAPI {
             @Query("name") String name,
             @Query("id") String id
     );
+
     //更新企业情况
     @GET("servlet/CompanyServlet")
     Observable<UpdateResult> updateCompanyConditionById(
@@ -231,12 +233,14 @@ public interface ServerAPI {
             @Query("endnumber") String endnumber,
             @Query("id") String id
     );
+
     //获取企业介绍
     @GET("servlet/CompanyServlet")
     Observable<CompanyDescpt> getCompanyControduceById(
             @Query("action") String action,
             @Query("id") String id
     );
+
     //获取企业介绍
     @GET("servlet/CompanyServlet")
     Observable<UpdateResult> updateCompanyControduceById(
@@ -244,5 +248,30 @@ public interface ServerAPI {
             @Query("id") String id,
             @Query("content") String content
 
+    );
+
+    //获取企业介绍
+    @GET("servlet/CompanyServlet")
+    Observable<CompanyPosition> getCompanyPositionById(
+            @Query("action") String action,
+            @Query("id") String id
+    );
+
+    //添加职位
+    @GET("servlet/CompanyServlet")
+    Observable<UpdateResult> addCompanyPosition(
+            @Query("action") String action,
+            @Query("id") String id,
+            @Query("position") String position,
+            @Query("type") String type,
+            @Query("education") String education,
+            @Query("number") String number,
+            @Query("startwarge") String startwarge,
+            @Query("endwarge") String endwarge,
+            @Query("startworktime") String startworktime,
+            @Query("endworktime") String endworktime,
+            @Query("city") String city,
+            @Query("address") String address,
+            @Query("content") String content
     );
 }

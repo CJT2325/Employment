@@ -1,5 +1,6 @@
 package com.cjt.employment.ui.fragment;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -30,6 +31,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EnterprisePositionFragment extends BaseFragment<EnterprisePositionFragment, EnterprisePositionPresenter> implements EnterprisePositionView, View.OnClickListener {
+    public final static int ADD_COMPANYPOSITION_CODE = 1;
+
     private RecyclerView mRecyclerView;
     private ProgressBar mProgressBar;
     private List<EnterprisePosition.DataBean> mDatas;
@@ -76,7 +79,7 @@ public class EnterprisePositionFragment extends BaseFragment<EnterprisePositionF
         mEnterprisePositionAdapter = new EnterprisePositionAdapter(mDatas, getActivity(), new EnterprisePositionAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-
+                mEnterprisePositionAdapter.startActivityByRecruitId(position);
             }
         });
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
@@ -126,8 +129,18 @@ public class EnterprisePositionFragment extends BaseFragment<EnterprisePositionF
         switch (v.getId()) {
             case R.id.fab:
                 Intent editCompanyPositionIntent = new Intent(getContext(), EditCompanyPositionActivity.class);
-                startActivity(editCompanyPositionIntent);
+                startActivityForResult(editCompanyPositionIntent, ADD_COMPANYPOSITION_CODE);
                 break;
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == ADD_COMPANYPOSITION_CODE) {
+                getPresenter().getPositionByCompanyId("getPositionByCompanyId", Config.getValueByKey(getContext(), Config.KEY_USERID));
+            }
         }
     }
 }

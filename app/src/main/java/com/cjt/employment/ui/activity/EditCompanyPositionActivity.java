@@ -1,27 +1,32 @@
 package com.cjt.employment.ui.activity;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 
 import com.bigkoo.pickerview.OptionsPickerView;
 import com.bigkoo.pickerview.model.IPickerViewData;
 import com.cjt.employment.R;
+import com.cjt.employment.bean.CompanyPosition;
 import com.cjt.employment.bean.PickerViewData;
 import com.cjt.employment.bean.ProvinceBean;
+import com.cjt.employment.common.Config;
 import com.cjt.employment.presenter.EditCompanyPositionPresenter;
+import com.cjt.employment.ui.view.EditCompanyPositionView;
 
 import java.util.ArrayList;
 
-public class EditCompanyPositionActivity extends BaseActivity<EditCompanyPositionActivity, EditCompanyPositionPresenter> implements View.OnClickListener{
+public class EditCompanyPositionActivity extends BaseActivity<EditCompanyPositionActivity, EditCompanyPositionPresenter> implements View.OnClickListener, EditCompanyPositionView {
     private EditText et_name;
     private EditText et_type;
     private EditText et_education;
@@ -30,8 +35,10 @@ public class EditCompanyPositionActivity extends BaseActivity<EditCompanyPositio
     private EditText et_address;
     private EditText et_content;
 
-    private EditText et_startnumber;
-    private EditText et_endnumber;
+    private ProgressBar progressBar;
+
+    private EditText et_startwages;
+    private EditText et_endwages;
     private EditText et_startworktime;
     private EditText et_endworktime;
 
@@ -45,6 +52,7 @@ public class EditCompanyPositionActivity extends BaseActivity<EditCompanyPositio
     OptionsPickerView typeOptions;
     OptionsPickerView educationOptions;
     OptionsPickerView cityOptions;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +64,16 @@ public class EditCompanyPositionActivity extends BaseActivity<EditCompanyPositio
         initView();
         initOption();
         initCityOption();
+        int id = getIntent().getIntExtra("id", -1);
+        Log.i("CJT", "id=" + id);
+        if (id != -1) {
+            getPresenter().getCompanyPositionById("getCompanyPositionById", id+"");
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
     }
 
     private void initCityOption() {
@@ -174,15 +192,18 @@ public class EditCompanyPositionActivity extends BaseActivity<EditCompanyPositio
         et_city = (EditText) findViewById(R.id.et_city);
         et_address = (EditText) findViewById(R.id.et_address);
         et_content = (EditText) findViewById(R.id.et_content);
-        et_startnumber = (EditText) findViewById(R.id.et_startnumber);
-        et_endnumber = (EditText) findViewById(R.id.et_endnumber);
+        et_startwages = (EditText) findViewById(R.id.et_startnumber);
+        et_endwages = (EditText) findViewById(R.id.et_endnumber);
         et_startworktime = (EditText) findViewById(R.id.et_startworktime);
         et_endworktime = (EditText) findViewById(R.id.et_endworktime);
 
         et_type.setOnClickListener(this);
         et_education.setOnClickListener(this);
         et_city.setOnClickListener(this);
+
+        progressBar = (ProgressBar) findViewById(R.id.progressbar);
     }
+
     private void initOption() {
         //工作类型选择框
         typeOptions = new OptionsPickerView(this);
@@ -222,6 +243,7 @@ public class EditCompanyPositionActivity extends BaseActivity<EditCompanyPositio
         });
 
     }
+
     @Override
     protected EditCompanyPositionPresenter creatPresenter() {
         return new EditCompanyPositionPresenter();
@@ -229,7 +251,11 @@ public class EditCompanyPositionActivity extends BaseActivity<EditCompanyPositio
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        //1.得到InputMethodManager对象
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        //2.调用hideSoftInputFromWindow方法隐藏软键盘
+        imm.hideSoftInputFromWindow(v.getWindowToken(), 0); //强制隐藏键盘
+        switch (v.getId()) {
             case R.id.et_type:
                 typeOptions.show();
                 break;
@@ -254,8 +280,84 @@ public class EditCompanyPositionActivity extends BaseActivity<EditCompanyPositio
         int id = item.getItemId();
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_save) {
-
+            if (et_name.getText().toString().equals("") ||
+                    et_type.getText().toString().equals("") ||
+                    et_education.getText().toString().equals("") ||
+                    et_number.getText().toString().equals("") ||
+                    et_city.getText().toString().equals("") ||
+                    et_startwages.getText().toString().equals("") ||
+                    et_endwages.getText().toString().equals("") ||
+                    et_startworktime.getText().toString().equals("") ||
+                    et_endworktime.getText().toString().equals("") ||
+                    et_address.getText().toString().equals("") ||
+                    et_content.getText().toString().equals("")
+                    ) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage("请填满所有项目")
+                        .setPositiveButton("我知道了", null).show();
+            } else if (Integer.parseInt(et_startwages.getText().toString()) > Integer.parseInt(et_endwages.getText().toString())) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage("工作薪资输入错误")
+                        .setPositiveButton("我知道了", null).show();
+            } else if (Integer.parseInt(et_startworktime.getText().toString()) > Integer.parseInt(et_endworktime.getText().toString())) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage("工作经验输入错误")
+                        .setPositiveButton("我知道了", null).show();
+            } else {
+                getPresenter().addCompanyPosition("addCompanyPosition",
+                        Config.getValueByKey(this, Config.KEY_USERID),
+                        et_name.getText().toString(),
+                        et_type.getText().toString(),
+                        et_education.getText().toString(),
+                        et_number.getText().toString(),
+                        et_startwages.getText().toString(),
+                        et_endwages.getText().toString(),
+                        et_startworktime.getText().toString(),
+                        et_endworktime.getText().toString(),
+                        et_city.getText().toString(),
+                        et_address.getText().toString(),
+                        et_content.getText().toString());
+            }
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void addCompanyPositionSuccess() {
+        Intent intent = new Intent();
+        setResult(Activity.RESULT_OK, intent);
+        finish();
+    }
+
+    @Override
+    public void addCompanyPositionFail() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("添加职位失败")
+                .setPositiveButton("取消", null).show();
+    }
+
+    @Override
+    public void getCompanyPositionSuccess(CompanyPosition.DataBean data) {
+        et_name.setText(data.getPosition());
+        et_type.setText(data.getWorkingtype());
+        et_education.setText(data.getEducation());
+        et_number.setText(data.getNumber());
+        et_startwages.setText(data.getWagesstart());
+        et_endwages.setText(data.getWagesend());
+        et_startworktime.setText(data.getWorkingyearstart());
+        et_endworktime.setText(data.getWorkingyearend());
+        et_city.setText(data.getWorkplace());
+        et_address.setText(data.getAddress());
+        et_content.setText(data.getContent());
+    }
+
+    @Override
+    public void showProgressBar() {
+        progressBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideProgressBar() {
+        progressBar.setVisibility(View.GONE);
     }
 }
