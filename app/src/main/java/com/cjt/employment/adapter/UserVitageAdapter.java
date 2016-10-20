@@ -13,6 +13,7 @@ import com.cjt.employment.bean.Recruit;
 import com.cjt.employment.bean.UserVitage;
 import com.cjt.employment.model.server.ServerAPI;
 import com.cjt.employment.ui.activity.RecruitmentInfoActivity;
+import com.cjt.employment.ui.activity.VitageInfoActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -35,9 +36,10 @@ public class UserVitageAdapter extends RecyclerView.Adapter<UserVitageAdapter.Po
     }
 
     public void startActivityByRecruitId(int position) {
-        Intent recruitmentInfoIntent = new Intent(mContext, RecruitmentInfoActivity.class);
-        recruitmentInfoIntent.putExtra("id", datas.get(position).getId());
-        mContext.startActivity(recruitmentInfoIntent);
+        Intent vitageInfoIntent = new Intent(mContext, VitageInfoActivity.class);
+        vitageInfoIntent.putExtra("id", datas.get(position).getId()+"");
+//        vitageInfoIntent.putExtra("recruitid",datas.get(position).getRecruitid()+"");
+        mContext.startActivity(vitageInfoIntent);
     }
 
     public interface OnItemClickListener {

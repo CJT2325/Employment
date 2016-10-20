@@ -30,4 +30,5 @@
     <string name="title_activity_edit_company_condition">EditCompanyConditionActivity</string>
     <string name="title_activity_edit_controduce">EditControduceActivity</string>
     <string name="title_activity_edit_company_position">EditCompanyPositionActivity</string>
+    <string name="title_activity_vitage_info">VitageInfoActivity</string>
 </resources>

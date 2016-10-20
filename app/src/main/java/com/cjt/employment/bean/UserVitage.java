@@ -8,14 +8,14 @@ import java.util.List;
  */
 public class UserVitage {
 
-
     /**
      * id : 3
      * time : 10月14日
      * recruit : Android
      * username : 陈嘉桐
      * cover : accountcover18814117978_1image.jpg
-     * state : 0
+     * recruitid : 1
+     * state : 2
      */
 
     private List<DataBean> data;
@@ -34,6 +34,7 @@ public class UserVitage {
         private String recruit;
         private String username;
         private String cover;
+        private int recruitid;
         private int state;
 
         public int getId() {
@@ -74,6 +75,14 @@ public class UserVitage {
 
         public void setCover(String cover) {
             this.cover = cover;
+        }
+
+        public int getRecruitid() {
+            return recruitid;
+        }
+
+        public void setRecruitid(int recruitid) {
+            this.recruitid = recruitid;
         }
 
         public int getState() {

@@ -15,6 +15,7 @@ import com.cjt.employment.bean.UpLoadImageResult;
 import com.cjt.employment.bean.UpdateResult;
 import com.cjt.employment.bean.UserVitage;
 import com.cjt.employment.bean.VitageBean;
+import com.cjt.employment.bean.VitageInfo;
 import com.cjt.employment.bean.WorkExperience;
 
 import okhttp3.RequestBody;
@@ -253,6 +254,13 @@ public interface ServerAPI {
     //获取企业介绍
     @GET("servlet/CompanyServlet")
     Observable<CompanyPosition> getCompanyPositionById(
+            @Query("action") String action,
+            @Query("id") String id
+    );
+
+    //获取投递的简历
+    @GET("servlet/VitageServlet")
+    Observable<VitageInfo> getVitageInfoById(
             @Query("action") String action,
             @Query("id") String id
     );

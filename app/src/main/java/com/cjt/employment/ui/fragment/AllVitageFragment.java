@@ -72,7 +72,7 @@ public class AllVitageFragment extends BaseFragment<AllVitageFragment, AllVitage
         mUserVitageAdapter = new UserVitageAdapter(mDatas, getActivity(), new UserVitageAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-
+                mUserVitageAdapter.startActivityByRecruitId(position);
             }
         });
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
