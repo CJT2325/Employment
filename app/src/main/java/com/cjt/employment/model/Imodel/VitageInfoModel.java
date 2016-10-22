@@ -1,6 +1,7 @@
 package com.cjt.employment.model.Imodel;
 
 import com.cjt.employment.bean.CompanyInfo;
+import com.cjt.employment.bean.UpdateResult;
 import com.cjt.employment.bean.VitageInfo;
 
 import rx.Observable;
@@ -11,4 +12,6 @@ import rx.Observable;
  */
 public interface VitageInfoModel {
     public Observable<VitageInfo> getVitageInfoById(String action, String id);
+
+    public Observable<UpdateResult> updateVitageState(String action, String id, String state);
 }

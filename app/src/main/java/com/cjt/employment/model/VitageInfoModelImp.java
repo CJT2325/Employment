@@ -1,6 +1,7 @@
 package com.cjt.employment.model;
 
 import com.cjt.employment.bean.CompanyInfo;
+import com.cjt.employment.bean.UpdateResult;
 import com.cjt.employment.bean.VitageInfo;
 import com.cjt.employment.model.Imodel.EnterpriseInfoModel;
 import com.cjt.employment.model.Imodel.VitageInfoModel;
@@ -31,7 +32,12 @@ public class VitageInfoModelImp implements VitageInfoModel {
 
     @Override
     public Observable<VitageInfo> getVitageInfoById(String action, String id) {
-        return mServerAPI.getVitageInfoById(action,id);
+        return mServerAPI.getVitageInfoById(action, id);
+    }
+
+    @Override
+    public Observable<UpdateResult> updateVitageState(String action, String id, String state) {
+        return mServerAPI.updateVitageState(action, id, state);
     }
 
 }

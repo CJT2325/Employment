@@ -1,5 +1,6 @@
 package com.cjt.employment.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -43,9 +44,11 @@ public class VitageInfoActivity extends BaseActivity<VitageInfoActivity, VitageI
     private TextView tv_companyinfo;
 
     private int accountID = -1;
+    private String vitageID = "";
 
-    private  OptionsPickerView typeOptions;
+    private OptionsPickerView typeOptions;
     private ArrayList<String> optionsTypeItem = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,9 +64,9 @@ public class VitageInfoActivity extends BaseActivity<VitageInfoActivity, VitageI
 
     @Override
     protected void onStart() {
-        String id = getIntent().getStringExtra("id");
+        vitageID = getIntent().getStringExtra("id");
         super.onStart();
-        getPresenter().getVitageInfoById("getVitageInfoById", id);
+        getPresenter().getVitageInfoById("getVitageInfoById", vitageID);
     }
 
     private void initOption() {
@@ -81,7 +84,16 @@ public class VitageInfoActivity extends BaseActivity<VitageInfoActivity, VitageI
             public void onOptionsSelect(int options1, int option2, int options3) {
                 //返回的分别是三个级别的选中位置
                 String tx = optionsTypeItem.get(options1);
-                btn_vitagestate.setText("简历状态："+tx);
+                String state = "";
+                if (tx.equals("未处理")) {
+                    state = "0";
+                } else if (tx.equals("待面试")) {
+                    state = "2";
+                } else if (tx.equals("不合适")) {
+                    state = "3";
+                }
+                getPresenter().updateVitageState("updateVitageState", vitageID, state);
+                btn_vitagestate.setText("简历状态：" + tx);
             }
         });
     }
@@ -124,7 +136,24 @@ public class VitageInfoActivity extends BaseActivity<VitageInfoActivity, VitageI
                 typeOptions.show();
                 break;
             case R.id.btn_seevitage:
-                getPresenter().seeVitageByAccountId("seeVitageByAccountId", accountID + "");
+                Intent browseVitageIntent = new Intent(this, BrowseVitageActivity.class);
+                browseVitageIntent.putExtra("id", accountID + "");
+                startActivity(browseVitageIntent);
+                break;
+        }
+    }
+
+    @Override
+    public void updateVitageState(int state) {
+        switch (state) {
+            case 0:
+                btn_vitagestate.setText("简历状态：未处理");
+                break;
+            case 2:
+                btn_vitagestate.setText("简历状态：待面试");
+                break;
+            case 3:
+                btn_vitagestate.setText("简历状态：不合适");
                 break;
         }
     }

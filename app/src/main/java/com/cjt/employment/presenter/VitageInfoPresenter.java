@@ -48,6 +48,7 @@ public class VitageInfoPresenter extends BasePresenter<VitageInfoActivity> {
             Log.i("CJT", "model is null");
         }
     }
+
     public void seeVitageByAccountId(String action, String id) {
         if (mVitageInfoModel != null) {
             getView().showProgressBar();
@@ -58,6 +59,31 @@ public class VitageInfoPresenter extends BasePresenter<VitageInfoActivity> {
                         @Override
                         public void call(VitageInfo citageInfo) {
                             getView().getVitageInfoSuccess(citageInfo.getData());
+                            getView().hideProgressBar();
+                        }
+                    }, new Action1<Throwable>() {
+                        @Override
+                        public void call(Throwable throwable) {
+                            Log.i("RxJava", "又是在这里出现了问题呀----->" + throwable.toString());
+                        }
+                    });
+        } else {
+            Log.i("CJT", "model is null");
+        }
+    }
+
+    public void updateVitageState(String action, String id, String state) {
+        if (mVitageInfoModel != null) {
+            getView().showProgressBar();
+            mVitageInfoModel.updateVitageState(action, id, state)
+                    .subscribeOn(Schedulers.newThread())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Action1<UpdateResult>() {
+                        @Override
+                        public void call(UpdateResult updateResult) {
+                            if (updateResult.getResult().equals("success")) {
+
+                            }
                             getView().hideProgressBar();
                         }
                     }, new Action1<Throwable>() {

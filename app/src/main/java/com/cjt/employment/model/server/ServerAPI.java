@@ -265,6 +265,14 @@ public interface ServerAPI {
             @Query("id") String id
     );
 
+    //更新简历状态
+    @GET("servlet/VitageServlet")
+    Observable<UpdateResult> updateVitageState(
+            @Query("action") String action,
+            @Query("id") String id,
+            @Query("state") String state
+    );
+
     //添加职位
     @GET("servlet/CompanyServlet")
     Observable<UpdateResult> addCompanyPosition(
