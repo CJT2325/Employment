@@ -3,29 +3,26 @@ package com.cjt.employment.ui.activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cjt.employment.R;
 import com.cjt.employment.bean.RecruitmentInfo;
 import com.cjt.employment.common.Config;
 import com.cjt.employment.model.server.ServerAPI;
-import com.cjt.employment.presenter.BasePresenter;
 import com.cjt.employment.presenter.RecruitmentInfoPresenter;
 import com.cjt.employment.ui.view.RecruitmentInfoView;
 import com.squareup.picasso.Picasso;
-
-import org.w3c.dom.Text;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -51,6 +48,9 @@ public class RecruitmentInfoActivity extends BaseActivity<RecruitmentInfoActivit
     private ProgressBar progressBar;
     private Button btn_send;
 
+    private MenuItem collectionItem;
+    private boolean isCollection = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,8 +62,15 @@ public class RecruitmentInfoActivity extends BaseActivity<RecruitmentInfoActivit
         initView();
         recruitId = getIntent().getIntExtra("id", 0);
         Log.i("CJT", recruitId + " ");
-        getPresenter().getRecruitInfoById("getRecruitInfoById", recruitId);
+
         showProgressBar();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        getPresenter().getRecruitInfoById("getRecruitInfoById", recruitId);
+
     }
 
     @Override
@@ -91,7 +98,37 @@ public class RecruitmentInfoActivity extends BaseActivity<RecruitmentInfoActivit
 
         tv_content = (TextView) findViewById(R.id.tv_content);
         tv_address = (TextView) findViewById(R.id.tv_address);
-        iv_usercover= (CircleImageView) findViewById(R.id.iv_usercover);
+        iv_usercover = (CircleImageView) findViewById(R.id.iv_usercover);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_collection, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_collection) {
+            if (isCollection) {
+                getPresenter().deleteCollection("deleteCollection", Config.getValueByKey(this, Config.KEY_USERID), recruitId + "", item);
+            } else {
+                getPresenter().addCollection("addCollection", Config.getValueByKey(this, Config.KEY_USERID), recruitId + "", item);
+            }
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+        Log.i("CJT", "=====================================================");
+        collectionItem = menu.findItem(R.id.action_collection);
+        getPresenter().isCollection("isCollection", Config.getValueByKey(this, Config.KEY_USERID), recruitId + "");
+        return true;
     }
 
     @Override
@@ -150,5 +187,50 @@ public class RecruitmentInfoActivity extends BaseActivity<RecruitmentInfoActivit
     @Override
     public void hideProgressBar() {
         progressBar.setVisibility(View.GONE);
+    }
+
+
+    @Override
+    public void sendVitageSuccess() {
+        Toast.makeText(this, "投递简历成功", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void sendVitageFail() {
+        Toast.makeText(this, "投递简历失败", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void addCollectionSuccess(MenuItem item) {
+        item.setIcon(R.drawable.ic_star_black_24dp);
+        isCollection = true;
+    }
+
+    @Override
+    public void addCollectionFail() {
+
+    }
+
+    @Override
+    public void collection() {
+        collectionItem.setIcon(R.drawable.ic_star_black_24dp);
+        isCollection = true;
+    }
+
+    @Override
+    public void unCollection() {
+        collectionItem.setIcon(R.drawable.ic_star_border_black_24dp);
+        isCollection = false;
+    }
+
+    @Override
+    public void deleteCollectionSuccess(MenuItem item) {
+        collectionItem.setIcon(R.drawable.ic_star_border_black_24dp);
+        isCollection = false;
+    }
+
+    @Override
+    public void deleteCollectionFail() {
+
     }
 }

@@ -1,5 +1,7 @@
 package com.cjt.employment.ui.view;
 
+import android.view.MenuItem;
+
 import com.cjt.employment.bean.RecruitmentInfo;
 
 /**
@@ -8,6 +10,24 @@ import com.cjt.employment.bean.RecruitmentInfo;
  */
 public interface RecruitmentInfoView {
     public void updateRecruitmentInfo(RecruitmentInfo.DataBean dataBean);
+
     public void showProgressBar();
+
     public void hideProgressBar();
+
+    public void sendVitageSuccess();
+
+    public void sendVitageFail();
+
+    public void addCollectionSuccess(MenuItem item);
+
+    public void addCollectionFail();
+
+    public void collection();
+
+    public void unCollection();
+
+    public void deleteCollectionSuccess(MenuItem item);
+
+    public void deleteCollectionFail();
 }

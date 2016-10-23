@@ -42,6 +42,12 @@ public class UserInfoActivity extends BaseActivity<UserInfoActivity, UserInfoPre
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        getPresenter().getUserCover("getUserInfo", Config.getValueByKey(this, Config.KEY_USERID));
+    }
+
+    @Override
     protected UserInfoPresenter creatPresenter() {
         return new UserInfoPresenter();
     }
@@ -57,7 +63,7 @@ public class UserInfoActivity extends BaseActivity<UserInfoActivity, UserInfoPre
         layout_collection.setOnClickListener(this);
         iv_cover = (CircleImageView) findViewById(R.id.iv_cover);
         tv_name = (TextView) findViewById(R.id.tv_name);
-        getPresenter().getUserCover("getUserInfo", Config.getValueByKey(this, Config.KEY_USERID));
+
     }
 
     @Override

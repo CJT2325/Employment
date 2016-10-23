@@ -1,6 +1,7 @@
 package com.cjt.employment.model.server;
 
 import com.cjt.employment.bean.AccountInfo;
+import com.cjt.employment.bean.CollectionBean;
 import com.cjt.employment.bean.CompanyDescpt;
 import com.cjt.employment.bean.CompanyInfo;
 import com.cjt.employment.bean.CompanyPosition;
@@ -69,12 +70,29 @@ public interface ServerAPI {
 
     //更新用户姓名
     @GET("servlet/AccountServlet")
-    Observable<UpLoadImageResult> updateName(@Query("action") String action, @Query("id") int id, @Query("name") String name);
+    Observable<UpLoadImageResult> updateName(
+            @Query("action") String action,
+            @Query("id") int id,
+            @Query("name") String name
+    );
 
     //获取用户信息
     @FormUrlEncoded
     @POST("servlet/LoginServlet")
-    Observable<LoginResult> login(@Query("action") String action, @Field("phone") String id, @Field("password") String password);
+    Observable<LoginResult> login(
+            @Query("action") String action,
+            @Field("phone") String id,
+            @Field("password") String password
+    );
+
+    //注册
+    @FormUrlEncoded
+    @POST("servlet/LoginServlet")
+    Observable<UpdateResult> register(
+            @Query("action") String action,
+            @Field("phone") String id,
+            @Field("password") String password
+    );
 
     //获取用户头像
     @GET("servlet/LoginServlet")
@@ -191,6 +209,21 @@ public interface ServerAPI {
             @Query("id") String id
     );
 
+    //获取收藏列表
+    @GET("servlet/CollectServlet")
+    Observable<CollectionBean> getCollection(
+            @Query("action") String action,
+            @Query("id") String id
+    );
+
+    //删除收藏
+    @GET("servlet/CollectServlet")
+    Observable<UpdateResult> deleteCollectionById(
+            @Query("action") String action,
+            @Query("id") String id,
+            @Query("recruitid") String recruitid
+    );
+
     //发送简历
     @GET("servlet/RecruitServlet")
     Observable<UpdateResult> pushVitage(
@@ -200,7 +233,23 @@ public interface ServerAPI {
             @Query("companyId") int companyId
     );
 
-    //发送简历
+    //添加收藏
+    @GET("servlet/CollectServlet")
+    Observable<UpdateResult> addCollection(
+            @Query("action") String action,
+            @Query("id") String id,
+            @Query("recruitid") String recruitId
+    );
+
+    //添加收藏
+    @GET("servlet/CollectServlet")
+    Observable<UpdateResult> isCollection(
+            @Query("action") String action,
+            @Query("id") String id,
+            @Query("recruitid") String recruitId
+    );
+
+    //获取简历
     @GET("servlet/RecruitServlet")
     Observable<UserVitage> getUserVitage(
             @Query("action") String action,

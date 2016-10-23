@@ -39,4 +39,19 @@ public class RecruitmentInfoModelImp implements RecruitmentInfoModel {
     public Observable<UpdateResult> pushVitage(String action, String id, int recruitId, int companyId) {
         return mServerAPI.pushVitage(action, id, recruitId, companyId);
     }
+
+    @Override
+    public Observable<UpdateResult> addCollection(String action, String id, String recruitId) {
+        return mServerAPI.addCollection(action, id, recruitId);
+    }
+
+    @Override
+    public Observable<UpdateResult> isCollection(String action, String id, String recruitId) {
+        return mServerAPI.isCollection(action, id, recruitId);
+    }
+
+    @Override
+    public Observable<UpdateResult> deleteCollection(String action, String id, String recruitid) {
+        return mServerAPI.deleteCollectionById(action, id, recruitid);
+    }
 }

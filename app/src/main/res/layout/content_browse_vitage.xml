@@ -22,17 +22,12 @@
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:paddingTop="@dimen/activity_vertical_margin">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:text="添加头像" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#FFF"
-                android:padding="16dp">
+                android:padding="32dp">
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/iv_cover"
@@ -41,13 +36,6 @@
                     android:layout_centerHorizontal="true"
                     android:src="@drawable/ic_person_black_24dp1"
                     android:tint="@color/colorPrimary" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/iv_cover"
-                    android:layout_centerHorizontal="true"
-                    android:text="点击更换" />
             </RelativeLayout>
 
             <TextView
@@ -60,32 +48,6 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
-                <RelativeLayout
-                    android:id="@+id/layout_user_unedit"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:background="#ffccc9"
-                    android:clickable="true"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:id="@+id/tv_adduserinfo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:text="完善个人基本信息"
-                        android:textColor="@color/colorPrimary" />
-
-                    <ImageView
-                        android:id="@+id/iv_adduserinfo"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_centerVertical="true"
-                        android:layout_toLeftOf="@id/tv_adduserinfo"
-                        android:src="@drawable/ic_mode_edit_black_24dp"
-                        android:tint="@color/colorPrimary" />
-                </RelativeLayout>
 
                 <RelativeLayout
                     android:id="@+id/layout_user_edit"
@@ -159,6 +121,7 @@
             </RelativeLayout>
 
             <TextView
+                android:id="@+id/tv_worklist"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
@@ -168,42 +131,6 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
-                <RelativeLayout
-                    android:id="@+id/layout_worklist"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:background="#ffccc9"
-                    android:gravity="center"
-                    android:padding="16dp"
-                    android:visibility="gone">
-
-                    <TextView
-                        android:id="@+id/tv_addwork"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:text="添加工作经历"
-                        android:textColor="@color/colorPrimary" />
-
-                    <ImageView
-                        android:id="@+id/iv_addwork"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_centerVertical="true"
-                        android:layout_toLeftOf="@id/tv_addwork"
-                        android:src="@drawable/ic_mode_edit_black_24dp"
-                        android:tint="@color/colorPrimary" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/tv_addwork"
-                        android:layout_centerInParent="true"
-                        android:layout_marginTop="3dp"
-                        android:text="请从最近一份工作说起"
-                        android:textColor="#888" />
-                </RelativeLayout>
 
                 <RelativeLayout
                     android:id="@+id/layout_worklist_edit"
@@ -223,6 +150,7 @@
             </RelativeLayout>
 
             <TextView
+                android:id="@+id/tv_educationlist"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
@@ -232,33 +160,6 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
-                <RelativeLayout
-                    android:id="@+id/layout_education_unedit"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:background="#ffccc9"
-                    android:gravity="center"
-                    android:padding="16dp"
-                    android:visibility="gone">
-
-                    <TextView
-                        android:id="@+id/tv_addeducation"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:text="添加教育经历"
-                        android:textColor="@color/colorPrimary" />
-
-                    <ImageView
-                        android:id="@+id/iv_addeducation"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_centerVertical="true"
-                        android:layout_toLeftOf="@id/tv_addeducation"
-                        android:src="@drawable/ic_mode_edit_black_24dp"
-                        android:tint="@color/colorPrimary" />
-                </RelativeLayout>
 
                 <RelativeLayout
                     android:id="@+id/layout_education_edit"
@@ -287,34 +188,6 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
-                <RelativeLayout
-                    android:id="@+id/layout_hopejob_unedit"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:background="#ffccc9"
-                    android:clickable="true"
-                    android:gravity="center"
-                    android:padding="16dp"
-                    android:visibility="gone">
-
-                    <TextView
-                        android:id="@+id/tv_hopejob"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:text="谈谈你期望的工作"
-                        android:textColor="@color/colorPrimary" />
-
-                    <ImageView
-                        android:id="@+id/iv_hopejob"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_centerVertical="true"
-                        android:layout_toLeftOf="@id/tv_hopejob"
-                        android:src="@drawable/ic_mode_edit_black_24dp"
-                        android:tint="@color/colorPrimary" />
-                </RelativeLayout>
 
                 <RelativeLayout
                     android:id="@+id/layout_hopejob_edit"
@@ -348,6 +221,7 @@
             </RelativeLayout>
 
             <TextView
+                android:id="@+id/tv_project"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
@@ -357,40 +231,6 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:background="#ffccc9"
-                    android:gravity="center"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:id="@+id/tv_addproject"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:text="添加项目经历"
-                        android:textColor="@color/colorPrimary" />
-
-                    <ImageView
-                        android:id="@+id/iv_addproject"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_centerVertical="true"
-                        android:layout_toLeftOf="@id/tv_addproject"
-                        android:src="@drawable/ic_mode_edit_black_24dp"
-                        android:tint="@color/colorPrimary" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/tv_addproject"
-                        android:layout_centerInParent="true"
-                        android:layout_marginTop="3dp"
-                        android:text="请从最近的项目经历说起"
-                        android:textColor="#888" />
-                </RelativeLayout>
 
                 <RelativeLayout
                     android:id="@+id/layout_project_edit"
@@ -410,5 +250,12 @@
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
 </RelativeLayout>
 

@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -32,16 +33,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class BrowseVitageActivity extends BaseActivity<BrowseVitageActivity, BrowseVitagePresenter> implements VitageView {
 
-    private RelativeLayout layout_user_unedit;
+    private ProgressBar progressBar;
+
     private RelativeLayout layout_user_edit;
-    private RelativeLayout layout_hopejob_unedit;
 
     private CircleImageView iv_cover;
-    private RelativeLayout photo_bottomsheet;
-    private BottomSheetDialog dialog;
-    private RelativeLayout bs_photograph;
-    private RelativeLayout bs_album;
-    private RelativeLayout bs_cancel;
 
     private LinearLayoutForListView worklistview;
     private LinearLayoutForListView educationlistview;
@@ -49,6 +45,13 @@ public class BrowseVitageActivity extends BaseActivity<BrowseVitageActivity, Bro
     private AdapterForLinearLayout worklistviewAdpater;
     private AdapterForLinearLayout educationlistviewAdpater;
     private AdapterForLinearLayout projectlistviewAdpater;
+
+    private RelativeLayout layout_worklist_edit;
+    private TextView tv_worklist;
+    private RelativeLayout layout_education_edit;
+    private TextView tv_educationlist;
+    private RelativeLayout layout_project_edit;
+    private TextView tv_project;
 
     //基本信息
     private TextView tv_name;
@@ -89,10 +92,15 @@ public class BrowseVitageActivity extends BaseActivity<BrowseVitageActivity, Bro
     }
 
     private void initView() {
-        //更换头像
-        photo_bottomsheet = (RelativeLayout) LayoutInflater.from(this).inflate(R.layout.photo_bottomsheet, null);
-        dialog = new BottomSheetDialog(this);
-        dialog.setContentView(photo_bottomsheet);
+        progressBar = (ProgressBar) findViewById(R.id.progressbar);
+
+        layout_worklist_edit= (RelativeLayout) findViewById(R.id.layout_worklist_edit);
+        tv_worklist= (TextView) findViewById(R.id.tv_worklist);
+        layout_education_edit= (RelativeLayout) findViewById(R.id.layout_education_edit);
+        tv_educationlist= (TextView) findViewById(R.id.tv_educationlist);
+        layout_project_edit= (RelativeLayout) findViewById(R.id.layout_project_edit);
+        tv_project= (TextView) findViewById(R.id.tv_project);
+
         iv_cover = (CircleImageView) findViewById(R.id.iv_cover);
 
         tv_name = (TextView) findViewById(R.id.tv_name);
@@ -108,14 +116,8 @@ public class BrowseVitageActivity extends BaseActivity<BrowseVitageActivity, Bro
         tv_jobtype = (TextView) findViewById(R.id.tv_jobtype);
         tv_content = (TextView) findViewById(R.id.tv_content);
 
-        //简历个人信息
-        layout_user_unedit = (RelativeLayout) findViewById(R.id.layout_user_unedit);
+        //简历个人信
         layout_user_edit = (RelativeLayout) findViewById(R.id.layout_user_edit);
-
-        layout_user_unedit.setVisibility(View.VISIBLE);
-        layout_user_edit.setVisibility(View.GONE);
-        //希望的工作
-        layout_hopejob_unedit = (RelativeLayout) findViewById(R.id.layout_hopejob_unedit);
 
 
         worklistview = (LinearLayoutForListView) findViewById(R.id.layout_worklistview);
@@ -168,8 +170,6 @@ public class BrowseVitageActivity extends BaseActivity<BrowseVitageActivity, Bro
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == VitaeActivity.requestCode && resultCode == 1) {
-            layout_user_unedit.setVisibility(View.GONE);
-            layout_user_edit.setVisibility(View.VISIBLE);
             tv_name.setText("姓        名:  " + data.getStringExtra("name"));
             tv_sex.setText("性        别:  " + data.getStringExtra("sex"));
             tv_brithday.setText("出生年份:  " + data.getStringExtra("brithday"));
@@ -196,6 +196,10 @@ public class BrowseVitageActivity extends BaseActivity<BrowseVitageActivity, Bro
                 new int[]{R.id.tv_worktime, R.id.tv_workname, R.id.tv_workcontent});
         worklistview.removeAllViews();
         worklistview.setAdapter(worklistviewAdpater);
+        if (data.size()==0) {
+            layout_worklist_edit.setVisibility(View.GONE);
+            tv_worklist.setVisibility(View.GONE);
+        }
 //        worklistviewAdpater.update(list);
     }
 
@@ -214,6 +218,10 @@ public class BrowseVitageActivity extends BaseActivity<BrowseVitageActivity, Bro
                 new int[]{R.id.tv_worktime, R.id.tv_workname, R.id.tv_workcontent});
         educationlistview.removeAllViews();
         educationlistview.setAdapter(educationlistviewAdpater);
+        if (data.size()==0){
+            layout_education_edit.setVisibility(View.GONE);
+            tv_educationlist.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -239,12 +247,14 @@ public class BrowseVitageActivity extends BaseActivity<BrowseVitageActivity, Bro
                 new int[]{R.id.tv_projecttime, R.id.tv_projectname, R.id.tv_projectreponsibility, R.id.tv_projectcontent});
         projectlistview.removeAllViews();
         projectlistview.setAdapter(projectlistviewAdpater);
+        if (data.size()==0){
+            layout_project_edit.setVisibility(View.GONE);
+            tv_project.setVisibility(View.GONE);
+        }
     }
 
     @Override
     public void getVitageSuccess(VitageBean.DataBean data) {
-        layout_user_unedit.setVisibility(View.GONE);
-        layout_user_edit.setVisibility(View.VISIBLE);
         tv_name.setText("姓        名:  " + data.getName());
         tv_sex.setText("性        别:  " + data.getSex());
         tv_brithday.setText("出生年份:  " + data.getBrithday());
@@ -258,11 +268,11 @@ public class BrowseVitageActivity extends BaseActivity<BrowseVitageActivity, Bro
 
     @Override
     public void showProgressBar() {
-
+        progressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideProgressBar() {
-
+        progressBar.setVisibility(View.GONE);
     }
 }
