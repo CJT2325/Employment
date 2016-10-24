@@ -36,6 +36,6 @@
         android:layout_width="match_parent"
         android:layout_height="15dp"
         android:layout_below="@id/layout_message"
-        android:background="#80000000" />
+        android:background="#CCC" />
 </RelativeLayout>
 
