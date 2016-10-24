@@ -32,4 +32,5 @@
     <string name="title_activity_edit_company_position">EditCompanyPositionActivity</string>
     <string name="title_activity_vitage_info">VitageInfoActivity</string>
     <string name="title_activity_browse_vitage">BrowseVitageActivity</string>
+    <string name="title_activity_vitage_state">VitageStateActivity</string>
 </resources>

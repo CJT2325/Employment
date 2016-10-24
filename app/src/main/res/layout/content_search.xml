@@ -7,15 +7,30 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.cjt.employment.ui.activity.SearchActivity"
     tools:showIn="@layout/activity_search">
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerview_seach"
+
+    <com.yyydjk.library.DropDownMenu
+        android:id="@+id/dropDownMenu"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        app:dddividerColor="@color/colorPrimary"
+        app:ddmaskColor="@color/mask_color"
+        app:ddmenuBackgroundColor="@color/colorPrimary"
+        app:ddmenuSelectedIcon="@drawable/ic_keyboard_arrow_up_black_24dp"
+        app:ddmenuTextSize="15sp"
+        app:ddmenuUnselectedIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+        app:ddtextSelectedColor="@color/white"
+        app:ddtextUnselectedColor="@color/white" />
+
+    <!--<android.support.v7.widget.RecyclerView-->
+        <!--android:id="@+id/recyclerview_seach"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent" />-->
+
     <ProgressBar
-        android:visibility="gone"
-        android:layout_centerInParent="true"
         android:id="@+id/progressbar"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
 
 </RelativeLayout>

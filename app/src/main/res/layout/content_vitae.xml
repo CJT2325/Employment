@@ -177,7 +177,7 @@
                 android:layout_height="wrap_content">
 
                 <RelativeLayout
-                    android:id="@+id/layout_worklist"
+                    android:id="@+id/layout_worklist_unedit"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:background="#ffccc9"
@@ -392,6 +392,7 @@
                 android:layout_height="wrap_content">
 
                 <RelativeLayout
+                    android:id="@+id/layout_project_unedit"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:background="#ffccc9"

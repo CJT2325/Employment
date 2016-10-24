@@ -12,10 +12,13 @@
         android:id="@+id/layout_bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:padding="18dp">
-
+        android:layout_alignParentBottom="true">
+        <View
+            android:background="#AAA"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"/>
         <Button
+            android:layout_margin="18dp"
             android:id="@+id/btn_send"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

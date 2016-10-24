@@ -28,7 +28,7 @@ public class SearchModelImp implements SearchModel {
     }
 
     @Override
-    public Observable<Recruit> searchRecruitment(String action, String query) {
-        return mServerAPI.searchRecruitment(action,query);
+    public Observable<Recruit> searchRecruitment(String action, String query, String city, String type, String education) {
+        return mServerAPI.searchRecruitment(action,query,city,type,education);
     }
 }

@@ -33,7 +33,18 @@ public class VitaeActivity extends BaseActivity<VitaeActivity, VitagePresenter> 
 
     private RelativeLayout layout_user_unedit;
     private RelativeLayout layout_user_edit;
+
+    private RelativeLayout layout_worklist_unedit;
+    private RelativeLayout layout_worklist_edit;
+
+    private RelativeLayout layout_education_unedit;
+    private RelativeLayout layout_education_edit;
+
+    private RelativeLayout layout_project_unedit;
+    private RelativeLayout layout_project_edit;
+
     private RelativeLayout layout_hopejob_unedit;
+    private RelativeLayout layout_hopejob_edit;
 
     private CircleImageView iv_cover;
     private RelativeLayout photo_bottomsheet;
@@ -89,7 +100,7 @@ public class VitaeActivity extends BaseActivity<VitaeActivity, VitagePresenter> 
         getPresenter().getWorkExperienceList("getWorkExperienceList", Config.getValueByKey(this, Config.KEY_USERID));
         getPresenter().getEducationList("getEducationList", Config.getValueByKey(this, Config.KEY_USERID));
         getPresenter().getHopeJob("getHopeJob", Config.getValueByKey(this, Config.KEY_USERID));
-        getPresenter().getProjectList("getProjectList", Config.getValueByKey(this,Config.KEY_USERID));
+        getPresenter().getProjectList("getProjectList", Config.getValueByKey(this, Config.KEY_USERID));
     }
 
     private void initView() {
@@ -97,7 +108,7 @@ public class VitaeActivity extends BaseActivity<VitaeActivity, VitagePresenter> 
         photo_bottomsheet = (RelativeLayout) LayoutInflater.from(this).inflate(R.layout.photo_bottomsheet, null);
         dialog = new BottomSheetDialog(this);
         dialog.setContentView(photo_bottomsheet);
-        iv_cover= (CircleImageView) findViewById(R.id.iv_cover);
+        iv_cover = (CircleImageView) findViewById(R.id.iv_cover);
         iv_cover.setOnClickListener(this);
 
         tv_name = (TextView) findViewById(R.id.tv_name);
@@ -120,9 +131,39 @@ public class VitaeActivity extends BaseActivity<VitaeActivity, VitagePresenter> 
         layout_user_edit.setOnClickListener(this);
         layout_user_unedit.setVisibility(View.VISIBLE);
         layout_user_edit.setVisibility(View.GONE);
+
+        layout_worklist_unedit = (RelativeLayout) findViewById(R.id.layout_worklist_unedit);
+        layout_worklist_edit = (RelativeLayout) findViewById(R.id.layout_worklist_edit);
+        layout_worklist_unedit.setOnClickListener(this);
+        layout_worklist_edit.setOnClickListener(this);
+        layout_worklist_unedit.setVisibility(View.VISIBLE);
+        layout_worklist_edit.setVisibility(View.GONE);
+
+        layout_education_unedit = (RelativeLayout) findViewById(R.id.layout_education_unedit);
+        layout_education_edit = (RelativeLayout) findViewById(R.id.layout_education_edit);
+        layout_education_unedit.setOnClickListener(this);
+        layout_education_edit.setOnClickListener(this);
+        layout_education_unedit.setVisibility(View.VISIBLE);
+        layout_education_edit.setVisibility(View.GONE);
+
+
+        layout_project_unedit = (RelativeLayout) findViewById(R.id.layout_project_unedit);
+        layout_project_edit = (RelativeLayout) findViewById(R.id.layout_project_edit);
+        layout_project_unedit.setOnClickListener(this);
+        layout_project_edit.setOnClickListener(this);
+        layout_project_unedit.setVisibility(View.VISIBLE);
+        layout_project_edit.setVisibility(View.GONE);
+
+
         //希望的工作
         layout_hopejob_unedit = (RelativeLayout) findViewById(R.id.layout_hopejob_unedit);
+        layout_hopejob_edit = (RelativeLayout) findViewById(R.id.layout_hopejob_edit);
         layout_hopejob_unedit.setOnClickListener(this);
+        layout_hopejob_edit.setOnClickListener(this);
+        layout_hopejob_unedit.setVisibility(View.VISIBLE);
+        layout_hopejob_edit.setVisibility(View.GONE);
+        layout_hopejob_unedit.setOnClickListener(this);
+
 
         worklistview = (LinearLayoutForListView) findViewById(R.id.layout_worklistview);
         educationlistview = (LinearLayoutForListView) findViewById(R.id.layout_educationlistview);
@@ -169,7 +210,7 @@ public class VitaeActivity extends BaseActivity<VitaeActivity, VitagePresenter> 
                 new int[]{R.id.tv_worktime, R.id.tv_workname, R.id.tv_workcontent});
         educationlistview.setAdapter(educationlistviewAdpater);
 
-        projectlistviewAdpater = new AdapterForLinearLayout(this, list2, R.layout.projectlist_item, new String[]{"projecttime", "projectname", "projectreponsibility","projectcontent"},
+        projectlistviewAdpater = new AdapterForLinearLayout(this, list2, R.layout.projectlist_item, new String[]{"projecttime", "projectname", "projectreponsibility", "projectcontent"},
                 new int[]{R.id.tv_projecttime, R.id.tv_projectname, R.id.tv_projectreponsibility, R.id.tv_projectcontent});
         projectlistview.setAdapter(projectlistviewAdpater);
     }
@@ -189,6 +230,22 @@ public class VitaeActivity extends BaseActivity<VitaeActivity, VitagePresenter> 
                 Intent editIntent = new Intent(this, VitageUserEditActivity.class);
                 startActivityForResult(editIntent, requestCode);
                 break;
+            case R.id.layout_worklist_unedit:
+                Intent worklistUneditIntent = new Intent(this, WorkExperienceActivity.class);
+                startActivityForResult(worklistUneditIntent, requestCode);
+                break;
+            case R.id.layout_education_unedit:
+                Intent educationUneditIntent = new Intent(this, EducationActivity.class);
+                startActivityForResult(educationUneditIntent, requestCode);
+                break;
+            case R.id.layout_project_unedit:
+                Intent projectUneditIntent = new Intent(this, ProjectActivity.class);
+                startActivityForResult(projectUneditIntent, requestCode);
+                break;
+            case R.id.layout_hopejob_unedit:
+                Intent hopJobEditIntent = new Intent(this, HopeJobEditActivity.class);
+                startActivity(hopJobEditIntent);
+                break;
             case R.id.layout_user_edit:
                 break;
             case R.id.tv_workexperience_edit:
@@ -207,10 +264,7 @@ public class VitaeActivity extends BaseActivity<VitaeActivity, VitagePresenter> 
                 Intent projectIntent = new Intent(this, ProjectActivity.class);
                 startActivity(projectIntent);
                 break;
-            case R.id.layout_hopejob_unedit:
-                Intent hopJobEditIntent = new Intent(this, HopeJobEditActivity.class);
-                startActivity(hopJobEditIntent);
-                break;
+
         }
     }
 
@@ -246,6 +300,10 @@ public class VitaeActivity extends BaseActivity<VitaeActivity, VitagePresenter> 
                 new int[]{R.id.tv_worktime, R.id.tv_workname, R.id.tv_workcontent});
         worklistview.removeAllViews();
         worklistview.setAdapter(worklistviewAdpater);
+        if (data.size() > 0) {
+            layout_worklist_unedit.setVisibility(View.GONE);
+            layout_worklist_edit.setVisibility(View.VISIBLE);
+        }
 //        worklistviewAdpater.update(list);
     }
 
@@ -264,6 +322,11 @@ public class VitaeActivity extends BaseActivity<VitaeActivity, VitagePresenter> 
                 new int[]{R.id.tv_worktime, R.id.tv_workname, R.id.tv_workcontent});
         educationlistview.removeAllViews();
         educationlistview.setAdapter(educationlistviewAdpater);
+
+        if (data.size() > 0) {
+            layout_education_unedit.setVisibility(View.GONE);
+            layout_education_edit.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -271,24 +334,32 @@ public class VitaeActivity extends BaseActivity<VitaeActivity, VitagePresenter> 
         tv_hopeposition.setText(data.getHopeposition());
         tv_jobtype.setText(data.getJobtype() + "/" + data.getCity() + "/" + data.getMoney());
         tv_content.setText(data.getContent());
+        if (!data.getHopeposition().equals("")) {
+            layout_hopejob_unedit.setVisibility(View.GONE);
+            layout_hopejob_edit.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
     public void getProjectSuccess(List<Project.DataBean> data) {
         ArrayList<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
         for (int i = 0; i < data.size(); i++) {
-            Project.DataBean dataBean=data.get(i);
+            Project.DataBean dataBean = data.get(i);
             HashMap<String, Object> win = new HashMap<String, Object>();
-            win.put("projecttime", "  "+dataBean.getStarttime()+" - "+dataBean.getEndtime());
-            win.put("projectname", "【项目名称】 "+dataBean.getName());
-            win.put("projectreponsibility", "【项目职责】 "+dataBean.getResponsibility());
-            win.put("projectcontent", "  项目描述: "+dataBean.getContent());
+            win.put("projecttime", "  " + dataBean.getStarttime() + " - " + dataBean.getEndtime());
+            win.put("projectname", "【项目名称】 " + dataBean.getName());
+            win.put("projectreponsibility", "【项目职责】 " + dataBean.getResponsibility());
+            win.put("projectcontent", "  项目描述: " + dataBean.getContent());
             list.add(win);
         }
-        projectlistviewAdpater = new AdapterForLinearLayout(this, list, R.layout.projectlist_item, new String[]{"projecttime", "projectname", "projectreponsibility","projectcontent"},
+        projectlistviewAdpater = new AdapterForLinearLayout(this, list, R.layout.projectlist_item, new String[]{"projecttime", "projectname", "projectreponsibility", "projectcontent"},
                 new int[]{R.id.tv_projecttime, R.id.tv_projectname, R.id.tv_projectreponsibility, R.id.tv_projectcontent});
         projectlistview.removeAllViews();
         projectlistview.setAdapter(projectlistviewAdpater);
+        if (data.size() > 0) {
+            layout_project_unedit.setVisibility(View.GONE);
+            layout_project_edit.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override

@@ -9,5 +9,5 @@ import rx.Observable;
  * 邮箱: 445263848@qq.com.
  */
 public interface SearchModel {
-    public Observable<Recruit> searchRecruitment(String action, String query);
+    public Observable<Recruit> searchRecruitment(String action, String query, String city, String type, String education);
 }

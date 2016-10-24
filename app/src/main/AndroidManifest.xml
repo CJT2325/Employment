@@ -143,6 +143,10 @@
         <activity
             android:name=".ui.activity.BrowseVitageActivity"
             android:label="@string/title_activity_browse_vitage"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.activity.VitageStateActivity"
+            android:label="@string/title_activity_vitage_state"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

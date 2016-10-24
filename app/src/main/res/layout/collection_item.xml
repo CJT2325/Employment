@@ -9,8 +9,7 @@
         android:id="@+id/layout_recruitment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@drawable/item_selector">
+        android:layout_margin="10dp">
 
         <ImageView
             android:id="@+id/iv_cover"

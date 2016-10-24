@@ -16,17 +16,17 @@ import rx.schedulers.Schedulers;
  * 作者: 陈嘉桐 on 2016/10/10
  * 邮箱: 445263848@qq.com.
  */
-public class SearchPresenter extends BasePresenter<SearchActivity>{
+public class SearchPresenter extends BasePresenter<SearchActivity> {
     private SearchModel mSearchPresenterModel;
 
     public SearchPresenter() {
         mSearchPresenterModel = SearchModelImp.getInstance();
     }
 
-    public void searchRecruitment(String action, String query) {
+    public void searchRecruitment(String action, String query, String city, String type, String education) {
         if (mSearchPresenterModel != null) {
             getView().showProgressBar();
-            mSearchPresenterModel.searchRecruitment(action, query)
+            mSearchPresenterModel.searchRecruitment(action, query, city, type, education)
                     .subscribeOn(Schedulers.newThread())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new Action1<Recruit>() {

@@ -104,6 +104,7 @@ public class EducationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         public EducationFooterViewHolder(View itemView, Context context) {
             super(itemView);
             tv_addworkexperience = (TextView) itemView.findViewById(R.id.tv_addworkexperience);
+            tv_addworkexperience.setText("添加教育经历");
             tv_addworkexperience.setOnClickListener(this);
             this.context = context;
         }

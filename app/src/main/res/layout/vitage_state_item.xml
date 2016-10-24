@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFF"
+    android:clickable="true"
+    android:padding="10dp">
+
+    <RelativeLayout
+        android:id="@+id/layout_recruitment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_cover"
+            android:layout_width="100dp"
+            android:layout_height="70dp"
+            android:layout_marginRight="8dp"
+            android:scaleType="centerInside" />
+
+        <TextView
+            android:id="@+id/tv_position"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/iv_cover"
+            android:text="Android开发实习生"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/tv_company"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_position"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/iv_cover"
+            android:text="公司名称"
+            android:textColor="#000000" />
+
+
+        <TextView
+            android:id="@+id/tv_wage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_company"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/iv_cover"
+            android:text="2-3K"
+            android:textColor="@color/colorAccent" />
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:text="08月08日"
+            android:textColor="#999999" />
+
+        <TextView
+            android:id="@+id/tv_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/iv_cover"
+            android:layout_alignParentRight="true"
+            android:text="【不合适】"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold" />
+    </RelativeLayout>
+</RelativeLayout>

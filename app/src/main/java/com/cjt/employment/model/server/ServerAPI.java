@@ -17,6 +17,7 @@ import com.cjt.employment.bean.UpdateResult;
 import com.cjt.employment.bean.UserVitage;
 import com.cjt.employment.bean.VitageBean;
 import com.cjt.employment.bean.VitageInfo;
+import com.cjt.employment.bean.VitageStateBean;
 import com.cjt.employment.bean.WorkExperience;
 
 import okhttp3.RequestBody;
@@ -199,7 +200,10 @@ public interface ServerAPI {
     @GET("servlet/RecruitServlet")
     Observable<Recruit> searchRecruitment(
             @Query("action") String action,
-            @Query("query") String query
+            @Query("query") String query,
+            @Query("city") String city,
+            @Query("type") String type,
+            @Query("education") String education
     );
 
     //根据用户ID获取他管理公司的职位
@@ -338,5 +342,13 @@ public interface ServerAPI {
             @Query("city") String city,
             @Query("address") String address,
             @Query("content") String content
+    );
+
+    //获取投递的简历
+    @GET("servlet/RecruitServlet")
+    Observable<VitageStateBean> getAllStateVitage(
+            @Query("action") String action,
+            @Query("id") String id,
+            @Query("state") String state
     );
 }

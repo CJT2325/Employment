@@ -1,6 +1,7 @@
 package com.cjt.employment.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.cjt.employment.R;
+import com.cjt.employment.ui.activity.VitageStateActivity;
 
 import java.util.List;
 
@@ -40,7 +42,7 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         if (viewType == 1) {
             return new Message1ViewHolder(LayoutInflater.from(mContext).inflate(R.layout.message_item_1, parent, false),listener);
         } else {
-            return new Message1ViewHolder(LayoutInflater.from(mContext).inflate(R.layout.message_item_2, parent, false),listener);
+            return new Message2ViewHolder(LayoutInflater.from(mContext).inflate(R.layout.message_item_2, parent, false),listener);
         }
     }
 
@@ -63,7 +65,7 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     @Override
     public int getItemViewType(int position) {
-        return position <= 2 ? 1 : 2;
+        return position <= 0 ? 1 : 2;
     }
 
     class Message1ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -79,9 +81,11 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         @Override
         public void onClick(View v) {
-            if (listener != null) {
-                listener.onItemClick(v, getPosition());
-            }
+//            if (listener != null) {
+//                listener.onItemClick(v, getPosition());
+//            }
+            Intent vitageStateIntent=new Intent(mContext, VitageStateActivity.class);
+            mContext.startActivity(vitageStateIntent);
         }
     }
 
