@@ -20,9 +20,12 @@ import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.cjt.employment.R;
 import com.cjt.employment.common.Config;
+import com.cjt.employment.common.DemoCache;
 import com.cjt.employment.ui.fragment.ExploreFragment;
 import com.cjt.employment.ui.fragment.HomeFragment;
 import com.cjt.employment.ui.fragment.MessageFragment;
+import com.netease.nim.uikit.NimUIKit;
+import com.netease.nimlib.sdk.msg.constant.SessionTypeEnum;
 
 import br.com.mauker.materialsearchview.MaterialSearchView;
 
@@ -57,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onQueryTextSubmit(String query) {
                 //这里发起查询
                 Intent searchIntent = new Intent(MainActivity.this, SearchActivity.class);
-                searchIntent.putExtra("query",query);
+                searchIntent.putExtra("query", query);
                 startActivity(searchIntent);
                 Log.i("CJT", "query    " + query);
                 return false;
@@ -197,15 +200,16 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_seacher) {
-
             searchView.openSearch();
             return true;
         } else if (id == R.id.action_user) {
             Intent intent;
-            if (Config.getValueByKey(this, Config.KEY_TOKEN).equals("")) {
+            if (Config.getValueByKey(this, Config.KEY_TOKEN).equals("") && DemoCache.getAccount() == null) {
                 intent = new Intent(this, LoginActivity.class);
+                startActivity(intent);
             } else {
                 intent = new Intent(this, UserInfoActivity.class);
+//                NimUIKit.startChatting(this, "2", SessionTypeEnum.P2P, null, null);
             }
             startActivity(intent);
         }

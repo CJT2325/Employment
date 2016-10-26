@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 
 import com.cjt.employment.R;
 import com.cjt.employment.adapter.MessageAdapter;
+import com.cjt.employment.bean.UserBean;
+import com.cjt.employment.common.Config;
 import com.cjt.employment.common.DividerItemDecoration;
 import com.cjt.employment.presenter.MessagePresenter;
 
@@ -19,7 +21,7 @@ import java.util.List;
 
 public class MessageFragment extends BaseFragment<HomeFragment, MessagePresenter> {
     private RecyclerView mRecyclerView;
-    private List<String> mDatas;
+    private List<UserBean> mDatas;
     private MessageAdapter mMessageAdapter;
 
     public static MessageFragment newInstance() {
@@ -53,7 +55,7 @@ public class MessageFragment extends BaseFragment<HomeFragment, MessagePresenter
         mMessageAdapter = new MessageAdapter(mDatas, getActivity(), new MessageAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-
+                mMessageAdapter.startChatRoom(position);
             }
         });
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
@@ -61,15 +63,29 @@ public class MessageFragment extends BaseFragment<HomeFragment, MessagePresenter
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL_LIST));
         return view;
     }
+
     private void initDatas() {
-        mDatas = new ArrayList<String>();
-        for (int i = 0; i < 4; i++) {
-            mDatas.add("Stirng " + i);
+        mDatas = Config.getList(getContext());
+        if (mDatas==null) {
+            mDatas = new ArrayList<UserBean>();
+//            for (int i = 0; i < 4; i++) {
+//                UserBean userBean = new UserBean();
+//                userBean.setId(i + "");
+//                userBean.setCover("afasfafas");
+//                userBean.setCompanyName("Tencent");
+//                userBean.setName("CJT");
+//                mDatas.add(userBean);
+//            }
+            Config.saveList(getContext(),mDatas);
         }
     }
+
     @Override
     public void onStart() {
         super.onStart();
+        if (Config.getList(getContext())!=null){
+            mMessageAdapter.updata(Config.getList(getContext()));
+        }
         if (getPresenter() != null) {
 //            getPresenter().getShopList();
         } else {

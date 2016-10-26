@@ -13,9 +13,12 @@ import android.widget.RelativeLayout;
 
 import com.cjt.employment.R;
 import com.cjt.employment.common.Config;
+import com.cjt.employment.common.DemoCache;
 import com.cjt.employment.presenter.SettingPresenter;
 import com.cjt.employment.ui.view.LoginView;
 import com.cjt.employment.ui.view.SettingView;
+import com.netease.nimlib.sdk.NIMClient;
+import com.netease.nimlib.sdk.auth.AuthService;
 
 public class SettingActivity extends BaseActivity<SettingActivity,SettingPresenter> implements View.OnClickListener, SettingView {
     private RelativeLayout layout_logout;
@@ -67,6 +70,8 @@ public class SettingActivity extends BaseActivity<SettingActivity,SettingPresent
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Config.clearAll(SettingActivity.this);
+                                NIMClient.getService(AuthService.class).logout();
+                                DemoCache.clear();
                                 Intent loginIntent=new Intent(SettingActivity.this, LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                 SettingActivity.this.startActivity(loginIntent);
                             }

@@ -8,17 +8,28 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.cjt.employment.R;
 import com.cjt.employment.bean.LoginResult;
 import com.cjt.employment.common.Config;
+import com.cjt.employment.common.DemoCache;
 import com.cjt.employment.presenter.LoginPresenter;
 import com.cjt.employment.ui.view.LoginView;
+import com.netease.nim.uikit.NimUIKit;
+import com.netease.nimlib.sdk.NIMClient;
+import com.netease.nimlib.sdk.RequestCallback;
+import com.netease.nimlib.sdk.auth.AuthService;
+import com.netease.nimlib.sdk.auth.LoginInfo;
+import com.netease.nimlib.sdk.msg.constant.SessionTypeEnum;
+
+import java.util.prefs.Preferences;
 
 public class LoginActivity extends BaseActivity<LoginActivity, LoginPresenter> implements View.OnClickListener, LoginView {
     private Button btn_login;
@@ -84,6 +95,7 @@ public class LoginActivity extends BaseActivity<LoginActivity, LoginPresenter> i
                 String password = textInput_layout_password.getEditText().getText().toString();
                 if (!phone.equals("") && !password.equals("")) {
                     getPresenter().login("login", phone, password);
+//                    doLogin(phone, password);
                 } else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(this);
                     builder.setMessage("电话号码或密码不能为空")
@@ -99,7 +111,8 @@ public class LoginActivity extends BaseActivity<LoginActivity, LoginPresenter> i
         hideProgressBar();
         Config.saveValueByKey(this, Config.KEY_TOKEN, loginResult.getToken());
         Config.saveValueByKey(this, Config.KEY_USERID, String.valueOf(loginResult.getId()));
-        this.finish();
+        doLogin("2", "123123");
+//        this.finish();
     }
 
     @Override
@@ -119,5 +132,39 @@ public class LoginActivity extends BaseActivity<LoginActivity, LoginPresenter> i
     @Override
     public void hideProgressBar() {
         progressBar.setVisibility(View.GONE);
+    }
+
+    public void doLogin(final String account, final String password) {
+        LoginInfo info = new LoginInfo(account, password); // config...
+        RequestCallback<LoginInfo> callback =
+                new RequestCallback<LoginInfo>() {
+                    @Override
+                    public void onSuccess(LoginInfo loginInfo) {
+                        Toast.makeText(LoginActivity.this, "登录成功 " + account, Toast.LENGTH_SHORT).show();
+                        NimUIKit.setAccount(account);
+                        DemoCache.setAccount(account);
+                        saveLoginInfo(account, password);
+                        LoginActivity.this.finish();
+
+                    }
+
+                    @Override
+                    public void onFailed(int i) {
+                        Toast.makeText(LoginActivity.this, "登录失败 " + i, Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onException(Throwable throwable) {
+
+                    }
+                    // 可以在此保存LoginInfo到本地，下次启动APP做自动登录用
+                };
+        NIMClient.getService(AuthService.class).login(info)
+                .setCallback(callback);
+    }
+
+    private void saveLoginInfo(final String account, final String token) {
+        Config.saveUserAccount(account);
+        Config.saveUserToken(token);
     }
 }

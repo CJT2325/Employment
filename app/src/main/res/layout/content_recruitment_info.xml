@@ -17,14 +17,32 @@
             android:background="#AAA"
             android:layout_width="match_parent"
             android:layout_height="0.5dp"/>
-        <Button
-            android:layout_margin="18dp"
-            android:id="@+id/btn_send"
+        <LinearLayout
+
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/click_selector"
-            android:text="发送简历"
-            android:textColor="#FFFFFF" />
+            android:layout_height="wrap_content">
+            <Button
+                android:layout_weight="1"
+                android:layout_margin="9dp"
+                android:id="@+id/btn_chat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/click_selector"
+                android:text="发送消息"
+                android:textColor="#FFFFFF" />
+            <Button
+                android:layout_weight="1"
+                android:layout_margin="9dp"
+                android:id="@+id/btn_send"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/click_selector"
+                android:text="发送简历"
+                android:textColor="#FFFFFF" />
+
+        </LinearLayout>
+
     </RelativeLayout>
 
     <ScrollView

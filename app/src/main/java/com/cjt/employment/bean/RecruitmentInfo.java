@@ -9,6 +9,7 @@ public class RecruitmentInfo {
     /**
      * position : JavaEE
      * logo : accountcover1image.jpg
+     * founderid : 1
      * employenumber : 250-300
      * workplace : 广州
      * education : 本科
@@ -19,8 +20,8 @@ public class RecruitmentInfo {
      * companyid : 1
      * financing : 天使融资三轮
      * pattern : P2P
-     * address : 广州天河
      * wagesstart : 2000
+     * address : 广州天河
      * foundercover : accountcover18814117978_1image.jpg
      * company : 广州大学华软软件学院
      * wagesend : 3000
@@ -41,6 +42,7 @@ public class RecruitmentInfo {
     public static class DataBean {
         private String position;
         private String logo;
+        private int founderid;
         private String employenumber;
         private String workplace;
         private String education;
@@ -50,8 +52,8 @@ public class RecruitmentInfo {
         private int companyid;
         private String financing;
         private String pattern;
-        private String address;
         private int wagesstart;
+        private String address;
         private String foundercover;
         private String company;
         private int wagesend;
@@ -72,6 +74,14 @@ public class RecruitmentInfo {
 
         public void setLogo(String logo) {
             this.logo = logo;
+        }
+
+        public int getFounderid() {
+            return founderid;
+        }
+
+        public void setFounderid(int founderid) {
+            this.founderid = founderid;
         }
 
         public String getEmployenumber() {
@@ -146,20 +156,20 @@ public class RecruitmentInfo {
             this.pattern = pattern;
         }
 
-        public String getAddress() {
-            return address;
-        }
-
-        public void setAddress(String address) {
-            this.address = address;
-        }
-
         public int getWagesstart() {
             return wagesstart;
         }
 
         public void setWagesstart(int wagesstart) {
             this.wagesstart = wagesstart;
+        }
+
+        public String getAddress() {
+            return address;
+        }
+
+        public void setAddress(String address) {
+            this.address = address;
         }
 
         public String getFoundercover() {

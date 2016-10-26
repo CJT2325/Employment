@@ -18,11 +18,16 @@ import android.widget.Toast;
 
 import com.cjt.employment.R;
 import com.cjt.employment.bean.RecruitmentInfo;
+import com.cjt.employment.bean.UserBean;
 import com.cjt.employment.common.Config;
 import com.cjt.employment.model.server.ServerAPI;
 import com.cjt.employment.presenter.RecruitmentInfoPresenter;
 import com.cjt.employment.ui.view.RecruitmentInfoView;
+import com.netease.nim.uikit.NimUIKit;
+import com.netease.nimlib.sdk.msg.constant.SessionTypeEnum;
 import com.squareup.picasso.Picasso;
+
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -47,6 +52,9 @@ public class RecruitmentInfoActivity extends BaseActivity<RecruitmentInfoActivit
 
     private ProgressBar progressBar;
     private Button btn_send;
+    private Button btn_chat;
+
+    RecruitmentInfo.DataBean dataBean = null;
 
     private MenuItem collectionItem;
     private boolean isCollection = false;
@@ -95,6 +103,8 @@ public class RecruitmentInfoActivity extends BaseActivity<RecruitmentInfoActivit
         progressBar = (ProgressBar) findViewById(R.id.progressbar);
         btn_send = (Button) findViewById(R.id.btn_send);
         btn_send.setOnClickListener(this);
+        btn_chat = (Button) findViewById(R.id.btn_chat);
+        btn_chat.setOnClickListener(this);
 
         tv_content = (TextView) findViewById(R.id.tv_content);
         tv_address = (TextView) findViewById(R.id.tv_address);
@@ -150,11 +160,21 @@ public class RecruitmentInfoActivity extends BaseActivity<RecruitmentInfoActivit
                             }
                         }).show();
                 break;
+            case R.id.btn_chat:
+                UserBean userBean = new UserBean();
+                userBean.setName(dataBean.getFounder());
+                userBean.setCover(dataBean.getFoundercover());
+                userBean.setCompanyName(dataBean.getCompany());
+                userBean.setId(dataBean.getFounderid() + "");
+                Config.addUserBeanToList(this, userBean);
+                NimUIKit.startChatting(this, dataBean.getFounderid() + "", SessionTypeEnum.P2P, null, null);
+                break;
         }
     }
 
     @Override
     public void updateRecruitmentInfo(RecruitmentInfo.DataBean dataBean) {
+        this.dataBean = dataBean;
         //公司ID
         companyId = dataBean.getCompanyid();
 

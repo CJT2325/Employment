@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import com.cjt.employment.R;
 import com.cjt.employment.adapter.MessageAdapter;
+import com.cjt.employment.bean.UserBean;
 import com.cjt.employment.common.DividerItemDecoration;
 import com.cjt.employment.presenter.ExplorePresenter;
 
@@ -19,7 +20,7 @@ import java.util.List;
 
 public class ExploreFragment extends BaseFragment<HomeFragment, ExplorePresenter> {
     private RecyclerView mRecyclerView;
-    private List<String> mDatas;
+    private List<UserBean> mDatas;
     private MessageAdapter mMessageAdapter;
 
     public static ExploreFragment newInstance() {
@@ -64,10 +65,10 @@ public class ExploreFragment extends BaseFragment<HomeFragment, ExplorePresenter
         return view;
     }
     private void initDatas() {
-        mDatas = new ArrayList<String>();
-        for (int i = 0; i < 4; i++) {
-            mDatas.add("Stirng " + i);
-        }
+        mDatas = new ArrayList<UserBean>();
+//        for (int i = 0; i < 4; i++) {
+//            mDatas.add("Stirng " + i);
+//        }
     }
 
     @Override
