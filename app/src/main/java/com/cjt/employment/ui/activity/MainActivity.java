@@ -19,17 +19,24 @@ import android.widget.Toast;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.cjt.employment.R;
+import com.cjt.employment.bean.UserBean;
 import com.cjt.employment.common.Config;
 import com.cjt.employment.common.DemoCache;
+import com.cjt.employment.presenter.MainPresenter;
 import com.cjt.employment.ui.fragment.ExploreFragment;
 import com.cjt.employment.ui.fragment.HomeFragment;
 import com.cjt.employment.ui.fragment.MessageFragment;
+import com.cjt.employment.ui.view.MainView;
 import com.netease.nim.uikit.NimUIKit;
+import com.netease.nimlib.sdk.NimIntent;
 import com.netease.nimlib.sdk.msg.constant.SessionTypeEnum;
+import com.netease.nimlib.sdk.msg.model.IMMessage;
+
+import java.util.ArrayList;
 
 import br.com.mauker.materialsearchview.MaterialSearchView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity<MainActivity,MainPresenter> implements MainView {
     private BottomNavigationBar bottomNavigationBar;
     private MaterialSearchView searchView;
 
@@ -50,6 +57,23 @@ public class MainActivity extends AppCompatActivity {
         initBottomNavigationBar();
         initSearchView();
         setDefaultFragment();
+
+        ArrayList<IMMessage> messages = (ArrayList<IMMessage>)
+                getIntent().getSerializableExtra(NimIntent.EXTRA_NOTIFY_CONTENT);
+        if (messages!=null){
+            String id= messages.get(0).getFromAccount();
+            getPresenter().getAccountInfo("getAccount",id);
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected MainPresenter creatPresenter() {
+        return new MainPresenter();
     }
 
     private void initSearchView() {
@@ -214,5 +238,12 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void getAccountInfoSuccess(UserBean userBean) {
+        Log.i("CJT",userBean.getId()+"====="+userBean.getName());
+        Config.addUserBeanToList(this,userBean);
+        NimUIKit.startChatting(this, userBean.getId(), SessionTypeEnum.P2P, null, null);
     }
 }

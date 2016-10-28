@@ -1,6 +1,7 @@
 package com.cjt.employment.model.server;
 
 import com.cjt.employment.bean.AccountInfo;
+import com.cjt.employment.bean.AccountInfoBean;
 import com.cjt.employment.bean.CollectionBean;
 import com.cjt.employment.bean.CompanyDescpt;
 import com.cjt.employment.bean.CompanyInfo;
@@ -14,6 +15,7 @@ import com.cjt.employment.bean.Recruit;
 import com.cjt.employment.bean.RecruitmentInfo;
 import com.cjt.employment.bean.UpLoadImageResult;
 import com.cjt.employment.bean.UpdateResult;
+import com.cjt.employment.bean.UserBean;
 import com.cjt.employment.bean.UserVitage;
 import com.cjt.employment.bean.VitageBean;
 import com.cjt.employment.bean.VitageInfo;
@@ -59,6 +61,13 @@ public interface ServerAPI {
     //获取用户信息
     @GET("servlet/AccountServlet")
     Observable<AccountInfo> getAccountInfoById(@Query("action") String action, @Query("id") int id);
+
+    //获取用户基本信息
+    @GET("servlet/AccountServlet")
+    Observable<UserBean> getAccountInfo(
+            @Query("action") String action,
+            @Query("id") String id
+    );
 
     //上传图片
     @Multipart

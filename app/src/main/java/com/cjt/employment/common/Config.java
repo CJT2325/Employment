@@ -117,11 +117,11 @@ public class Config {
             }.getType();
             List<UserBean> datas = new ArrayList<UserBean>();
             datas = gson.fromJson(json, type);
-            for (int i = 0; i < datas.size(); i++) {
-                if (Integer.parseInt(datas.get(i).getId())==Integer.parseInt(userBean.getId())) {
-                    canAdd = false;
+                for (int i = 0; i < datas.size(); i++) {
+                    if (Integer.parseInt(datas.get(i).getId()) == Integer.parseInt(userBean.getId())) {
+                        canAdd = false;
+                    }
                 }
-            }
             if (canAdd){
                 datas.add(userBean);
                 saveList(context,datas);

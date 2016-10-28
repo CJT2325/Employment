@@ -108,20 +108,22 @@ public class LoginActivity extends BaseActivity<LoginActivity, LoginPresenter> i
 
     @Override
     public void loginSuccess(LoginResult loginResult) {
+        String password = textInput_layout_password.getEditText().getText().toString();
         hideProgressBar();
         Config.saveValueByKey(this, Config.KEY_TOKEN, loginResult.getToken());
         Config.saveValueByKey(this, Config.KEY_USERID, String.valueOf(loginResult.getId()));
-        doLogin("2", "123123");
+        doLogin(loginResult.getId()+"", password);
 //        this.finish();
     }
 
     @Override
     public void loginFail() {
-        hideProgressBar();
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("登录失败")
-                .setPositiveButton("确定", null)
-                .show();
+        Toast.makeText(LoginActivity.this, "登录失败 ", Toast.LENGTH_SHORT).show();
+//        hideProgressBar();
+//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//        builder.setMessage("登录失败")
+//                .setPositiveButton("确定", null)
+//                .show();
     }
 
     @Override
@@ -151,6 +153,11 @@ public class LoginActivity extends BaseActivity<LoginActivity, LoginPresenter> i
                     @Override
                     public void onFailed(int i) {
                         Toast.makeText(LoginActivity.this, "登录失败 " + i, Toast.LENGTH_SHORT).show();
+//                        hideProgressBar();
+//                        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+//                        builder.setMessage("登录失败")
+//                                .setPositiveButton("确定", null)
+//                                .show();
                     }
 
                     @Override

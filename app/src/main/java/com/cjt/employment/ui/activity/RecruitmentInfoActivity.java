@@ -33,6 +33,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class RecruitmentInfoActivity extends BaseActivity<RecruitmentInfoActivity, RecruitmentInfoPresenter> implements View.OnClickListener, RecruitmentInfoView {
     private RelativeLayout layout_companyinfo;
+    private RelativeLayout layout_bottom;
     private int recruitId;
     private int companyId;
     private TextView tv_position;
@@ -58,6 +59,7 @@ public class RecruitmentInfoActivity extends BaseActivity<RecruitmentInfoActivit
 
     private MenuItem collectionItem;
     private boolean isCollection = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +91,7 @@ public class RecruitmentInfoActivity extends BaseActivity<RecruitmentInfoActivit
 
     private void initView() {
         layout_companyinfo = (RelativeLayout) findViewById(R.id.layout_companyinfo);
+        layout_bottom = (RelativeLayout) findViewById(R.id.layout_bottom);
         layout_companyinfo.setOnClickListener(this);
         tv_position = (TextView) findViewById(R.id.tv_position);
         tv_wage = (TextView) findViewById(R.id.tv_wage);
@@ -174,6 +177,9 @@ public class RecruitmentInfoActivity extends BaseActivity<RecruitmentInfoActivit
 
     @Override
     public void updateRecruitmentInfo(RecruitmentInfo.DataBean dataBean) {
+        if (Config.getValueByKey(this,Config.KEY_USERID).equals(dataBean.getFounderid()+"")){
+            layout_bottom.setVisibility(View.GONE);
+        }
         this.dataBean = dataBean;
         //公司ID
         companyId = dataBean.getCompanyid();
