@@ -10,6 +10,7 @@ public class AccountInfo {
      * cover : accountcover18814117978_1image.jpg
      * name : 陈嘉桐
      * introduce : 个人介绍
+     * isEnterprise : 1
      */
 
     private DataBean data;
@@ -26,6 +27,7 @@ public class AccountInfo {
         private String cover;
         private String name;
         private String introduce;
+        private String isEnterprise;
 
         public String getCover() {
             return cover;
@@ -49,6 +51,14 @@ public class AccountInfo {
 
         public void setIntroduce(String introduce) {
             this.introduce = introduce;
+        }
+
+        public String getIsEnterprise() {
+            return isEnterprise;
+        }
+
+        public void setIsEnterprise(String isEnterprise) {
+            this.isEnterprise = isEnterprise;
         }
     }
 }

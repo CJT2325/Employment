@@ -70,7 +70,7 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 //        holder.tv_giveprice.setText("配送费￥"+datas.get(position).getStore().getPackingFee());
         if (holder instanceof Message1ViewHolder) {
         } else if (holder instanceof Message2ViewHolder) {
-            Picasso.with(mContext).load(ServerAPI.baseUrl + "image/accountCover/" + datas.get(position-1).getCover()).into(((Message2ViewHolder) holder).iv_cover);
+            Picasso.with(mContext).load(ServerAPI.baseUrl + "image/accountCover/" + datas.get(position-1).getCover()).error(R.drawable.ic_person_black_24dp).into(((Message2ViewHolder) holder).iv_cover);
             ((Message2ViewHolder) holder).tv_companyname.setText(datas.get(position-1).getCompanyName());
             ((Message2ViewHolder) holder).tv_name.setText(datas.get(position-1).getName());
         }

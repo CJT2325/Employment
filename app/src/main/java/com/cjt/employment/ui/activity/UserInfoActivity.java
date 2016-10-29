@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cjt.employment.R;
 import com.cjt.employment.bean.AccountInfo;
@@ -29,6 +30,8 @@ public class UserInfoActivity extends BaseActivity<UserInfoActivity, UserInfoPre
     private RelativeLayout layout_collection;
     private CircleImageView iv_cover;
     private TextView tv_name;
+
+    private String isEnterprise = "-1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,8 +101,15 @@ public class UserInfoActivity extends BaseActivity<UserInfoActivity, UserInfoPre
                 break;
             case R.id.layout_enterprise:
 //                Intent enterpriseIntent=new Intent(this,EnterpriseActivity.class);
-                Intent enterpriseIntent = new Intent(this, EnterpriseHomeActivity.class);
-                startActivity(enterpriseIntent);
+                if (isEnterprise.equals("1")) {
+                    Intent enterpriseIntent = new Intent(this, EnterpriseHomeActivity.class);
+                    startActivity(enterpriseIntent);
+                } else if (isEnterprise.equals("0")) {
+                    Toast.makeText(this, "请等待审核..", Toast.LENGTH_SHORT).show();
+                } else if (isEnterprise.equals("-1")) {
+                    Intent applyEnterpriseIntent = new Intent(this, ApplyEnterpriseActivity.class);
+                    startActivity(applyEnterpriseIntent);
+                }
                 break;
             case R.id.layout_vitae:
                 Intent vitaeIntent = new Intent(this, VitaeActivity.class);
@@ -114,8 +124,9 @@ public class UserInfoActivity extends BaseActivity<UserInfoActivity, UserInfoPre
 
     @Override
     public void getUserCoverSuccess(AccountInfo accountInfo) {
-        Picasso.with(this).load(ServerAPI.baseUrl+"image/accountCover/" + accountInfo.getData().getCover()).into(iv_cover);
+        Picasso.with(this).load(ServerAPI.baseUrl + "image/accountCover/" + accountInfo.getData().getCover()).error(R.drawable.ic_person_black_24dp).into(iv_cover);
         tv_name.setText(accountInfo.getData().getName());
+        isEnterprise = accountInfo.getData().getIsEnterprise();
     }
 
     @Override

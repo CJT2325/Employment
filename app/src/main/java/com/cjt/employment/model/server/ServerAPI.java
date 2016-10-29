@@ -360,4 +360,13 @@ public interface ServerAPI {
             @Query("id") String id,
             @Query("state") String state
     );
+
+
+    //获取投递的简历
+    @GET("servlet/CompanyServlet")
+    Observable<UpdateResult> applyEnterprise(
+            @Query("action") String action,
+            @Query("id") String id,
+            @Query("companyname") String companyname
+    );
 }

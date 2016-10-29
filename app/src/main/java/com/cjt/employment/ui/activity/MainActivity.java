@@ -36,7 +36,7 @@ import java.util.ArrayList;
 
 import br.com.mauker.materialsearchview.MaterialSearchView;
 
-public class MainActivity extends BaseActivity<MainActivity,MainPresenter> implements MainView {
+public class MainActivity extends BaseActivity<MainActivity, MainPresenter> implements MainView {
     private BottomNavigationBar bottomNavigationBar;
     private MaterialSearchView searchView;
 
@@ -45,6 +45,7 @@ public class MainActivity extends BaseActivity<MainActivity,MainPresenter> imple
     private ExploreFragment exploreFragment;
 
     private FragmentManager fm;
+    private ArrayList<IMMessage> messages = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,17 +59,32 @@ public class MainActivity extends BaseActivity<MainActivity,MainPresenter> imple
         initSearchView();
         setDefaultFragment();
 
-        ArrayList<IMMessage> messages = (ArrayList<IMMessage>)
-                getIntent().getSerializableExtra(NimIntent.EXTRA_NOTIFY_CONTENT);
-        if (messages!=null){
-            String id= messages.get(0).getFromAccount();
-            getPresenter().getAccountInfo("getAccount",id);
+        if (Config.getValueByKey(this, Config.KEY_TOKEN).equals("") || DemoCache.getAccount() == null) {
+            Intent loginIntent = new Intent(this, LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            this.startActivity(loginIntent);
         }
+
+
     }
 
     @Override
     protected void onStart() {
         super.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        ArrayList<IMMessage> messages = (ArrayList<IMMessage>)
+                getIntent().getSerializableExtra(NimIntent.EXTRA_NOTIFY_CONTENT);
+        if (messages != null && messages == null) {
+            Log.i("CJT", "==========================================");
+            String id = messages.get(0).getFromAccount();
+            getPresenter().getAccountInfo("getAccount", id);
+            this.messages = messages;
+        }
+        Log.i("CJT", "Main onResume "+messages);
     }
 
     @Override
@@ -228,7 +244,7 @@ public class MainActivity extends BaseActivity<MainActivity,MainPresenter> imple
             return true;
         } else if (id == R.id.action_user) {
             Intent intent;
-            if (Config.getValueByKey(this, Config.KEY_TOKEN).equals("") && DemoCache.getAccount() == null) {
+            if (Config.getValueByKey(this, Config.KEY_TOKEN).equals("") || DemoCache.getAccount() == null) {
                 intent = new Intent(this, LoginActivity.class);
                 startActivity(intent);
             } else {
@@ -242,8 +258,8 @@ public class MainActivity extends BaseActivity<MainActivity,MainPresenter> imple
 
     @Override
     public void getAccountInfoSuccess(UserBean userBean) {
-        Log.i("CJT",userBean.getId()+"====="+userBean.getName());
-        Config.addUserBeanToList(this,userBean);
+        Log.i("CJT", userBean.getId() + "=====" + userBean.getName());
+        Config.addUserBeanToList(this, userBean);
         NimUIKit.startChatting(this, userBean.getId(), SessionTypeEnum.P2P, null, null);
     }
 }

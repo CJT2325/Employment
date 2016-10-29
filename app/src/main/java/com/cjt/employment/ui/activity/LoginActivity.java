@@ -22,6 +22,7 @@ import com.cjt.employment.common.Config;
 import com.cjt.employment.common.DemoCache;
 import com.cjt.employment.presenter.LoginPresenter;
 import com.cjt.employment.ui.view.LoginView;
+import com.cjt.employment.ui.view.MainView;
 import com.netease.nim.uikit.NimUIKit;
 import com.netease.nimlib.sdk.NIMClient;
 import com.netease.nimlib.sdk.RequestCallback;
@@ -146,8 +147,9 @@ public class LoginActivity extends BaseActivity<LoginActivity, LoginPresenter> i
                         NimUIKit.setAccount(account);
                         DemoCache.setAccount(account);
                         saveLoginInfo(account, password);
+                        Intent mianIntent=new Intent(LoginActivity.this, MainActivity.class);
+                        LoginActivity.this.startActivity(mianIntent);
                         LoginActivity.this.finish();
-
                     }
 
                     @Override
