@@ -34,4 +34,5 @@
     <string name="title_activity_browse_vitage">BrowseVitageActivity</string>
     <string name="title_activity_vitage_state">VitageStateActivity</string>
     <string name="title_activity_apply_enterprise">ApplyEnterpriseActivity</string>
+    <string name="title_activity_vitage_detail">VitageDetailActivity</string>
 </resources>

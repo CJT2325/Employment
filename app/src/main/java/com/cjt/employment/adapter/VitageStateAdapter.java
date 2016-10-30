@@ -11,8 +11,10 @@ import android.widget.TextView;
 
 import com.cjt.employment.R;
 import com.cjt.employment.bean.UserVitage;
+import com.cjt.employment.bean.VitageDetailBean;
 import com.cjt.employment.bean.VitageStateBean;
 import com.cjt.employment.model.server.ServerAPI;
+import com.cjt.employment.ui.activity.VitageDetailActivity;
 import com.cjt.employment.ui.activity.VitageInfoActivity;
 import com.squareup.picasso.Picasso;
 
@@ -36,10 +38,10 @@ public class VitageStateAdapter extends RecyclerView.Adapter<VitageStateAdapter.
     }
 
     public void startActivityByRecruitId(int position) {
-        Intent vitageInfoIntent = new Intent(mContext, VitageInfoActivity.class);
-        vitageInfoIntent.putExtra("id", datas.get(position).getRecruitid() + "");
+        Intent vitageDetailIntent = new Intent(mContext, VitageDetailActivity.class);
+        vitageDetailIntent.putExtra("id", datas.get(position).getPushvitageid() + "");
 //        vitageInfoIntent.putExtra("recruitid",datas.get(position).getRecruitid()+"");
-        mContext.startActivity(vitageInfoIntent);
+        mContext.startActivity(vitageDetailIntent);
     }
 
     public interface OnItemClickListener {

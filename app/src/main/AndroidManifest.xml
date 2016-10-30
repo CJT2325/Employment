@@ -85,12 +85,12 @@
         <!-- 安卓保活配置 -->
         <service
             android:name="com.netease.cosine.core.CosineService"
-            android:process=":cosine"></service>
+            android:process=":cosine" />
 
         <receiver
             android:name="com.netease.cosine.target.CosineReceiver"
             android:exported="true"
-            android:process=":cosine"></receiver>
+            android:process=":cosine" />
 
         <meta-data
             android:name="com.netease.cosine.target"
@@ -235,6 +235,10 @@
         <activity
             android:name=".ui.activity.ApplyEnterpriseActivity"
             android:label="@string/title_activity_apply_enterprise"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.activity.VitageDetailActivity"
+            android:label="@string/title_activity_vitage_detail"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

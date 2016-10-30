@@ -18,6 +18,7 @@ import com.cjt.employment.bean.UpdateResult;
 import com.cjt.employment.bean.UserBean;
 import com.cjt.employment.bean.UserVitage;
 import com.cjt.employment.bean.VitageBean;
+import com.cjt.employment.bean.VitageDetailBean;
 import com.cjt.employment.bean.VitageInfo;
 import com.cjt.employment.bean.VitageStateBean;
 import com.cjt.employment.bean.WorkExperience;
@@ -323,6 +324,13 @@ public interface ServerAPI {
     //获取投递的简历
     @GET("servlet/VitageServlet")
     Observable<VitageInfo> getVitageInfoById(
+            @Query("action") String action,
+            @Query("id") String id
+    );
+
+    //获取投递记录
+    @GET("servlet/VitageServlet")
+    Observable<VitageDetailBean> getVitageDetail(
             @Query("action") String action,
             @Query("id") String id
     );

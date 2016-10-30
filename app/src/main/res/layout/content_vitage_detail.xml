@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.cjt.employment.ui.activity.VitageDetailActivity"
+    tools:showIn="@layout/activity_vitage_detail">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="投递职位" />
+
+            <RelativeLayout
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:id="@+id/layout_recruitment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFF"
+                android:elevation="1dp"
+                android:padding="8dp">
+
+                <ImageView
+                    android:layout_centerVertical="true"
+                    android:id="@+id/iv_cover"
+                    android:layout_width="100dp"
+                    android:layout_height="70dp"
+                    android:layout_marginRight="8dp"
+                    android:scaleType="centerInside" />
+
+                <TextView
+                    android:id="@+id/tv_position"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/iv_cover"
+                    android:text="Android开发实习生"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/tv_company"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_position"
+                    android:layout_marginTop="3dp"
+                    android:layout_toRightOf="@id/iv_cover"
+                    android:text="公司名称"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/tv_recruitinfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_company"
+                    android:layout_marginTop="3dp"
+                    android:layout_toRightOf="@id/iv_cover"
+                    android:text="广州 1-3年 本科"
+                    android:textColor="#999999" />
+
+                <TextView
+                    android:id="@+id/tv_companyinfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_recruitinfo"
+                    android:layout_marginTop="3dp"
+                    android:layout_toRightOf="@id/iv_cover"
+                    android:text="未融资 | 15-50人 | O2O"
+                    android:textColor="#999999" />
+
+                <TextView
+                    android:id="@+id/tv_wage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:text="2-3K"
+                    android:textColor="@color/colorAccent" />
+
+                <TextView
+                    android:id="@+id/tv_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/tv_recruitinfo"
+                    android:layout_alignParentRight="true"
+                    android:text="08月08日"
+                    android:textColor="#999999" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="投递结果：【不合适】" />
+
+            <RelativeLayout
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:id="@+id/layout_user_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFF"
+                android:elevation="1dp"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/tv_result"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="投递结果" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="投递时间：2016-10-14" />
+        </LinearLayout>
+
+    </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+</RelativeLayout>
