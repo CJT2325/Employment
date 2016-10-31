@@ -13,5 +13,5 @@ import rx.Observable;
 public interface VitageInfoModel {
     public Observable<VitageInfo> getVitageInfoById(String action, String id);
 
-    public Observable<UpdateResult> updateVitageState(String action, String id, String state);
+    public Observable<UpdateResult> updateVitageState(String action, String id, String state,String result);
 }

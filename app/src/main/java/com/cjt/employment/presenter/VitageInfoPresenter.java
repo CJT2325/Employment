@@ -72,10 +72,10 @@ public class VitageInfoPresenter extends BasePresenter<VitageInfoActivity> {
         }
     }
 
-    public void updateVitageState(String action, String id, String state) {
+    public void updateVitageState(String action, String id, String state, String result) {
         if (mVitageInfoModel != null) {
             getView().showProgressBar();
-            mVitageInfoModel.updateVitageState(action, id, state)
+            mVitageInfoModel.updateVitageState(action, id, state, result)
                     .subscribeOn(Schedulers.newThread())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new Action1<UpdateResult>() {

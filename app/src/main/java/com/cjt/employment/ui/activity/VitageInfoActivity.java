@@ -1,21 +1,29 @@
 package com.cjt.employment.ui.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bigkoo.pickerview.OptionsPickerView;
 import com.cjt.employment.R;
 import com.cjt.employment.bean.Recruit;
 import com.cjt.employment.bean.VitageInfo;
+import com.cjt.employment.common.Config;
+import com.cjt.employment.common.DemoCache;
 import com.cjt.employment.model.server.ServerAPI;
 import com.cjt.employment.presenter.VitageInfoPresenter;
 import com.cjt.employment.ui.view.VitageInfoView;
+import com.netease.nimlib.sdk.NIMClient;
+import com.netease.nimlib.sdk.auth.AuthService;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -83,7 +91,7 @@ public class VitageInfoActivity extends BaseActivity<VitageInfoActivity, VitageI
             @Override
             public void onOptionsSelect(int options1, int option2, int options3) {
                 //返回的分别是三个级别的选中位置
-                String tx = optionsTypeItem.get(options1);
+                final String tx = optionsTypeItem.get(options1);
                 String state = "";
                 if (tx.equals("未处理")) {
                     state = "0";
@@ -92,8 +100,37 @@ public class VitageInfoActivity extends BaseActivity<VitageInfoActivity, VitageI
                 } else if (tx.equals("不合适")) {
                     state = "3";
                 }
-                getPresenter().updateVitageState("updateVitageState", vitageID, state);
+
+                if (state.equals("2")||state.equals("3")) {
+                    final EditText edit = new EditText(VitageInfoActivity.this);
+                    edit.setHint("反馈结果");
+                    AlertDialog.Builder builder = new AlertDialog.Builder(VitageInfoActivity.this);
+                    final String finalState = state;
+                    builder.setView(edit)
+                            .setMessage("请输入反馈结果")
+                            .setPositiveButton("取消", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                }
+                            })
+                            .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    if (edit.getText().equals("")){
+                                        Toast.makeText(VitageInfoActivity.this, "内容不能为空！", Toast.LENGTH_SHORT).show();
+                                    }else{
+                                        getPresenter().updateVitageState("updateVitageState", vitageID, finalState,edit.getText().toString());
+                                    }
+                                }
+                            }).show();
+                }else{
+                    getPresenter().updateVitageState("updateVitageState", vitageID, state,"");
+                }
                 btn_vitagestate.setText("简历状态：" + tx);
+
+
+
             }
         });
     }

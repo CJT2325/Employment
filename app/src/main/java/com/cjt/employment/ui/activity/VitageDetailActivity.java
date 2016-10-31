@@ -109,19 +109,19 @@ public class VitageDetailActivity extends BaseActivity<VitageDetailActivity, Vit
         switch (dataBean.getState()) {
             case 0:
                 tv_state.setText("投递结果：未处理");
-                tv_result.setText("你的简历还未被处理，请耐心等候...");
+                tv_result.setText("投递反馈：你的简历还未被处理，请耐心等候...");
                 break;
             case 1:
                 tv_state.setText("投递结果：被查看");
-                tv_result.setText("你的简历已被查看，请耐心等候...");
+                tv_result.setText("投递反馈：你的简历已被查看，请耐心等候...");
                 break;
             case 2:
                 tv_state.setText("投递结果：待面试");
-                tv_result.setText(dataBean.getResult());
+                tv_result.setText("投递反馈："+dataBean.getResult());
                 break;
             case 3:
                 tv_state.setText("投递结果：不合适");
-                tv_result.setText(dataBean.getResult());
+                tv_result.setText("投递反馈："+dataBean.getResult());
                 break;
         }
     }

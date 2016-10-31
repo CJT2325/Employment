@@ -36,8 +36,8 @@ public class VitageInfoModelImp implements VitageInfoModel {
     }
 
     @Override
-    public Observable<UpdateResult> updateVitageState(String action, String id, String state) {
-        return mServerAPI.updateVitageState(action, id, state);
+    public Observable<UpdateResult> updateVitageState(String action, String id, String state, String result) {
+        return mServerAPI.updateVitageState(action, id, state,result);
     }
 
 }

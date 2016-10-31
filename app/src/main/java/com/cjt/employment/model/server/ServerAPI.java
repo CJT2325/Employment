@@ -340,7 +340,8 @@ public interface ServerAPI {
     Observable<UpdateResult> updateVitageState(
             @Query("action") String action,
             @Query("id") String id,
-            @Query("state") String state
+            @Query("state") String state,
+            @Query("result") String result
     );
 
     //添加职位
