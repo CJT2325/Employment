@@ -40,7 +40,8 @@ import rx.Observable;
  */
 public interface ServerAPI {
     //网站根目录
-    String baseUrl = "http://172.16.101.64:8080/EmploymentService/";
+//    String baseUrl = "http://172.16.101.64:8080/EmploymentService/";
+//    String baseUrl = "http://172.20.10.6:8080/EmploymentService/";
 //    String baseUrl = "http://www.materialstyle.cn/EmploymentService/";
 
     //招聘信息
