@@ -1,5 +1,6 @@
 package com.cjt.employment.ui.view;
 
+import com.cjt.employment.bean.AccountInfo;
 import com.cjt.employment.bean.Education;
 import com.cjt.employment.bean.HopeJob;
 import com.cjt.employment.bean.Project;
@@ -20,4 +21,5 @@ public interface VitageView {
     public void getProjectSuccess(List<Project.DataBean> data);
     public void showProgressBar();
     public void hideProgressBar();
+    public void updateUserCover(AccountInfo.DataBean dataBean);
 }

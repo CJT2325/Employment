@@ -26,13 +26,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:text="添加头像" />
+                android:text="个人头像" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#FFF"
-                android:padding="16dp">
+                android:padding="23dp">
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/iv_cover"
@@ -41,13 +41,6 @@
                     android:layout_centerHorizontal="true"
                     android:tint="@color/colorPrimary"
                     android:src="@drawable/ic_person_black_24dp1" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/iv_cover"
-                    android:layout_centerHorizontal="true"
-                    android:text="点击更换" />
             </RelativeLayout>
 
             <TextView

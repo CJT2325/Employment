@@ -1,5 +1,6 @@
 package com.cjt.employment.model;
 
+import com.cjt.employment.bean.AccountInfo;
 import com.cjt.employment.bean.Education;
 import com.cjt.employment.bean.HopeJob;
 import com.cjt.employment.bean.Project;
@@ -32,6 +33,12 @@ public class VitageModelImp implements VitageModel{
     private final static class VitageModelHolder {
         private final static VitageModel instance = new VitageModelImp();
     }
+
+    @Override
+    public Observable<AccountInfo> getAccountInfoById(String action, int id) {
+        return mServerAPI.getAccountInfoById(action,id);
+    }
+
     @Override
     public Observable<VitageBean> getVitageUser(String action, String id) {
         return mServerAPI.getVitageUser(action,id);

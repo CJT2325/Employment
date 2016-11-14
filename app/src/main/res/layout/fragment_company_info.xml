@@ -57,10 +57,10 @@
 
             <RelativeLayout
                 android:id="@+id/layout_evaluate"
-                android:background="@drawable/item_selector"
-                android:clickable="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/item_selector"
+                android:clickable="true"
                 android:padding="18dp">
 
                 <TextView
@@ -86,15 +86,12 @@
                 android:layout_height="0.1dp"
                 android:background="#DDDDDD" />
 
-            <RelativeLayout
+            <TextView
+                android:id="@+id/tv_projectintroduce"
                 android:layout_width="match_parent"
-                android:layout_height="150dp">
-
-                <com.youth.banner.Banner
-                    android:id="@+id/banner"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </RelativeLayout>
+                android:layout_height="wrap_content"
+                android:layout_margin="18dp"
+                android:text="这个公司很懒，没有介绍任何产品" />
 
             <View
                 android:layout_width="match_parent"
@@ -113,10 +110,11 @@
                 android:background="#DDDDDD" />
 
             <TextView
+                android:id="@+id/tv_controduce"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="18dp"
-                android:text="公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍" />
+                android:text="这个公司很懒，没有任何介绍" />
 
             <View
                 android:layout_width="match_parent"

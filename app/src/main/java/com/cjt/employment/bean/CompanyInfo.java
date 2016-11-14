@@ -7,11 +7,14 @@ package com.cjt.employment.bean;
 public class CompanyInfo {
 
     /**
-     * logo : http://192.168.1.104:8080/image/qqmusiclogo.jpg
-     * financing : 未融资
-     * employenumber : 15-30
-     * pattern : O2O
-     * company : 腾讯
+     * logo : accountcover1image.jpg
+     * project : 1.this is product introduce
+     2.hello world=
+     * controduce : 励志人生的企业
+     * financing : 天使融资三轮
+     * employenumber : 250-300
+     * pattern : P2P
+     * company : 广州大学华软软件学院
      * founder : 陈嘉桐
      */
 
@@ -27,6 +30,8 @@ public class CompanyInfo {
 
     public static class DataBean {
         private String logo;
+        private String project;
+        private String controduce;
         private String financing;
         private String employenumber;
         private String pattern;
@@ -39,6 +44,22 @@ public class CompanyInfo {
 
         public void setLogo(String logo) {
             this.logo = logo;
+        }
+
+        public String getProject() {
+            return project;
+        }
+
+        public void setProject(String project) {
+            this.project = project;
+        }
+
+        public String getControduce() {
+            return controduce;
+        }
+
+        public void setControduce(String controduce) {
+            this.controduce = controduce;
         }
 
         public String getFinancing() {

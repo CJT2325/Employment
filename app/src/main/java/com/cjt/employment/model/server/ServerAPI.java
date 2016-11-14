@@ -6,6 +6,7 @@ import com.cjt.employment.bean.CollectionBean;
 import com.cjt.employment.bean.CompanyDescpt;
 import com.cjt.employment.bean.CompanyInfo;
 import com.cjt.employment.bean.CompanyPosition;
+import com.cjt.employment.bean.CompanyProject;
 import com.cjt.employment.bean.Education;
 import com.cjt.employment.bean.EnterprisePosition;
 import com.cjt.employment.bean.HopeJob;
@@ -40,7 +41,7 @@ import rx.Observable;
  */
 public interface ServerAPI {
     //网站根目录
-//    String baseUrl = "http://172.16.101.64:8080/EmploymentService/";
+    String baseUrl = "http://172.16.101.64:8080/EmploymentService/";
 //    String baseUrl = "http://172.20.10.6:8080/EmploymentService/";
 //    String baseUrl = "http://www.materialstyle.cn/EmploymentService/";
 
@@ -306,13 +307,27 @@ public interface ServerAPI {
             @Query("id") String id
     );
 
-    //获取企业介绍
+    //更新企业介绍
     @GET("servlet/CompanyServlet")
     Observable<UpdateResult> updateCompanyControduceById(
             @Query("action") String action,
             @Query("id") String id,
             @Query("content") String content
+    );
 
+    //获取企业产品介绍
+    @GET("servlet/CompanyServlet")
+    Observable<CompanyProject> getProjectControduceById(
+            @Query("action") String action,
+            @Query("id") String id
+    );
+
+    //更新企业产品介绍
+    @GET("servlet/CompanyServlet")
+    Observable<UpdateResult> updateProjectControduceById(
+            @Query("action") String action,
+            @Query("id") String id,
+            @Query("content") String content
     );
 
     //获取企业介绍

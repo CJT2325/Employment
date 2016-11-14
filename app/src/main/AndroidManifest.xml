@@ -239,6 +239,10 @@
         <activity
             android:name=".ui.activity.VitageDetailActivity"
             android:label="@string/title_activity_vitage_detail"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.activity.EditProjectControduceActivity"
+            android:label="@string/title_activity_edit_project_controduce"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

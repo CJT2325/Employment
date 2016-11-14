@@ -28,6 +28,8 @@ public class CompanyInfoFragment extends BaseFragment<CompanyInfoFragment, Compa
     private TextView tv_company;
     private TextView tv_companyinfo;
     private TextView tv_founder;
+    private TextView tv_projectintroduce;
+    private TextView tv_controduce;
 
     public static CompanyInfoFragment newInstance(int id) {
         CompanyInfoFragment fragment = new CompanyInfoFragment();
@@ -69,10 +71,12 @@ public class CompanyInfoFragment extends BaseFragment<CompanyInfoFragment, Compa
         layout_evaluate = (RelativeLayout) view.findViewById(R.id.layout_evaluate);
         layout_evaluate.setOnClickListener(this);
 
-        iv_cover= (ImageView) view.findViewById(R.id.iv_cover);
-        tv_company= (TextView) view.findViewById(R.id.tv_company);
-        tv_companyinfo= (TextView) view.findViewById(R.id.tv_companyinfo);
-        tv_founder= (TextView) view.findViewById(R.id.tv_founder);
+        iv_cover = (ImageView) view.findViewById(R.id.iv_cover);
+        tv_company = (TextView) view.findViewById(R.id.tv_company);
+        tv_companyinfo = (TextView) view.findViewById(R.id.tv_companyinfo);
+        tv_founder = (TextView) view.findViewById(R.id.tv_founder);
+        tv_projectintroduce = (TextView) view.findViewById(R.id.tv_projectintroduce);
+        tv_controduce = (TextView) view.findViewById(R.id.tv_controduce);
     }
 
     @Override
@@ -93,10 +97,16 @@ public class CompanyInfoFragment extends BaseFragment<CompanyInfoFragment, Compa
 
     @Override
     public void updateCompanyInfo(CompanyInfo.DataBean dataBean) {
-        Log.i("CJT",dataBean.getCompany());
-        Picasso.with(getContext()).load(ServerAPI.baseUrl+"image/companyCover/"+dataBean.getLogo()).into(iv_cover);
+        Log.i("CJT", dataBean.getCompany());
+        Picasso.with(getContext()).load(ServerAPI.baseUrl + "image/companyCover/" + dataBean.getLogo()).into(iv_cover);
         tv_company.setText(dataBean.getCompany());
         tv_companyinfo.setText(dataBean.getFinancing() + " | " + dataBean.getEmployenumber() + "人 | " + dataBean.getPattern());
         tv_founder.setText(dataBean.getFounder());
+        if (dataBean.getProject()!=null){
+            tv_projectintroduce.setText(dataBean.getProject());
+        }
+        if (dataBean.getControduce()!=null) {
+            tv_controduce.setText(dataBean.getControduce());
+        }
     }
 }

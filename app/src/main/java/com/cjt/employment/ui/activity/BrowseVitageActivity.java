@@ -15,15 +15,20 @@ import android.widget.TextView;
 
 import com.cjt.employment.R;
 import com.cjt.employment.adapter.AdapterForLinearLayout;
+import com.cjt.employment.bean.AccountInfo;
 import com.cjt.employment.bean.Education;
 import com.cjt.employment.bean.HopeJob;
 import com.cjt.employment.bean.Project;
 import com.cjt.employment.bean.VitageBean;
 import com.cjt.employment.bean.WorkExperience;
 import com.cjt.employment.common.Config;
+import com.cjt.employment.model.server.ServerAPI;
 import com.cjt.employment.presenter.BrowseVitagePresenter;
 import com.cjt.employment.ui.view.VitageView;
 import com.cjt.employment.view.LinearLayoutForListView;
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -84,6 +89,7 @@ public class BrowseVitageActivity extends BaseActivity<BrowseVitageActivity, Bro
     protected void onStart() {
         super.onStart();
         String id = getIntent().getStringExtra("id");
+        getPresenter().getAccountInfoById("getAccountInfo", Integer.parseInt(id));
         getPresenter().getVitageUser("getVitageUser", id);
         getPresenter().getWorkExperienceList("getWorkExperienceList", id);
         getPresenter().getEducationList("getEducationList", id);
@@ -274,5 +280,13 @@ public class BrowseVitageActivity extends BaseActivity<BrowseVitageActivity, Bro
     @Override
     public void hideProgressBar() {
         progressBar.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void updateUserCover(AccountInfo.DataBean dataBean) {
+        Picasso.with(this).load(ServerAPI.baseUrl+"image/accountCover/" + dataBean.getCover())
+                .memoryPolicy(MemoryPolicy.NO_CACHE)
+                .networkPolicy(NetworkPolicy.NO_CACHE)
+                .into(iv_cover);
     }
 }

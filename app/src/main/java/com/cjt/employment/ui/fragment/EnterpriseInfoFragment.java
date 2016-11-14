@@ -26,6 +26,7 @@ import com.cjt.employment.presenter.EnterpriseInfoPresenter;
 import com.cjt.employment.ui.activity.EditCompanyConditionActivity;
 import com.cjt.employment.ui.activity.EditCompanyNameActivity;
 import com.cjt.employment.ui.activity.EditControduceActivity;
+import com.cjt.employment.ui.activity.EditProjectControduceActivity;
 import com.cjt.employment.ui.view.EnterpriseInfoView;
 import com.squareup.picasso.Picasso;
 
@@ -43,6 +44,7 @@ public class EnterpriseInfoFragment extends BaseFragment<EnterpriseInfoFragment,
     private static final int OPEN_EDITNAME_CODE = 3;
     private static final int OPEN_EDITCONDITION_CODE = 4;
     private static final int OPEN_EDITCONTRODUCE_CODE = 5;
+    private static final int OPEN_EDITPROJECT_CODE = 6;
 
     private RelativeLayout layout_cover;
     private RelativeLayout layout_name;
@@ -152,6 +154,8 @@ public class EnterpriseInfoFragment extends BaseFragment<EnterpriseInfoFragment,
                 startActivityForResult(editConditionIntent,OPEN_EDITCONDITION_CODE);
                 break;
             case R.id.layout_product:
+                Intent editProjectControduceIntent=new Intent(getContext(), EditProjectControduceActivity.class);
+                startActivityForResult(editProjectControduceIntent,OPEN_EDITPROJECT_CODE);
                 break;
             case R.id.layout_controduce:
                 Intent editControduceIntent=new Intent(getContext(), EditControduceActivity.class);

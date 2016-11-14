@@ -1,5 +1,6 @@
 package com.cjt.employment.model.Imodel;
 
+import com.cjt.employment.bean.AccountInfo;
 import com.cjt.employment.bean.Education;
 import com.cjt.employment.bean.HopeJob;
 import com.cjt.employment.bean.Project;
@@ -14,6 +15,7 @@ import rx.Observable;
  * 邮箱: 445263848@qq.com.
  */
 public interface VitageModel {
+    public Observable<AccountInfo> getAccountInfoById(String action, int id);
     public Observable<VitageBean> getVitageUser(String action, String id);
     public Observable<HopeJob> getHopeJob(String action, String id);
     public Observable<WorkExperience> getWorkExperienceList(String action, String id);

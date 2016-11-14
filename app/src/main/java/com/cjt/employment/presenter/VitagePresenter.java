@@ -2,6 +2,7 @@ package com.cjt.employment.presenter;
 
 import android.util.Log;
 
+import com.cjt.employment.bean.AccountInfo;
 import com.cjt.employment.bean.Education;
 import com.cjt.employment.bean.HopeJob;
 import com.cjt.employment.bean.LoginResult;
@@ -28,6 +29,29 @@ public class VitagePresenter extends BasePresenter<VitaeActivity>{
 
     public VitagePresenter() {
         mVitageModel = VitageModelImp.getInstance();
+    }
+
+    public void getAccountInfoById(String getAccountInfo, int id) {
+        if (mVitageModel != null) {
+            getView().showProgressBar();
+            mVitageModel.getAccountInfoById(getAccountInfo, id)
+                    .subscribeOn(Schedulers.newThread())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Action1<AccountInfo>() {
+                        @Override
+                        public void call(AccountInfo accountInfo) {
+                            getView().updateUserCover(accountInfo.getData());
+                            getView().hideProgressBar();
+                        }
+                    }, new Action1<Throwable>() {
+                        @Override
+                        public void call(Throwable throwable) {
+                            Log.i("RxJava", "又是在这里出现了问题呀----->" + throwable.toString());
+                        }
+                    });
+        } else {
+            Log.i("CJT", "model is null");
+        }
     }
 
     public void getVitageUser(String action, String id) {
