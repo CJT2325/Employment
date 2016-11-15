@@ -10,7 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.cjt.employment.R;
+import com.cjt.employment.adapter.ExploreAdapter;
 import com.cjt.employment.adapter.MessageAdapter;
+import com.cjt.employment.bean.InformationBean;
 import com.cjt.employment.bean.UserBean;
 import com.cjt.employment.common.DividerItemDecoration;
 import com.cjt.employment.presenter.ExplorePresenter;
@@ -20,8 +22,8 @@ import java.util.List;
 
 public class ExploreFragment extends BaseFragment<HomeFragment, ExplorePresenter> {
     private RecyclerView mRecyclerView;
-    private List<UserBean> mDatas;
-    private MessageAdapter mMessageAdapter;
+    private List<InformationBean> mDatas;
+    private ExploreAdapter mExploreAdapter;
 
     public static ExploreFragment newInstance() {
         ExploreFragment fragment = new ExploreFragment();
@@ -37,7 +39,7 @@ public class ExploreFragment extends BaseFragment<HomeFragment, ExplorePresenter
 
     @Override
     protected ExplorePresenter creatPresenter() {
-        return null;
+        return new ExplorePresenter();
     }
 
     @Override
@@ -52,23 +54,24 @@ public class ExploreFragment extends BaseFragment<HomeFragment, ExplorePresenter
 
         initDatas();
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerview_explore);
-        mMessageAdapter = new MessageAdapter(mDatas, getActivity(), new MessageAdapter.OnItemClickListener() {
+        mExploreAdapter = new ExploreAdapter(mDatas, getActivity(), new ExploreAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
 
             }
         });
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-        mRecyclerView.setAdapter(mMessageAdapter);
+        mRecyclerView.setAdapter(mExploreAdapter);
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL_LIST));
 
         return view;
     }
     private void initDatas() {
-        mDatas = new ArrayList<UserBean>();
-//        for (int i = 0; i < 4; i++) {
-//            mDatas.add("Stirng " + i);
-//        }
+        mDatas = new ArrayList<InformationBean>();
+        for (int i = 0; i < 4; i++) {
+            InformationBean a=new InformationBean();
+            mDatas.add(a);
+        }
     }
 
     @Override
