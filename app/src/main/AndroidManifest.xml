@@ -243,6 +243,10 @@
         <activity
             android:name=".ui.activity.EditProjectControduceActivity"
             android:label="@string/title_activity_edit_project_controduce"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.activity.InfomationDetailActivity"
+            android:label="@string/title_activity_infomation_detail"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

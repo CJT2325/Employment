@@ -10,6 +10,8 @@ import com.cjt.employment.bean.CompanyProject;
 import com.cjt.employment.bean.Education;
 import com.cjt.employment.bean.EnterprisePosition;
 import com.cjt.employment.bean.HopeJob;
+import com.cjt.employment.bean.InformationBean;
+import com.cjt.employment.bean.InformationDetialBean;
 import com.cjt.employment.bean.LoginResult;
 import com.cjt.employment.bean.Project;
 import com.cjt.employment.bean.Recruit;
@@ -48,6 +50,17 @@ public interface ServerAPI {
     //招聘信息
     @GET("servlet/RecruitServlet")
     Observable<Recruit> recruitServlet(@Query("action") String action);
+
+    //资讯列表
+    @GET("servlet/InfomationServlet")
+    Observable<InformationBean> getInfomation(@Query("action") String action);
+
+    //资讯详情
+    @GET("servlet/InfomationServlet")
+    Observable<InformationDetialBean> getInfomationDetial(
+            @Query("action") String action,
+            @Query("id") String id
+    );
 
     //职位详情
     @GET("servlet/RecruitServlet")

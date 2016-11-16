@@ -3,6 +3,7 @@ package com.cjt.employment.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import com.cjt.employment.R;
 import com.cjt.employment.bean.InformationBean;
 import com.cjt.employment.bean.UserBean;
 import com.cjt.employment.model.server.ServerAPI;
+import com.cjt.employment.ui.activity.InfomationDetailActivity;
 import com.cjt.employment.ui.activity.VitageStateActivity;
 import com.netease.nim.uikit.NimUIKit;
 import com.netease.nimlib.sdk.msg.constant.SessionTypeEnum;
@@ -32,20 +34,26 @@ public class ExploreAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private Context mContext;
     private OnItemClickListener listener;
 
-    private List<InformationBean> datas;
+    private List<InformationBean.DataBean> datas;
 
-    public void updata(List<InformationBean> list) {
+    public void updata(List<InformationBean.DataBean> list) {
         this.datas.clear();
         this.datas = list;
         notifyDataSetChanged();
     }
 
+    public void statrInfomationActivity(int position){
+        Intent infomationDetailIntent = new Intent(mContext, InfomationDetailActivity.class);
+        infomationDetailIntent.putExtra("id",datas.get(position).getId()+"");
+        Log.i("CJT","ID="+datas.get(position).getId());
+        mContext.startActivity(infomationDetailIntent);
+    }
 
     public interface OnItemClickListener {
         public void onItemClick(View view, int position);
     }
 
-    public ExploreAdapter(List<InformationBean> datas, Context mContext, OnItemClickListener listener) {
+    public ExploreAdapter(List<InformationBean.DataBean> datas, Context mContext, OnItemClickListener listener) {
         this.datas = datas;
         this.mContext = mContext;
         this.listener = listener;
@@ -59,11 +67,9 @@ public class ExploreAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-
-//        Picasso.with(mContext).load(ServerAPI.baseUrl + "image/infomationCover/" + datas.get(position).getCover()).error(R.drawable.ic_person_black_24dp).into(((ExploreViewHolder) holder).iv_cover);
-//        ((ExploreViewHolder) holder).tv_title.setText(datas.get(position - 1).getCompanyName());
-//        ((ExploreViewHolder) holder).tv_date.setText(datas.get(position - 1).getName());
-
+        Picasso.with(mContext).load(ServerAPI.baseUrl + "image/infomationCover/" + datas.get(position).getCover()).error(R.drawable.ic_person_black_24dp).into(((ExploreViewHolder) holder).iv_cover);
+        ((ExploreViewHolder) holder).tv_title.setText(datas.get(position).getTitle());
+        ((ExploreViewHolder) holder).tv_date.setText(datas.get(position).getTime());
     }
 
     @Override
@@ -90,11 +96,9 @@ public class ExploreAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         @Override
         public void onClick(View v) {
-//            if (listener != null) {
-//                listener.onItemClick(v, getPosition());
-//            }
-//            Intent vitageStateIntent = new Intent(mContext, VitageStateActivity.class);
-//            mContext.startActivity(vitageStateIntent);
+            if (listener != null) {
+                listener.onItemClick(v, getPosition());
+            }
         }
     }
 }

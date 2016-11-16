@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 
+import com.cjt.employment.bean.InformationDetialBean;
 import com.cjt.employment.presenter.BasePresenter;
 
 
@@ -59,5 +60,6 @@ public abstract class BaseActivity<V,T extends BasePresenter<V>> extends AppComp
 
 
     protected abstract T creatPresenter();
+
 
 }

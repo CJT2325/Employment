@@ -36,4 +36,5 @@
     <string name="title_activity_apply_enterprise">ApplyEnterpriseActivity</string>
     <string name="title_activity_vitage_detail">VitageDetailActivity</string>
     <string name="title_activity_edit_project_controduce">EditProjectControduceActivity</string>
+    <string name="title_activity_infomation_detail">InfomationDetailActivity</string>
 </resources>

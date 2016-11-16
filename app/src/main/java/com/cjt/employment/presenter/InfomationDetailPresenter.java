@@ -3,49 +3,43 @@ package com.cjt.employment.presenter;
 import android.util.Log;
 
 import com.cjt.employment.bean.InformationBean;
-import com.cjt.employment.bean.Recruit;
+import com.cjt.employment.bean.InformationDetialBean;
 import com.cjt.employment.model.ExploreModelImp;
 import com.cjt.employment.model.Imodel.ExploreModel;
-import com.cjt.employment.model.Imodel.RecruitModel;
-import com.cjt.employment.model.RecruitModelImp;
-import com.cjt.employment.ui.fragment.ExploreFragment;
+import com.cjt.employment.ui.activity.InfomationDetailActivity;
 import com.cjt.employment.ui.fragment.ExploreView;
-import com.cjt.employment.ui.fragment.HomeFragment;
-import com.cjt.employment.ui.view.HomeView;
 
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
 /**
- * 作者: 陈嘉桐 on 2016/8/12
+ * 作者: 陈嘉桐 on 2016/11/16
  * 邮箱: 445263848@qq.com.
  */
-public class ExplorePresenter extends BasePresenter<ExploreFragment>{
+public class InfomationDetailPresenter extends BasePresenter<InfomationDetailActivity>{
     private ExploreModel mExploreModel;
-    private ExploreView mExploreView;
-    public ExplorePresenter(ExploreView mExploreView) {
+    public InfomationDetailPresenter() {
         mExploreModel = ExploreModelImp.getInstance();
-        this.mExploreView = mExploreView;
     }
 
-    public void getInfomation(String action) {
+    public void getInfomationDetial(String action,String id) {
         if (mExploreModel != null) {
-            mExploreView.showProgressBar();
-            mExploreModel.getInfomation(action)
+            getView().showProgressBar();
+            mExploreModel.getInfomationDetial(action,id)
                     .subscribeOn(Schedulers.newThread())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new Action1<InformationBean>() {
+                    .subscribe(new Action1<InformationDetialBean>() {
                         @Override
-                        public void call(InformationBean informationBean) {
-                            mExploreView.updateInfomation(informationBean.getData());
-                            mExploreView.hideProgressBar();
+                        public void call(InformationDetialBean informationDetialBean) {
+                            getView().updateInfomationDetial(informationDetialBean.getData());
+                            getView().hideProgressBar();
                         }
                     }, new Action1<Throwable>() {
                         @Override
                         public void call(Throwable throwable) {
                             Log.i("RxJava", "又是在这里出现了问题呀----->" + throwable.toString());
-                            mExploreView.hideProgressBar();
+                            getView().hideProgressBar();
                         }
                     });
         } else {
